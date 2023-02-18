@@ -1,0 +1,107 @@
+{
+  "project_info": {
+    "project_number": "936698531920",
+    "firebase_url": "https://projectbread-karaokay.firebaseio.com",
+    "project_id": "projectbread-karaokay",
+    "storage_bucket": "projectbread-karaokay.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936698531920:android:d51c63c14be31d57070155",
+        "android_client_info": {
+          "package_name": "com.karaokenerds.karaokay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "936698531920-i2btbp9c28kcnutf6qekjb01g1a0he7d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.karaokenerds.karaokay",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "936698531920-i1ovdg3ho8tm94e3ttdpslpuv83keb44.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrkCgQsAtPXus2qtb59uFHpR7msBNAgLw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "936698531920-i1ovdg3ho8tm94e3ttdpslpuv83keb44.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "936698531920-0f4uf93itc71tln30liikjq51stgubtq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.karaokenerds.karaokay"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936698531920:android:41b0663e09e58b37",
+        "android_client_info": {
+          "package_name": "uk.projectbread.karaokay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "936698531920-6rgbq402tfo7etaijdc8leo6kab55mmi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uk.projectbread.karaokay",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "936698531920-eg6voojchtofn6o4773rv7a5ruooalla.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uk.projectbread.karaokay",
+            "certificate_hash": "6c040b1333812d98c539ef9d4a7982716c6c0f95"
+          }
+        },
+        {
+          "client_id": "936698531920-i1ovdg3ho8tm94e3ttdpslpuv83keb44.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrkCgQsAtPXus2qtb59uFHpR7msBNAgLw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "936698531920-i1ovdg3ho8tm94e3ttdpslpuv83keb44.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "936698531920-0f4uf93itc71tln30liikjq51stgubtq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.karaokenerds.karaokay"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
