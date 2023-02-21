@@ -95,7 +95,7 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color primaryBackground = const Color(0xFFF1F4F8);
   late Color secondaryBackground = const Color(0xFFFFFFFF);
   late Color primaryText = const Color(0xFF1A1F24);
-  late Color secondaryText = const Color(0xFFFFDF6B);
+  late Color secondaryText = const Color(0xFF95A1AC);
 
   late Color primaryDark = Color(0xFF1A1F24);
   late Color background = Color(0xFFF1F4F8);
