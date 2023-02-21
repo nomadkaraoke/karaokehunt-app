@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Karaokay - Karaoke Song Choice Helper</string>
+	<string>Karaoke Hunt - Song Finder</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Karaokay - Karaoke Song Choice Helper</string>
+	<string>KaraokeHunt</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 
@@ -28,7 +28,7 @@
             <string>Editor</string>
             <key>CFBundleURLSchemes</key>
             <array>
-                <string>com.googleusercontent.apps.936698531920-0f4uf93itc71tln30liikjq51stgubtq</string>
+                <string>com.googleusercontent.apps.936698531920-qm0vu383f8686arkposqn8qklnsdm3li</string>
                 
             </array>
         </dict>

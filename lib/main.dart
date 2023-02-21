@@ -35,8 +35,8 @@ class _MyAppState extends State<MyApp> {
   Locale? _locale;
   ThemeMode _themeMode = FlutterFlowTheme.themeMode;
 
-  late Stream<KaraokayKaraokeSongChoiceHelperFirebaseUser> userStream;
-  KaraokayKaraokeSongChoiceHelperFirebaseUser? initialUser;
+  late Stream<KaraokeHuntFirebaseUser> userStream;
+  KaraokeHuntFirebaseUser? initialUser;
   bool displaySplashImage = true;
 
   final authUserSub = authenticatedUserStream.listen((_) {});
@@ -45,7 +45,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    userStream = karaokayKaraokeSongChoiceHelperFirebaseUserStream()
+    userStream = karaokeHuntFirebaseUserStream()
       ..listen((user) => initialUser ?? setState(() => initialUser = user));
     jwtTokenStream.listen((_) {});
     Future.delayed(
@@ -73,7 +73,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Karaokay - Karaoke Song Choice Helper',
+      title: 'KaraokeHunt',
       localizationsDelegates: [
         FFLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
@@ -81,21 +81,19 @@ class _MyAppState extends State<MyApp> {
         GlobalCupertinoLocalizations.delegate,
       ],
       locale: _locale,
-      supportedLocales: const [Locale('en', '')],
+      supportedLocales: const [
+        Locale('en'),
+      ],
       theme: ThemeData(brightness: Brightness.light),
       darkTheme: ThemeData(brightness: Brightness.dark),
       themeMode: _themeMode,
       home: initialUser == null || displaySplashImage
           ? Builder(
               builder: (context) => Container(
-                color: Colors.transparent,
-                child: Center(
-                  child: Image.asset(
-                    'assets/images/Sniff_0.0_Splash@2x.png',
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 1,
-                    fit: BoxFit.cover,
-                  ),
+                color: Color(0xFF2C0EA1),
+                child: Image.asset(
+                  'assets/images/karaoke-hunt-logo-square-1000px.jpg',
+                  fit: BoxFit.contain,
                 ),
               ),
             )

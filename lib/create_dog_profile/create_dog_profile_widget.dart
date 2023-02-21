@@ -60,9 +60,11 @@ class _CreateDogProfileWidgetState extends State<CreateDogProfileWidget> {
             child: Text(
               '1/2',
               style: FlutterFlowTheme.of(context).bodyText1.override(
-                    fontFamily: 'Urbanist',
+                    fontFamily: FlutterFlowTheme.of(context).bodyText1Family,
                     color: FlutterFlowTheme.of(context).primaryColor,
                     fontWeight: FontWeight.bold,
+                    useGoogleFonts: GoogleFonts.asMap().containsKey(
+                        FlutterFlowTheme.of(context).bodyText1Family),
                   ),
             ),
           ),
@@ -419,9 +421,14 @@ class _CreateDogProfileWidgetState extends State<CreateDogProfileWidget> {
                               textStyle: FlutterFlowTheme.of(context)
                                   .subtitle2
                                   .override(
-                                    fontFamily: 'Urbanist',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .subtitle2Family,
                                     color: FlutterFlowTheme.of(context)
                                         .primaryDark,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .subtitle2Family),
                                   ),
                               elevation: 0,
                               borderSide: BorderSide(
@@ -463,8 +470,13 @@ class _CreateDogProfileWidgetState extends State<CreateDogProfileWidget> {
                               textStyle: FlutterFlowTheme.of(context)
                                   .subtitle2
                                   .override(
-                                    fontFamily: 'Urbanist',
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .subtitle2Family,
                                     color: Colors.white,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .subtitle2Family),
                                   ),
                               elevation: 2,
                               borderSide: BorderSide(

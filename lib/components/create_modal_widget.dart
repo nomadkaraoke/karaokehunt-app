@@ -153,9 +153,14 @@ class _CreateModalWidgetState extends State<CreateModalWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .title3
                                     .override(
-                                      fontFamily: 'Urbanist',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .title3Family,
                                       color: FlutterFlowTheme.of(context)
                                           .tertiaryColor,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .title3Family),
                                     ),
                               ),
                             ),

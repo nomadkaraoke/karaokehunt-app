@@ -92,10 +92,12 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
               Text(
                 'Group Chat',
                 style: FlutterFlowTheme.of(context).bodyText1.override(
-                      fontFamily: 'Urbanist',
+                      fontFamily: FlutterFlowTheme.of(context).bodyText1Family,
                       color: Colors.black,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
+                      useGoogleFonts: GoogleFonts.asMap().containsKey(
+                          FlutterFlowTheme.of(context).bodyText1Family),
                     ),
               ),
             if (!isGroupChat())
@@ -162,16 +164,22 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                   ),
                   currentUserTextStyle:
                       FlutterFlowTheme.of(context).bodyText2.override(
-                            fontFamily: 'Urbanist',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyText2Family,
                             color: FlutterFlowTheme.of(context).alternate,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).bodyText2Family),
                           ),
                   otherUsersTextStyle: FlutterFlowTheme.of(context).bodyText1,
                   inputHintTextStyle: FlutterFlowTheme.of(context).bodyText2,
                   inputTextStyle:
                       FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Urbanist',
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyText1Family,
                             color: FlutterFlowTheme.of(context).alternate,
                             fontWeight: FontWeight.bold,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).bodyText1Family),
                           ),
                   emptyChatWidget: Image.asset(
                     'assets/images/messagesEmpty@2x.png',

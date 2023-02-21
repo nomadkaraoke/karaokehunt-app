@@ -61,9 +61,11 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
             child: Text(
               '2/2',
               style: FlutterFlowTheme.of(context).bodyText1.override(
-                    fontFamily: 'Urbanist',
+                    fontFamily: FlutterFlowTheme.of(context).bodyText1Family,
                     color: FlutterFlowTheme.of(context).primaryColor,
                     fontWeight: FontWeight.bold,
+                    useGoogleFonts: GoogleFonts.asMap().containsKey(
+                        FlutterFlowTheme.of(context).bodyText1Family),
                   ),
             ),
           ),
@@ -419,11 +421,16 @@ class _CreateYourProfileWidgetState extends State<CreateYourProfileWidget> {
                           width: 230,
                           height: 50,
                           color: FlutterFlowTheme.of(context).primaryColor,
-                          textStyle:
-                              FlutterFlowTheme.of(context).subtitle2.override(
-                                    fontFamily: 'Urbanist',
-                                    color: Colors.white,
-                                  ),
+                          textStyle: FlutterFlowTheme.of(context)
+                              .subtitle2
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .subtitle2Family,
+                                color: Colors.white,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .subtitle2Family),
+                              ),
                           elevation: 2,
                           borderSide: BorderSide(
                             color: Colors.transparent,

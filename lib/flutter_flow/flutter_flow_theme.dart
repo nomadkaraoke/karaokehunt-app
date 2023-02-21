@@ -8,7 +8,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 const kThemeModeKey = '__theme_mode__';
 SharedPreferences? _prefs;
 
+enum DeviceSize {
+  mobile,
+  tablet,
+  desktop,
+}
+
 abstract class FlutterFlowTheme {
+  static DeviceSize deviceSize = DeviceSize.mobile;
+
   static Future initialize() async =>
       _prefs = await SharedPreferences.getInstance();
   static ThemeMode get themeMode {
@@ -25,6 +33,7 @@ abstract class FlutterFlowTheme {
       : _prefs?.setBool(kThemeModeKey, mode == ThemeMode.dark);
 
   static FlutterFlowTheme of(BuildContext context) {
+    deviceSize = getDeviceSize(context);
     return Theme.of(context).brightness == Brightness.dark
         ? DarkModeTheme()
         : LightModeTheme();
@@ -60,18 +69,33 @@ abstract class FlutterFlowTheme {
   String get bodyText2Family => typography.bodyText2Family;
   TextStyle get bodyText2 => typography.bodyText2;
 
-  Typography get typography => ThemeTypography(this);
+  Typography get typography => {
+        DeviceSize.mobile: MobileTypography(this),
+        DeviceSize.tablet: TabletTypography(this),
+        DeviceSize.desktop: DesktopTypography(this),
+      }[deviceSize]!;
+}
+
+DeviceSize getDeviceSize(BuildContext context) {
+  final width = MediaQuery.of(context).size.width;
+  if (width < 479) {
+    return DeviceSize.mobile;
+  } else if (width < 991) {
+    return DeviceSize.tablet;
+  } else {
+    return DeviceSize.desktop;
+  }
 }
 
 class LightModeTheme extends FlutterFlowTheme {
-  late Color primaryColor = const Color(0xFF4E39F9);
-  late Color secondaryColor = const Color(0xFF39D2C0);
+  late Color primaryColor = const Color(0xFF2C0EA1);
+  late Color secondaryColor = const Color(0xFFFF79CB);
   late Color tertiaryColor = const Color(0xFFFFFFFF);
   late Color alternate = const Color(0xFF1A1F24);
   late Color primaryBackground = const Color(0xFFF1F4F8);
   late Color secondaryBackground = const Color(0xFFFFFFFF);
   late Color primaryText = const Color(0xFF1A1F24);
-  late Color secondaryText = const Color(0xFF95A1AC);
+  late Color secondaryText = const Color(0xFFFFDF6B);
 
   late Color primaryDark = Color(0xFF1A1F24);
   late Color background = Color(0xFFF1F4F8);
@@ -97,56 +121,168 @@ abstract class Typography {
   TextStyle get bodyText2;
 }
 
-class ThemeTypography extends Typography {
-  ThemeTypography(this.theme);
+class MobileTypography extends Typography {
+  MobileTypography(this.theme);
 
   final FlutterFlowTheme theme;
 
-  String get title1Family => 'Urbanist';
+  String get title1Family => 'Righteous';
   TextStyle get title1 => GoogleFonts.getFont(
-        'Urbanist',
+        'Righteous',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 32,
       );
-  String get title2Family => 'Urbanist';
+  String get title2Family => 'Righteous';
   TextStyle get title2 => GoogleFonts.getFont(
-        'Urbanist',
+        'Righteous',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 24,
       );
-  String get title3Family => 'Urbanist';
+  String get title3Family => 'Righteous';
   TextStyle get title3 => GoogleFonts.getFont(
-        'Urbanist',
+        'Righteous',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 20,
       );
-  String get subtitle1Family => 'Urbanist';
+  String get subtitle1Family => 'Righteous';
   TextStyle get subtitle1 => GoogleFonts.getFont(
-        'Urbanist',
+        'Righteous',
         color: theme.primaryText,
         fontWeight: FontWeight.bold,
         fontSize: 16,
       );
-  String get subtitle2Family => 'Urbanist';
+  String get subtitle2Family => 'Righteous';
   TextStyle get subtitle2 => GoogleFonts.getFont(
-        'Urbanist',
+        'Righteous',
         color: theme.secondaryText,
         fontWeight: FontWeight.bold,
         fontSize: 16,
       );
-  String get bodyText1Family => 'Urbanist';
+  String get bodyText1Family => 'Righteous';
   TextStyle get bodyText1 => GoogleFonts.getFont(
-        'Urbanist',
+        'Righteous',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 14,
       );
-  String get bodyText2Family => 'Urbanist';
+  String get bodyText2Family => 'Righteous';
   TextStyle get bodyText2 => GoogleFonts.getFont(
-        'Urbanist',
+        'Righteous',
+        color: theme.secondaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 14,
+      );
+}
+
+class TabletTypography extends Typography {
+  TabletTypography(this.theme);
+
+  final FlutterFlowTheme theme;
+
+  String get title1Family => 'Righteous';
+  TextStyle get title1 => GoogleFonts.getFont(
+        'Righteous',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 32,
+      );
+  String get title2Family => 'Righteous';
+  TextStyle get title2 => GoogleFonts.getFont(
+        'Righteous',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 24,
+      );
+  String get title3Family => 'Righteous';
+  TextStyle get title3 => GoogleFonts.getFont(
+        'Righteous',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 20,
+      );
+  String get subtitle1Family => 'Righteous';
+  TextStyle get subtitle1 => GoogleFonts.getFont(
+        'Righteous',
+        color: theme.primaryText,
+        fontWeight: FontWeight.bold,
+        fontSize: 16,
+      );
+  String get subtitle2Family => 'Righteous';
+  TextStyle get subtitle2 => GoogleFonts.getFont(
+        'Righteous',
+        color: theme.secondaryText,
+        fontWeight: FontWeight.bold,
+        fontSize: 16,
+      );
+  String get bodyText1Family => 'Righteous';
+  TextStyle get bodyText1 => GoogleFonts.getFont(
+        'Righteous',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 14,
+      );
+  String get bodyText2Family => 'Righteous';
+  TextStyle get bodyText2 => GoogleFonts.getFont(
+        'Righteous',
+        color: theme.secondaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 14,
+      );
+}
+
+class DesktopTypography extends Typography {
+  DesktopTypography(this.theme);
+
+  final FlutterFlowTheme theme;
+
+  String get title1Family => 'Righteous';
+  TextStyle get title1 => GoogleFonts.getFont(
+        'Righteous',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 32,
+      );
+  String get title2Family => 'Righteous';
+  TextStyle get title2 => GoogleFonts.getFont(
+        'Righteous',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 24,
+      );
+  String get title3Family => 'Righteous';
+  TextStyle get title3 => GoogleFonts.getFont(
+        'Righteous',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 20,
+      );
+  String get subtitle1Family => 'Righteous';
+  TextStyle get subtitle1 => GoogleFonts.getFont(
+        'Righteous',
+        color: theme.primaryText,
+        fontWeight: FontWeight.bold,
+        fontSize: 16,
+      );
+  String get subtitle2Family => 'Righteous';
+  TextStyle get subtitle2 => GoogleFonts.getFont(
+        'Righteous',
+        color: theme.secondaryText,
+        fontWeight: FontWeight.bold,
+        fontSize: 16,
+      );
+  String get bodyText1Family => 'Righteous';
+  TextStyle get bodyText1 => GoogleFonts.getFont(
+        'Righteous',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 14,
+      );
+  String get bodyText2Family => 'Righteous';
+  TextStyle get bodyText2 => GoogleFonts.getFont(
+        'Righteous',
         color: theme.secondaryText,
         fontWeight: FontWeight.w500,
         fontSize: 14,
@@ -154,8 +290,8 @@ class ThemeTypography extends Typography {
 }
 
 class DarkModeTheme extends FlutterFlowTheme {
-  late Color primaryColor = const Color(0xFF4E39F9);
-  late Color secondaryColor = const Color(0xFF39D2C0);
+  late Color primaryColor = const Color(0xFF2C0EA1);
+  late Color secondaryColor = const Color(0xFFFF79CB);
   late Color tertiaryColor = const Color(0xFFFFFFFF);
   late Color alternate = const Color(0xFF1A1F24);
   late Color primaryBackground = const Color(0xFF262D34);

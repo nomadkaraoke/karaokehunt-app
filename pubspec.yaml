@@ -1,4 +1,4 @@
-name: karaokay_karaoke_song_choice_helper
+name: karaoke_hunt
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -110,7 +110,7 @@ flutter_icons:
   android: true
   ios: true
   remove_alpha_ios: true
-  image_path: 'assets/images/app_launcher_icon.png'
+  image_path: 'assets/images/app_launcher_icon.jpg'
 
 
 # For information on the generic Dart part of this file, see the

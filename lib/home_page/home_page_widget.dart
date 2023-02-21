@@ -286,8 +286,17 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyText1
                                                       .override(
-                                                        fontFamily: 'Urbanist',
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyText1Family,
                                                         fontSize: 12,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyText1Family),
                                                       ),
                                             ),
                                           ),
@@ -658,6 +667,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyText2Family),
                                                                 ),
                                                       ),
                                                     ),
@@ -694,6 +708,11 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .normal,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyText2Family),
                                                               ),
                                                     ),
                                                   ),
@@ -709,9 +728,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                                     .fromSTEB(0, 2, 8, 0),
                                                 child: Text(
                                                   dateTimeFormat(
-                                                      'relative',
-                                                      socialFeedUserPostsRecord
-                                                          .timePosted!),
+                                                    'relative',
+                                                    socialFeedUserPostsRecord
+                                                        .timePosted!,
+                                                    locale: FFLocalizations.of(
+                                                            context)
+                                                        .languageCode,
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyText1,

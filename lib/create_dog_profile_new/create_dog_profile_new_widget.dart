@@ -399,11 +399,15 @@ class _CreateDogProfileNewWidgetState extends State<CreateDogProfileNewWidget> {
                         width: 180,
                         height: 50,
                         color: FlutterFlowTheme.of(context).primaryColor,
-                        textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
-                                  fontFamily: 'Urbanist',
-                                  color: Colors.white,
-                                ),
+                        textStyle: FlutterFlowTheme.of(context)
+                            .subtitle2
+                            .override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).subtitle2Family,
+                              color: Colors.white,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context).subtitle2Family),
+                            ),
                         elevation: 2,
                         borderSide: BorderSide(
                           color: Colors.transparent,

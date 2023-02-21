@@ -1,6 +1,6 @@
 {
-    "name": "Karaokay - Karaoke Song Choice Helper",
-    "short_name": "Karaokay - Karaoke Song Choice Helper",
+    "name": "KaraokeHunt",
+    "short_name": "KaraokeHunt",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

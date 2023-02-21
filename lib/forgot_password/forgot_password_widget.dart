@@ -153,6 +153,8 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                       color: FlutterFlowTheme.of(context).tertiaryColor,
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
+                      useGoogleFonts: GoogleFonts.asMap().containsKey(
+                          FlutterFlowTheme.of(context).subtitle2Family),
                     ),
                 elevation: 3,
                 borderSide: BorderSide(

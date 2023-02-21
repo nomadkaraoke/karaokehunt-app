@@ -77,14 +77,10 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
   @override
   Widget build(BuildContext context) => _loading
       ? Container(
-          color: Colors.transparent,
-          child: Center(
-            child: Image.asset(
-              'assets/images/Sniff_0.0_Splash@2x.png',
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 1,
-              fit: BoxFit.cover,
-            ),
+          color: Color(0xFF2C0EA1),
+          child: Image.asset(
+            'assets/images/karaoke-hunt-logo-square-1000px.jpg',
+            fit: BoxFit.contain,
           ),
         )
       : widget.child;

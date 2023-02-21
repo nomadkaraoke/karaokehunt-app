@@ -8,17 +8,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:936698531920:android:d51c63c14be31d57070155",
+        "mobilesdk_app_id": "1:936698531920:android:ac72130de6eae610070155",
         "android_client_info": {
-          "package_name": "com.karaokenerds.karaokay"
+          "package_name": "com.karaokehunt.karaokehunt"
         }
       },
       "oauth_client": [
         {
-          "client_id": "936698531920-i2btbp9c28kcnutf6qekjb01g1a0he7d.apps.googleusercontent.com",
+          "client_id": "936698531920-k94p88irmf2kqr03mgos6j406cnu6hss.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.karaokenerds.karaokay",
+            "package_name": "com.karaokehunt.karaokehunt",
             "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
           }
         },

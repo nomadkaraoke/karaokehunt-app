@@ -1,4 +1,4 @@
-package com.karaokenerds.karaokay
+package com.karaokehunt.karaokehunt
 
 import io.flutter.embedding.android.FlutterActivity
 

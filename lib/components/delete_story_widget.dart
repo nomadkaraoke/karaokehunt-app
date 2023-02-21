@@ -75,8 +75,10 @@ class _DeleteStoryWidgetState extends State<DeleteStoryWidget> {
                 height: 60,
                 color: Color(0xFFFF5963),
                 textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                      fontFamily: 'Urbanist',
+                      fontFamily: FlutterFlowTheme.of(context).subtitle2Family,
                       color: Colors.white,
+                      useGoogleFonts: GoogleFonts.asMap().containsKey(
+                          FlutterFlowTheme.of(context).subtitle2Family),
                     ),
                 borderSide: BorderSide(
                   color: Colors.transparent,

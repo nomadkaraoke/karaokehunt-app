@@ -116,6 +116,12 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                 color: Color(0xFFEE8B60),
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.normal,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyText1Family),
                                               ),
                                         ),
                                       ),
@@ -207,9 +213,13 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                           textStyle: FlutterFlowTheme.of(context)
                               .bodyText1
                               .override(
-                                fontFamily: 'Urbanist',
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyText1Family,
                                 color:
                                     FlutterFlowTheme.of(context).tertiaryColor,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyText1Family),
                               ),
                           elevation: 2,
                           borderSide: BorderSide(
@@ -875,9 +885,13 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                                           0),
                                                                   child: Text(
                                                                     dateTimeFormat(
-                                                                        'relative',
-                                                                        socialFeedUserPostsRecord
-                                                                            .timePosted!),
+                                                                      'relative',
+                                                                      socialFeedUserPostsRecord
+                                                                          .timePosted!,
+                                                                      locale: FFLocalizations.of(
+                                                                              context)
+                                                                          .languageCode,
+                                                                    ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyText1,

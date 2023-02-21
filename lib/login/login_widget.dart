@@ -54,7 +54,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           image: DecorationImage(
             fit: BoxFit.cover,
             image: CachedNetworkImageProvider(
-              'https://images.unsplash.com/photo-1593620659530-7f98c53de278?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjN8fGRvZ3N8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60',
+              'https://images.unsplash.com/photo-1560297035-0ed84c4175f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80',
             ),
           ),
         ),
@@ -70,9 +70,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(24, 56, 0, 0),
                     child: Image.asset(
-                      'assets/images/logoSniff@2x.png',
-                      width: 140,
-                      height: 40,
+                      'assets/images/karaoke-hunt-logo-rect-3000px-transparent.png',
+                      width: 200,
+                      height: 150,
                       fit: BoxFit.fitWidth,
                     ),
                   ),
@@ -147,10 +147,15 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   textStyle: FlutterFlowTheme.of(context)
                                       .subtitle2
                                       .override(
-                                        fontFamily: 'Urbanist',
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .subtitle2Family,
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryColor,
                                         fontSize: 14,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .subtitle2Family),
                                       ),
                                   elevation: 0,
                                   borderSide: BorderSide(
@@ -331,10 +336,15 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 textStyle: FlutterFlowTheme.of(context)
                                     .subtitle2
                                     .override(
-                                      fontFamily: 'Urbanist',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .subtitle2Family,
                                       color: FlutterFlowTheme.of(context)
                                           .primaryColor,
                                       fontSize: 14,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .subtitle2Family),
                                     ),
                                 elevation: 0,
                                 borderSide: BorderSide(
@@ -380,8 +390,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 textStyle: FlutterFlowTheme.of(context)
                                     .subtitle2
                                     .override(
-                                      fontFamily: 'Urbanist',
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .subtitle2Family,
                                       color: Colors.white,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .subtitle2Family),
                                     ),
                                 elevation: 2,
                                 borderSide: BorderSide(
@@ -421,10 +436,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                           textStyle: FlutterFlowTheme.of(context)
                               .subtitle2
                               .override(
-                                fontFamily: 'Urbanist',
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .subtitle2Family,
                                 color:
                                     FlutterFlowTheme.of(context).secondaryColor,
                                 fontSize: 14,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .subtitle2Family),
                               ),
                           elevation: 0,
                           borderSide: BorderSide(

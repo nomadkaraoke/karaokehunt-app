@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>936698531920-0f4uf93itc71tln30liikjq51stgubtq.apps.googleusercontent.com</string>
+	<string>936698531920-qm0vu383f8686arkposqn8qklnsdm3li.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.936698531920-0f4uf93itc71tln30liikjq51stgubtq</string>
+	<string>com.googleusercontent.apps.936698531920-qm0vu383f8686arkposqn8qklnsdm3li</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>936698531920-6rgbq402tfo7etaijdc8leo6kab55mmi.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.karaokenerds.karaokay</string>
+	<string>com.karaokehunt.karaokehunt</string>
 	<key>PROJECT_ID</key>
 	<string>projectbread-karaokay</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,7 +31,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:936698531920:ios:d905524c1823ca74070155</string>
+	<string>1:936698531920:ios:6426497c2aeb57d4070155</string>
 	<key>DATABASE_URL</key>
 	<string>https://projectbread-karaokay.firebaseio.com</string>
 </dict>

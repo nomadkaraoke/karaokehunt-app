@@ -1,4 +1,4 @@
-# Karaokay - Karaoke Song Choice Helper
+# KaraokeHunt
 
 A new Flutter project.
 

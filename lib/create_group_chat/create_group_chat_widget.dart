@@ -327,6 +327,8 @@ class _CreateGroupChatWidgetState extends State<CreateGroupChatWidget> {
                         color: Colors.white,
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).title3Family),
                       ),
                   borderSide: BorderSide(
                     color: Colors.transparent,

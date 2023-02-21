@@ -388,6 +388,8 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                         color: Colors.white,
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).subtitle2Family),
                       ),
                   elevation: 0,
                   borderSide: BorderSide(
