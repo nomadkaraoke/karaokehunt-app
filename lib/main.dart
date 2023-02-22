@@ -130,7 +130,8 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'homePage': HomePageWidget(),
-      'allChatsPage': AllChatsPageWidget(),
+      'songSearch': SongSearchWidget(),
+      'playlistPage': PlaylistPageWidget(),
       'profilePage': ProfilePageWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
@@ -159,14 +160,18 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.chat_bubble_outline,
+              Icons.search,
+              size: 20,
+            ),
+            label: 'Search',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.format_list_numbered_sharp,
               size: 24,
             ),
-            activeIcon: Icon(
-              Icons.chat_bubble_outlined,
-              size: 24,
-            ),
-            label: 'Messages',
+            label: 'Playlist',
             tooltip: '',
           ),
           BottomNavigationBarItem(

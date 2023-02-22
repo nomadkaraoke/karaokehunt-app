@@ -1,6 +1,4 @@
 import '../backend/backend.dart';
-import '../chat_page/chat_page_widget.dart';
-import '../flutter_flow/chat/index.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -8,25 +6,25 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'create_group_chat_model.dart';
-export 'create_group_chat_model.dart';
+import 'song_search_model.dart';
+export 'song_search_model.dart';
 
-class CreateGroupChatWidget extends StatefulWidget {
-  const CreateGroupChatWidget({Key? key}) : super(key: key);
+class SongSearchWidget extends StatefulWidget {
+  const SongSearchWidget({Key? key}) : super(key: key);
 
   @override
-  _CreateGroupChatWidgetState createState() => _CreateGroupChatWidgetState();
+  _SongSearchWidgetState createState() => _SongSearchWidgetState();
 }
 
-class _CreateGroupChatWidgetState extends State<CreateGroupChatWidget> {
-  late CreateGroupChatModel _model;
+class _SongSearchWidgetState extends State<SongSearchWidget> {
+  late SongSearchModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => CreateGroupChatModel());
+    _model = createModel(context, () => SongSearchModel());
 
     _model.textController ??= TextEditingController();
   }
@@ -64,11 +62,11 @@ class _CreateGroupChatWidgetState extends State<CreateGroupChatWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Create Group Chat',
+              'Song Search',
               style: FlutterFlowTheme.of(context).subtitle1,
             ),
             Text(
-              'Select the friends to add to chat.',
+              'Find songs to add to your playlist',
               style: FlutterFlowTheme.of(context).bodyText2,
             ),
           ],
@@ -101,7 +99,7 @@ class _CreateGroupChatWidgetState extends State<CreateGroupChatWidget> {
                 controller: _model.textController,
                 obscureText: false,
                 decoration: InputDecoration(
-                  hintText: 'Search for friends...',
+                  hintText: 'Search for artist or title...',
                   hintStyle: FlutterFlowTheme.of(context).bodyText2,
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
@@ -300,24 +298,10 @@ class _CreateGroupChatWidgetState extends State<CreateGroupChatWidget> {
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 34),
               child: FFButtonWidget(
-                onPressed: () async {
-                  _model.groupChat = await FFChatManager.instance.createChat(
-                    _model.checkboxListTileCheckedItems
-                        .map((e) => e.reference)
-                        .toList(),
-                  );
-                  await Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ChatPageWidget(
-                        chatRef: _model.groupChat?.reference,
-                      ),
-                    ),
-                  );
-
-                  setState(() {});
+                onPressed: () {
+                  print('Button pressed ...');
                 },
-                text: 'Create Chat',
+                text: 'Add to Playlist',
                 options: FFButtonOptions(
                   width: 130,
                   height: 40,

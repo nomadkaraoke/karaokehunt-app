@@ -89,42 +89,14 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
 final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
   'login': (data) async => LoginWidget(),
   'createAccount': (data) async => CreateAccountWidget(),
-  'createDogProfile': (data) async => CreateDogProfileWidget(),
   'createYourProfile': (data) async => CreateYourProfileWidget(),
   'forgotPassword': (data) async => ForgotPasswordWidget(),
+  'changePassword': (data) async => ChangePasswordWidget(),
+  'songSearch': (data) async => NavBarPage(initialPage: 'songSearch'),
+  'playlistPage': (data) async => NavBarPage(initialPage: 'playlistPage'),
   'profilePage': (data) async => NavBarPage(initialPage: 'profilePage'),
-  'createStory': (data) async => CreateStoryWidget(),
-  'createPost': (data) async => CreatePostWidget(),
-  'postDetails': (data) async => PostDetailsWidget(
-        postReference: getParameter(data, 'postReference'),
-        userRecord: await getDocumentParameter(
-            data, 'userRecord', UsersRecord.serializer),
-      ),
-  'storyDetails': (data) async => StoryDetailsWidget(
-        initialStoryIndex: getParameter(data, 'initialStoryIndex'),
-      ),
   'editSettings': (data) async => EditSettingsWidget(),
   'editUserProfile': (data) async => EditUserProfileWidget(),
-  'editDogProfile': (data) async => EditDogProfileWidget(
-        dogProfile: await getDocumentParameter(
-            data, 'dogProfile', DogsRecord.serializer),
-      ),
-  'changePassword': (data) async => ChangePasswordWidget(),
-  'viewProfilePageOther': (data) async => ViewProfilePageOtherWidget(
-        userDetails: await getDocumentParameter(
-            data, 'userDetails', UsersRecord.serializer),
-      ),
-  'createDogProfile_New': (data) async => CreateDogProfileNewWidget(),
-  'chatPage': (data) async => ChatPageWidget(
-        chatUser: await getDocumentParameter(
-            data, 'chatUser', UsersRecord.serializer),
-        chatRef: getParameter(data, 'chatRef'),
-      ),
-  'allChatsPage': (data) async => NavBarPage(initialPage: 'allChatsPage'),
-  'addChatUsers': (data) async => AddChatUsersWidget(
-        chat: await getDocumentParameter(data, 'chat', ChatsRecord.serializer),
-      ),
-  'createGroupChat': (data) async => CreateGroupChatWidget(),
 };
 
 bool hasMatchingParameters(Map<String, dynamic> data, Set<String> params) =>

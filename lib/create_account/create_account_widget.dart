@@ -1,9 +1,9 @@
 import '../auth/auth_util.dart';
-import '../create_dog_profile/create_dog_profile_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../login/login_widget.dart';
+import '../main.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -68,9 +68,9 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(24, 56, 0, 0),
                     child: Image.asset(
-                      'assets/images/karaoke-hunt-logo-rect-3000px-transparent.png',
+                      'assets/images/karaoke-hunt-logo-round-rect-1000px.png',
                       width: 200,
-                      height: 150,
+                      height: 200,
                       fit: BoxFit.fitWidth,
                     ),
                   ),
@@ -328,13 +328,12 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                   return;
                                 }
 
-                                await Navigator.pushAndRemoveUntil(
+                                await Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) =>
-                                        CreateDogProfileWidget(),
+                                        NavBarPage(initialPage: 'homePage'),
                                   ),
-                                  (r) => false,
                                 );
                               },
                               text: 'Create Account',

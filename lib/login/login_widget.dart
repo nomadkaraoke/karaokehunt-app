@@ -70,9 +70,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(24, 56, 0, 0),
                     child: Image.asset(
-                      'assets/images/karaoke-hunt-logo-rect-3000px-transparent.png',
+                      'assets/images/karaoke-hunt-logo-round-rect-1000px.png',
                       width: 200,
-                      height: 150,
+                      height: 200,
                       fit: BoxFit.fitWidth,
                     ),
                   ),
