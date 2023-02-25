@@ -51,12 +51,13 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
     try {
       final initialPageName = message.data['initialPageName'] as String;
       final initialParameterData = getInitialParameterData(message.data);
-      final pageBuilder = pageBuilderMap[initialPageName];
-      if (pageBuilder != null) {
-        final page = await pageBuilder(initialParameterData);
-        await Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => page),
+      final parametersBuilder = parametersBuilderMap[initialPageName];
+      if (parametersBuilder != null) {
+        final parameterData = await parametersBuilder(initialParameterData);
+        context.pushNamed(
+          initialPageName,
+          params: parameterData.params,
+          extra: parameterData.extra,
         );
       }
     } catch (e) {
@@ -86,21 +87,38 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
       : widget.child;
 }
 
-final pageBuilderMap = <String, Future<Widget> Function(Map<String, dynamic>)>{
-  'login': (data) async => LoginWidget(),
-  'createAccount': (data) async => CreateAccountWidget(),
-  'createYourProfile': (data) async => CreateYourProfileWidget(),
-  'forgotPassword': (data) async => ForgotPasswordWidget(),
-  'changePassword': (data) async => ChangePasswordWidget(),
-  'songSearch': (data) async => NavBarPage(initialPage: 'songSearch'),
-  'playlistPage': (data) async => NavBarPage(initialPage: 'playlistPage'),
-  'profilePage': (data) async => NavBarPage(initialPage: 'profilePage'),
-  'editSettings': (data) async => EditSettingsWidget(),
-  'editUserProfile': (data) async => EditUserProfileWidget(),
-};
+class ParameterData {
+  const ParameterData(
+      {this.requiredParams = const {}, this.allParams = const {}});
+  final Map<String, String?> requiredParams;
+  final Map<String, dynamic> allParams;
 
-bool hasMatchingParameters(Map<String, dynamic> data, Set<String> params) =>
-    params.any((param) => getParameter(data, param) != null);
+  Map<String, String> get params => Map.fromEntries(
+        requiredParams.entries
+            .where((e) => e.value != null)
+            .map((e) => MapEntry(e.key, e.value!)),
+      );
+  Map<String, dynamic> get extra => Map.fromEntries(
+        allParams.entries.where((e) => e.value != null),
+      );
+
+  static Future<ParameterData> Function(Map<String, dynamic>) none() =>
+      (data) async => ParameterData();
+}
+
+final parametersBuilderMap =
+    <String, Future<ParameterData> Function(Map<String, dynamic>)>{
+  'Welcome': ParameterData.none(),
+  'Login': ParameterData.none(),
+  'ForgotPassword': ParameterData.none(),
+  'Register': ParameterData.none(),
+  'CreateProfile': ParameterData.none(),
+  'Search': ParameterData.none(),
+  'Playlist': ParameterData.none(),
+  'Settings': ParameterData.none(),
+  'ChangePassword': ParameterData.none(),
+  'EditProfile': ParameterData.none(),
+};
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {
   try {

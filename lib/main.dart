@@ -11,6 +11,7 @@ import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
 
 void main() async {
@@ -36,8 +37,9 @@ class _MyAppState extends State<MyApp> {
   ThemeMode _themeMode = FlutterFlowTheme.themeMode;
 
   late Stream<KaraokeHuntFirebaseUser> userStream;
-  KaraokeHuntFirebaseUser? initialUser;
-  bool displaySplashImage = true;
+
+  late AppStateNotifier _appStateNotifier;
+  late GoRouter _router;
 
   final authUserSub = authenticatedUserStream.listen((_) {});
   final fcmTokenSub = fcmTokenUserStream.listen((_) {});
@@ -45,12 +47,14 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    _appStateNotifier = AppStateNotifier();
+    _router = createRouter(_appStateNotifier);
     userStream = karaokeHuntFirebaseUserStream()
-      ..listen((user) => initialUser ?? setState(() => initialUser = user));
+      ..listen((user) => _appStateNotifier.update(user));
     jwtTokenStream.listen((_) {});
     Future.delayed(
       Duration(seconds: 1),
-      () => setState(() => displaySplashImage = false),
+      () => _appStateNotifier.stopShowingSplashImage(),
     );
   }
 
@@ -72,7 +76,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'KaraokeHunt',
       localizationsDelegates: [
         FFLocalizationsDelegate(),
@@ -87,19 +91,8 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(brightness: Brightness.light),
       darkTheme: ThemeData(brightness: Brightness.dark),
       themeMode: _themeMode,
-      home: initialUser == null || displaySplashImage
-          ? Builder(
-              builder: (context) => Container(
-                color: Color(0xFF2C0EA1),
-                child: Image.asset(
-                  'assets/images/karaoke-hunt-logo-square-1000px.jpg',
-                  fit: BoxFit.contain,
-                ),
-              ),
-            )
-          : currentUser!.loggedIn
-              ? PushNotificationsHandler(child: NavBarPage())
-              : LoginWidget(),
+      routeInformationParser: _router.routeInformationParser,
+      routerDelegate: _router.routerDelegate,
     );
   }
 }
@@ -116,7 +109,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPageName = 'homePage';
+  String _currentPageName = 'Search';
   late Widget? _currentPage;
 
   @override
@@ -129,10 +122,9 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'homePage': HomePageWidget(),
-      'songSearch': SongSearchWidget(),
-      'playlistPage': PlaylistPageWidget(),
-      'profilePage': ProfilePageWidget(),
+      'Search': SearchWidget(),
+      'Playlist': PlaylistWidget(),
+      'Settings': SettingsWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
     return Scaffold(
@@ -147,43 +139,31 @@ class _NavBarPageState extends State<NavBarPage> {
         selectedItemColor: FlutterFlowTheme.of(context).primaryColor,
         unselectedItemColor: FlutterFlowTheme.of(context).grayIcon,
         showSelectedLabels: true,
-        showUnselectedLabels: false,
+        showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home_outlined,
-              size: 24,
-            ),
-            label: 'Home',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
               Icons.search,
-              size: 20,
+              size: 16,
             ),
             label: 'Search',
             tooltip: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.format_list_numbered_sharp,
-              size: 24,
+              Icons.list,
+              size: 16,
             ),
             label: 'Playlist',
             tooltip: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.account_circle_outlined,
-              size: 24,
+              Icons.settings,
+              size: 20,
             ),
-            activeIcon: Icon(
-              Icons.account_circle,
-              size: 24,
-            ),
-            label: 'Profile',
+            label: 'Settings',
             tooltip: '',
           )
         ],

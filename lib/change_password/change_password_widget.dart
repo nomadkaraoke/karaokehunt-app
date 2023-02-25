@@ -1,4 +1,5 @@
 import '../auth/auth_util.dart';
+import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -25,7 +26,8 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
     super.initState();
     _model = createModel(context, () => ChangePasswordModel());
 
-    _model.phoneNumberController ??= TextEditingController();
+    _model.emailAddressController ??= TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -41,25 +43,44 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         automaticallyImplyLeading: false,
-        leading: InkWell(
-          onTap: () async {
-            Navigator.pop(context);
-          },
-          child: Icon(
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: Icon(
             Icons.arrow_back_rounded,
-            color: FlutterFlowTheme.of(context).secondaryText,
-            size: 24,
+            color: Colors.white,
+            size: 30,
           ),
+          onPressed: () async {
+            context.pop();
+          },
         ),
         title: Text(
-          'Change Password',
-          style: FlutterFlowTheme.of(context).title2,
+          'Change\nPassword',
+          style: FlutterFlowTheme.of(context).title1.override(
+                fontFamily: FlutterFlowTheme.of(context).title1Family,
+                fontSize: 22,
+                useGoogleFonts: GoogleFonts.asMap()
+                    .containsKey(FlutterFlowTheme.of(context).title1Family),
+              ),
         ),
-        actions: [],
+        actions: [
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 7, 0),
+            child: Image.asset(
+              'assets/images/karaoke-hunt-logo-rect-hq.png',
+              width: 150,
+              height: 150,
+              fit: BoxFit.contain,
+            ),
+          ),
+        ],
         centerTitle: false,
-        elevation: 0,
+        elevation: 2,
       ),
       body: Column(
         mainAxisSize: MainAxisSize.max,
@@ -67,7 +88,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
             child: TextFormField(
-              controller: _model.phoneNumberController,
+              controller: _model.emailAddressController,
               obscureText: false,
               decoration: InputDecoration(
                 labelText: 'Enter your email',
@@ -107,7 +128,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
               ),
               style: FlutterFlowTheme.of(context).bodyText1,
               validator:
-                  _model.phoneNumberControllerValidator.asValidator(context),
+                  _model.emailAddressControllerValidator.asValidator(context),
             ),
           ),
           Padding(
@@ -128,7 +149,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
             padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
             child: FFButtonWidget(
               onPressed: () async {
-                if (_model.phoneNumberController.text.isEmpty) {
+                if (_model.emailAddressController.text.isEmpty) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(
@@ -139,7 +160,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                   return;
                 }
                 await resetPassword(
-                  email: _model.phoneNumberController.text,
+                  email: _model.emailAddressController.text,
                   context: context,
                 );
               },

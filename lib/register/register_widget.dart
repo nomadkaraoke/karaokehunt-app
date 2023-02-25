@@ -7,25 +7,25 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'login_model.dart';
-export 'login_model.dart';
+import 'register_model.dart';
+export 'register_model.dart';
 
-class LoginWidget extends StatefulWidget {
-  const LoginWidget({Key? key}) : super(key: key);
+class RegisterWidget extends StatefulWidget {
+  const RegisterWidget({Key? key}) : super(key: key);
 
   @override
-  _LoginWidgetState createState() => _LoginWidgetState();
+  _RegisterWidgetState createState() => _RegisterWidgetState();
 }
 
-class _LoginWidgetState extends State<LoginWidget> {
-  late LoginModel _model;
+class _RegisterWidgetState extends State<RegisterWidget> {
+  late RegisterModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => LoginModel());
+    _model = createModel(context, () => RegisterModel());
 
     _model.emailController ??= TextEditingController();
     _model.passwordController ??= TextEditingController();
@@ -43,7 +43,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         automaticallyImplyLeading: false,
@@ -62,7 +62,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           },
         ),
         title: Text(
-          'Login',
+          'Register',
           style: FlutterFlowTheme.of(context).title1.override(
                 fontFamily: FlutterFlowTheme.of(context).title1Family,
                 fontSize: 25,
@@ -92,7 +92,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           image: DecorationImage(
             fit: BoxFit.cover,
             image: CachedNetworkImageProvider(
-              'https://images.unsplash.com/photo-1560297035-0ed84c4175f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80',
+              'https://images.unsplash.com/photo-1560297035-0ed84c4175f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80',
             ),
           ),
         ),
@@ -114,6 +114,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   end: AlignmentDirectional(0, 1),
                 ),
               ),
+              alignment: AlignmentDirectional(0, 0.8),
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 44),
                 child: Column(
@@ -126,7 +127,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Text(
-                            'Welcome Back,',
+                            'Welcome,',
                             style: FlutterFlowTheme.of(context).title1,
                           ),
                         ],
@@ -144,13 +145,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Text(
-                                'Access your account below or',
+                                'Create your account below, or',
                                 style: FlutterFlowTheme.of(context).bodyText1,
                               ),
                               FFButtonWidget(
                                 onPressed: () async {
                                   context.pushNamed(
-                                    'Register',
+                                    'Login',
                                     extra: <String, dynamic>{
                                       kTransitionInfoKey: TransitionInfo(
                                         hasTransition: true,
@@ -160,9 +161,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     },
                                   );
                                 },
-                                text: 'Create Account',
+                                text: 'Login',
                                 options: FFButtonOptions(
-                                  width: 125,
+                                  width: 70,
                                   height: 28,
                                   color: Color(0x00FFFFFF),
                                   textStyle: FlutterFlowTheme.of(context)
@@ -210,7 +211,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
                           child: TextFormField(
                             controller: _model.emailController,
-                            autofillHints: [AutofillHints.email],
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: 'Your email...',
@@ -248,7 +248,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   16, 20, 24, 20),
                             ),
                             style: FlutterFlowTheme.of(context).bodyText1,
-                            keyboardType: TextInputType.emailAddress,
                             validator: _model.emailControllerValidator
                                 .asValidator(context),
                           ),
@@ -274,7 +273,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
                           child: TextFormField(
                             controller: _model.passwordController,
-                            autofillHints: [AutofillHints.password],
                             obscureText: !_model.passwordVisibility,
                             decoration: InputDecoration(
                               labelText: 'Password',
@@ -320,7 +318,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   _model.passwordVisibility
                                       ? Icons.visibility_outlined
                                       : Icons.visibility_off_outlined,
-                                  color: FlutterFlowTheme.of(context).grayIcon,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
                                   size: 22,
                                 ),
                               ),
@@ -336,43 +335,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                       padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 12),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
-                            child: FFButtonWidget(
-                              onPressed: () async {
-                                context.pushNamed('ForgotPassword');
-                              },
-                              text: 'Forgot Password?',
-                              options: FFButtonOptions(
-                                width: 170,
-                                height: 50,
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .subtitle2
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .subtitle2Family,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
-                                      fontSize: 14,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .subtitle2Family),
-                                    ),
-                                elevation: 0,
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1,
-                                ),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                            ),
-                          ),
                           Padding(
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
@@ -380,7 +344,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               onPressed: () async {
                                 GoRouter.of(context).prepareAuthEvent();
 
-                                final user = await signInWithEmail(
+                                final user = await createAccountWithEmail(
                                   context,
                                   _model.emailController.text,
                                   _model.passwordController.text,
@@ -389,11 +353,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   return;
                                 }
 
-                                context.goNamedAuth('Search', mounted);
+                                context.pushNamedAuth('CreateProfile', mounted);
                               },
-                              text: 'Login',
+                              text: 'Create Account',
                               options: FFButtonOptions(
-                                width: 130,
+                                width: 170,
                                 height: 50,
                                 color:
                                     FlutterFlowTheme.of(context).primaryColor,

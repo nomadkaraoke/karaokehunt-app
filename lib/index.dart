@@ -1,14 +1,11 @@
 // Export pages
+export 'welcome/welcome_widget.dart' show WelcomeWidget;
 export 'login/login_widget.dart' show LoginWidget;
-export 'create_account/create_account_widget.dart' show CreateAccountWidget;
-export 'create_your_profile/create_your_profile_widget.dart'
-    show CreateYourProfileWidget;
 export 'forgot_password/forgot_password_widget.dart' show ForgotPasswordWidget;
+export 'register/register_widget.dart' show RegisterWidget;
+export 'create_profile/create_profile_widget.dart' show CreateProfileWidget;
+export 'search/search_widget.dart' show SearchWidget;
+export 'playlist/playlist_widget.dart' show PlaylistWidget;
+export 'settings/settings_widget.dart' show SettingsWidget;
 export 'change_password/change_password_widget.dart' show ChangePasswordWidget;
-export 'home_page/home_page_widget.dart' show HomePageWidget;
-export 'song_search/song_search_widget.dart' show SongSearchWidget;
-export 'playlist_page/playlist_page_widget.dart' show PlaylistPageWidget;
-export 'profile_page/profile_page_widget.dart' show ProfilePageWidget;
-export 'edit_settings/edit_settings_widget.dart' show EditSettingsWidget;
-export 'edit_user_profile/edit_user_profile_widget.dart'
-    show EditUserProfileWidget;
+export 'edit_profile/edit_profile_widget.dart' show EditProfileWidget;
