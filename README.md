@@ -1,4 +1,4 @@
-# Karaokay: Song Choice Helper
+# Karaoke Hunt
 
 Have a great experience singing karaoke, by building the ideal playlist of songs for you and their friends!
 
