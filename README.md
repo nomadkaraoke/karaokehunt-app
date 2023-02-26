@@ -4,6 +4,8 @@ Have a great experience singing karaoke, by building the ideal playlist of songs
 
 Built in collaboration with Karaoke Nerds (https://karaokenerds.com) and the diveBar Karaoke Community (https://discord.gg/diveBar). Come join us! 🎤
 
+<a href='https://play.google.com/store/apps/details?id=com.karaokehunt.karaokehunt&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width='200px'/></a>
+
 ### Feature Summary
 
 V1:
