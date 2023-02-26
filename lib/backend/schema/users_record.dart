@@ -14,9 +14,6 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
 
   String? get email;
 
-  @BuiltValueField(wireName: 'photo_url')
-  String? get photoUrl;
-
   String? get uid;
 
   @BuiltValueField(wireName: 'created_time')
@@ -29,7 +26,11 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
 
   String? get bio;
 
-  bool? get isFollowed;
+  @BuiltValueField(wireName: 'profile_photo_url')
+  String? get profilePhotoUrl;
+
+  @BuiltValueField(wireName: 'photo_url')
+  String? get photoUrl;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
@@ -38,12 +39,12 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
   static void _initializeBuilder(UsersRecordBuilder builder) => builder
     ..displayName = ''
     ..email = ''
-    ..photoUrl = ''
     ..uid = ''
     ..phoneNumber = ''
     ..userName = ''
     ..bio = ''
-    ..isFollowed = false;
+    ..profilePhotoUrl = ''
+    ..photoUrl = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
@@ -69,13 +70,13 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
 Map<String, dynamic> createUsersRecordData({
   String? displayName,
   String? email,
-  String? photoUrl,
   String? uid,
   DateTime? createdTime,
   String? phoneNumber,
   String? userName,
   String? bio,
-  bool? isFollowed,
+  String? profilePhotoUrl,
+  String? photoUrl,
 }) {
   final firestoreData = serializers.toFirestore(
     UsersRecord.serializer,
@@ -83,13 +84,13 @@ Map<String, dynamic> createUsersRecordData({
       (u) => u
         ..displayName = displayName
         ..email = email
-        ..photoUrl = photoUrl
         ..uid = uid
         ..createdTime = createdTime
         ..phoneNumber = phoneNumber
         ..userName = userName
         ..bio = bio
-        ..isFollowed = isFollowed,
+        ..profilePhotoUrl = profilePhotoUrl
+        ..photoUrl = photoUrl,
     ),
   );
 

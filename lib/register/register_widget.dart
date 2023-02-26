@@ -91,9 +91,9 @@ class _RegisterWidgetState extends State<RegisterWidget> {
           color: FlutterFlowTheme.of(context).secondaryBackground,
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: CachedNetworkImageProvider(
-              'https://images.unsplash.com/photo-1560297035-0ed84c4175f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80',
-            ),
+            image: Image.asset(
+              'assets/images/woman-singing-unsplash-2000px.jpeg',
+            ).image,
           ),
         ),
         child: Column(

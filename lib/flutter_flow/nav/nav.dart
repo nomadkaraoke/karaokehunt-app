@@ -130,6 +130,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : SettingsWidget(),
             ),
             FFRoute(
+              name: 'SupportCommunity',
+              path: 'supportCommunity',
+              builder: (context, params) => SupportCommunityWidget(),
+            ),
+            FFRoute(
               name: 'ChangePassword',
               path: 'changePassword',
               builder: (context, params) => ChangePasswordWidget(),
@@ -311,9 +316,9 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: Color(0xFF2C0EA1),
+                  color: FlutterFlowTheme.of(context).primaryDark,
                   child: Image.asset(
-                    'assets/images/karaoke-hunt-logo-square-1000px.jpg',
+                    'assets/images/karaoke-hunt-logo-rect-3000px-transparent.png',
                     fit: BoxFit.contain,
                   ),
                 )

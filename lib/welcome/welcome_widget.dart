@@ -4,7 +4,6 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'welcome_model.dart';
@@ -151,8 +150,8 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              SvgPicture.asset(
-                                                'assets/images/spotify-1.svg',
+                                              Image.asset(
+                                                'assets/images/spotify-logo.png',
                                                 width: 100,
                                                 height: 100,
                                                 fit: BoxFit.contain,
@@ -190,8 +189,8 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                                                 height: 60,
                                                 fit: BoxFit.contain,
                                               ),
-                                              SvgPicture.asset(
-                                                'assets/images/last-fm-1.svg',
+                                              Image.asset(
+                                                'assets/images/last-fm-logo.png',
                                                 width: 100,
                                                 height: 60,
                                                 fit: BoxFit.contain,

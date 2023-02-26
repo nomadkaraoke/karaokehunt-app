@@ -31,7 +31,8 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
     _model = createModel(context, () => CreateProfileModel());
 
     _model.yourNameController ??= TextEditingController();
-    _model.userNameController ??= TextEditingController(text: '@');
+    _model.phoneNumberController ??= TextEditingController();
+    _model.userNameController ??= TextEditingController();
     _model.bioController ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -182,14 +183,17 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                           width: 120,
                           height: 120,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).gray200,
                             image: DecorationImage(
                               fit: BoxFit.cover,
-                              image: Image.asset(
-                                'assets/images/addUser@2x.png',
+                              image: Image.network(
+                                'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/7dvyeuxvy2dg/addUser@2x.png',
                               ).image,
                             ),
                             shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Color(0xFFFF79CB),
+                              width: 5,
+                            ),
                           ),
                           child: Container(
                             width: 120,
@@ -199,7 +203,10 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                               shape: BoxShape.circle,
                             ),
                             child: Image.network(
-                              _model.uploadedFileUrl,
+                              valueOrDefault<String>(
+                                _model.uploadedFileUrl,
+                                ' https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/7dvyeuxvy2dg/addUser@2x.png',
+                              ),
                             ),
                           ),
                         ),
@@ -261,6 +268,69 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                               ),
                               style: FlutterFlowTheme.of(context).title2,
                               validator: _model.yourNameControllerValidator
+                                  .asValidator(context),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(24, 16, 24, 0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Expanded(
+                            child: TextFormField(
+                              controller: _model.phoneNumberController,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                labelText: 'Your Phone Number',
+                                labelStyle:
+                                    FlutterFlowTheme.of(context).subtitle2,
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1,
+                                  ),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(4.0),
+                                    topRight: Radius.circular(4.0),
+                                  ),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1,
+                                  ),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(4.0),
+                                    topRight: Radius.circular(4.0),
+                                  ),
+                                ),
+                                errorBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1,
+                                  ),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(4.0),
+                                    topRight: Radius.circular(4.0),
+                                  ),
+                                ),
+                                focusedErrorBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1,
+                                  ),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(4.0),
+                                    topRight: Radius.circular(4.0),
+                                  ),
+                                ),
+                              ),
+                              style: FlutterFlowTheme.of(context).title2,
+                              keyboardType: TextInputType.phone,
+                              validator: _model.phoneNumberControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -423,8 +493,9 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                           final usersUpdateData = createUsersRecordData(
                             displayName: _model.yourNameController.text,
                             userName: _model.userNameController.text,
-                            photoUrl: _model.uploadedFileUrl,
                             bio: _model.bioController.text,
+                            profilePhotoUrl: _model.uploadedFileUrl,
+                            phoneNumber: currentPhoneNumber,
                           );
                           await currentUserReference!.update(usersUpdateData);
 

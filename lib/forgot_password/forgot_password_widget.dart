@@ -66,6 +66,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                 fontSize: 22,
                 useGoogleFonts: GoogleFonts.asMap()
                     .containsKey(FlutterFlowTheme.of(context).title1Family),
+                lineHeight: 1,
               ),
         ),
         actions: [

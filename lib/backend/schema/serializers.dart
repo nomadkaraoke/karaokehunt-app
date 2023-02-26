@@ -1,15 +1,9 @@
 import 'package:built_value/standard_json_plugin.dart';
 import 'package:from_css_color/from_css_color.dart';
 
-import 'user_posts_record.dart';
 import 'users_record.dart';
-import 'post_comments_record.dart';
-import 'user_stories_record.dart';
-import 'story_comments_record.dart';
-import 'dogs_record.dart';
-import 'friends_record.dart';
-import 'chats_record.dart';
-import 'chat_messages_record.dart';
+import 'karaoke_songs_record.dart';
+import 'karaoke_brands_record.dart';
 
 import 'index.dart';
 
@@ -20,15 +14,9 @@ part 'serializers.g.dart';
 const kDocumentReferenceField = 'Document__Reference__Field';
 
 @SerializersFor(const [
-  UserPostsRecord,
   UsersRecord,
-  PostCommentsRecord,
-  UserStoriesRecord,
-  StoryCommentsRecord,
-  DogsRecord,
-  FriendsRecord,
-  ChatsRecord,
-  ChatMessagesRecord,
+  KaraokeSongsRecord,
+  KaraokeBrandsRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())

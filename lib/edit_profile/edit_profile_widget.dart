@@ -193,6 +193,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                   return;
                                 }
                               }
+
+                              final usersUpdateData = createUsersRecordData(
+                                profilePhotoUrl: _model.uploadedFileUrl,
+                              );
+                              await currentUserReference!
+                                  .update(usersUpdateData);
                             },
                             child: Container(
                               width: 120,
@@ -203,12 +209,16 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                   fit: BoxFit.fitWidth,
                                   image: Image.network(
                                     valueOrDefault<String>(
-                                      _model.uploadedFileUrl,
+                                      editProfileUsersRecord.profilePhotoUrl,
                                       'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/7dvyeuxvy2dg/addUser@2x.png',
                                     ),
                                   ).image,
                                 ),
                                 shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: Color(0xFFFF79CB),
+                                  width: 5,
+                                ),
                               ),
                             ),
                           ),
@@ -295,7 +305,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                     ),
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      labelText: 'UserName',
+                                      labelText: 'User Name',
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .bodyText2,
                                       enabledBorder: UnderlineInputBorder(
@@ -359,12 +369,83 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 12, 0, 0),
                                   child: TextFormField(
+                                    controller: _model.phoneNumberController ??=
+                                        TextEditingController(
+                                      text: editProfileUsersRecord.phoneNumber,
+                                    ),
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'Phone Number',
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .bodyText2,
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1,
+                                        ),
+                                        borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(4.0),
+                                          topRight: Radius.circular(4.0),
+                                        ),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1,
+                                        ),
+                                        borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(4.0),
+                                          topRight: Radius.circular(4.0),
+                                        ),
+                                      ),
+                                      errorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1,
+                                        ),
+                                        borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(4.0),
+                                          topRight: Radius.circular(4.0),
+                                        ),
+                                      ),
+                                      focusedErrorBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1,
+                                        ),
+                                        borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(4.0),
+                                          topRight: Radius.circular(4.0),
+                                        ),
+                                      ),
+                                    ),
+                                    style: FlutterFlowTheme.of(context).title3,
+                                    validator: _model
+                                        .phoneNumberControllerValidator
+                                        .asValidator(context),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(24, 4, 24, 0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 12, 0, 0),
+                                  child: TextFormField(
                                     controller: _model.bioController ??=
                                         TextEditingController(
                                       text: editProfileUsersRecord.bio,
                                     ),
                                     obscureText: false,
                                     decoration: InputDecoration(
+                                      labelText: 'Bio',
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .bodyText2,
                                       hintText: 'Your Bio',
@@ -443,8 +524,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                 final usersUpdateData = createUsersRecordData(
                                   displayName: _model.yourNameController.text,
                                   userName: _model.userNameController.text,
-                                  photoUrl: _model.uploadedFileUrl,
                                   bio: _model.bioController.text,
+                                  profilePhotoUrl: _model.uploadedFileUrl,
                                 );
                                 await currentUserReference!
                                     .update(usersUpdateData);

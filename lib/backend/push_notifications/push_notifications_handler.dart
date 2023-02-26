@@ -78,9 +78,9 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
   @override
   Widget build(BuildContext context) => _loading
       ? Container(
-          color: Color(0xFF2C0EA1),
+          color: FlutterFlowTheme.of(context).primaryDark,
           child: Image.asset(
-            'assets/images/karaoke-hunt-logo-square-1000px.jpg',
+            'assets/images/karaoke-hunt-logo-rect-3000px-transparent.png',
             fit: BoxFit.contain,
           ),
         )
@@ -116,6 +116,7 @@ final parametersBuilderMap =
   'Search': ParameterData.none(),
   'Playlist': ParameterData.none(),
   'Settings': ParameterData.none(),
+  'SupportCommunity': ParameterData.none(),
   'ChangePassword': ParameterData.none(),
   'EditProfile': ParameterData.none(),
 };

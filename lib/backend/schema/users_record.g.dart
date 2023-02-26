@@ -33,13 +33,6 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.photoUrl;
-    if (value != null) {
-      result
-        ..add('photo_url')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
     value = object.uid;
     if (value != null) {
       result
@@ -75,12 +68,19 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.isFollowed;
+    value = object.profilePhotoUrl;
     if (value != null) {
       result
-        ..add('isFollowed')
-        ..add(
-            serializers.serialize(value, specifiedType: const FullType(bool)));
+        ..add('profile_photo_url')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.photoUrl;
+    if (value != null) {
+      result
+        ..add('photo_url')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
     }
     value = object.ffRef;
     if (value != null) {
@@ -112,10 +112,6 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
           result.email = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'photo_url':
-          result.photoUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
         case 'uid':
           result.uid = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
@@ -136,9 +132,13 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
           result.bio = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'isFollowed':
-          result.isFollowed = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool?;
+        case 'profile_photo_url':
+          result.profilePhotoUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'photo_url':
+          result.photoUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
@@ -159,8 +159,6 @@ class _$UsersRecord extends UsersRecord {
   @override
   final String? email;
   @override
-  final String? photoUrl;
-  @override
   final String? uid;
   @override
   final DateTime? createdTime;
@@ -171,7 +169,9 @@ class _$UsersRecord extends UsersRecord {
   @override
   final String? bio;
   @override
-  final bool? isFollowed;
+  final String? profilePhotoUrl;
+  @override
+  final String? photoUrl;
   @override
   final DocumentReference<Object?>? ffRef;
 
@@ -181,13 +181,13 @@ class _$UsersRecord extends UsersRecord {
   _$UsersRecord._(
       {this.displayName,
       this.email,
-      this.photoUrl,
       this.uid,
       this.createdTime,
       this.phoneNumber,
       this.userName,
       this.bio,
-      this.isFollowed,
+      this.profilePhotoUrl,
+      this.photoUrl,
       this.ffRef})
       : super._();
 
@@ -204,13 +204,13 @@ class _$UsersRecord extends UsersRecord {
     return other is UsersRecord &&
         displayName == other.displayName &&
         email == other.email &&
-        photoUrl == other.photoUrl &&
         uid == other.uid &&
         createdTime == other.createdTime &&
         phoneNumber == other.phoneNumber &&
         userName == other.userName &&
         bio == other.bio &&
-        isFollowed == other.isFollowed &&
+        profilePhotoUrl == other.profilePhotoUrl &&
+        photoUrl == other.photoUrl &&
         ffRef == other.ffRef;
   }
 
@@ -226,13 +226,13 @@ class _$UsersRecord extends UsersRecord {
                                 $jc(
                                     $jc($jc(0, displayName.hashCode),
                                         email.hashCode),
-                                    photoUrl.hashCode),
-                                uid.hashCode),
-                            createdTime.hashCode),
-                        phoneNumber.hashCode),
-                    userName.hashCode),
-                bio.hashCode),
-            isFollowed.hashCode),
+                                    uid.hashCode),
+                                createdTime.hashCode),
+                            phoneNumber.hashCode),
+                        userName.hashCode),
+                    bio.hashCode),
+                profilePhotoUrl.hashCode),
+            photoUrl.hashCode),
         ffRef.hashCode));
   }
 
@@ -241,13 +241,13 @@ class _$UsersRecord extends UsersRecord {
     return (newBuiltValueToStringHelper(r'UsersRecord')
           ..add('displayName', displayName)
           ..add('email', email)
-          ..add('photoUrl', photoUrl)
           ..add('uid', uid)
           ..add('createdTime', createdTime)
           ..add('phoneNumber', phoneNumber)
           ..add('userName', userName)
           ..add('bio', bio)
-          ..add('isFollowed', isFollowed)
+          ..add('profilePhotoUrl', profilePhotoUrl)
+          ..add('photoUrl', photoUrl)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -263,10 +263,6 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
   String? _email;
   String? get email => _$this._email;
   set email(String? email) => _$this._email = email;
-
-  String? _photoUrl;
-  String? get photoUrl => _$this._photoUrl;
-  set photoUrl(String? photoUrl) => _$this._photoUrl = photoUrl;
 
   String? _uid;
   String? get uid => _$this._uid;
@@ -288,9 +284,14 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
   String? get bio => _$this._bio;
   set bio(String? bio) => _$this._bio = bio;
 
-  bool? _isFollowed;
-  bool? get isFollowed => _$this._isFollowed;
-  set isFollowed(bool? isFollowed) => _$this._isFollowed = isFollowed;
+  String? _profilePhotoUrl;
+  String? get profilePhotoUrl => _$this._profilePhotoUrl;
+  set profilePhotoUrl(String? profilePhotoUrl) =>
+      _$this._profilePhotoUrl = profilePhotoUrl;
+
+  String? _photoUrl;
+  String? get photoUrl => _$this._photoUrl;
+  set photoUrl(String? photoUrl) => _$this._photoUrl = photoUrl;
 
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
@@ -305,13 +306,13 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
     if ($v != null) {
       _displayName = $v.displayName;
       _email = $v.email;
-      _photoUrl = $v.photoUrl;
       _uid = $v.uid;
       _createdTime = $v.createdTime;
       _phoneNumber = $v.phoneNumber;
       _userName = $v.userName;
       _bio = $v.bio;
-      _isFollowed = $v.isFollowed;
+      _profilePhotoUrl = $v.profilePhotoUrl;
+      _photoUrl = $v.photoUrl;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -337,13 +338,13 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
         new _$UsersRecord._(
             displayName: displayName,
             email: email,
-            photoUrl: photoUrl,
             uid: uid,
             createdTime: createdTime,
             phoneNumber: phoneNumber,
             userName: userName,
             bio: bio,
-            isFollowed: isFollowed,
+            profilePhotoUrl: profilePhotoUrl,
+            photoUrl: photoUrl,
             ffRef: ffRef);
     replace(_$result);
     return _$result;
