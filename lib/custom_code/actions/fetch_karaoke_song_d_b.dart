@@ -35,8 +35,8 @@ Future<File> writeJSON(jsonstring) async {
 }
 
 Future fetchKaraokeSongDB() async {
-  final httpSongJSONUrl = Uri.https('karaokehunt.com',
-      '/wp-content/uploads/2023/02/karaokenerds.com-community-data-2023-02-14-smallsample.json');
+  final httpSongJSONUrl = Uri.https('static.karaokehunt.com',
+      '/karaokenerds.com-community-data-2023-02-14-smallsample.json');
 
   final httpSongResponse = await http.get(httpSongJSONUrl);
   if (httpSongResponse.statusCode != 200) {
