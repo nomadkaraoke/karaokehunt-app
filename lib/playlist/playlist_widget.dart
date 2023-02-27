@@ -305,7 +305,7 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                                                           PlaylistRemoveTrackSheetWidget(
                                                         trackName: getJsonField(
                                                           playlistItem,
-                                                          r'''$.title''',
+                                                          r'''$.Title''',
                                                         ).toString(),
                                                       ),
                                                     ),
@@ -329,45 +329,48 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
-                child: FFButtonWidget(
-                  onPressed: () async {
-                    await showModalBottomSheet(
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      context: context,
-                      builder: (context) {
-                        return Padding(
-                          padding: MediaQuery.of(context).viewInsets,
-                          child: Container(
-                            height: 200,
-                            child: PlaylistClearSheetWidget(),
+              if (FFAppState().playlist.length > 0)
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      await showModalBottomSheet(
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        context: context,
+                        builder: (context) {
+                          return Padding(
+                            padding: MediaQuery.of(context).viewInsets,
+                            child: Container(
+                              height: 200,
+                              child: PlaylistClearSheetWidget(),
+                            ),
+                          );
+                        },
+                      ).then((value) => setState(() {}));
+                    },
+                    text: '🗑️ Clear Playlist',
+                    options: FFButtonOptions(
+                      width: 130,
+                      height: 40,
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      textStyle: FlutterFlowTheme.of(context)
+                          .subtitle2
+                          .override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).subtitle2Family,
+                            color: Color(0xFFFF3434),
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).subtitle2Family),
                           ),
-                        );
-                      },
-                    ).then((value) => setState(() {}));
-                  },
-                  text: '🗑️ Clear Playlist',
-                  options: FFButtonOptions(
-                    width: 130,
-                    height: 40,
-                    color: FlutterFlowTheme.of(context).primaryBackground,
-                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily:
-                              FlutterFlowTheme.of(context).subtitle2Family,
-                          color: Color(0xFFFF3434),
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).subtitle2Family),
-                        ),
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1,
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(8),
                     ),
-                    borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-              ),
             ],
           ),
         ),

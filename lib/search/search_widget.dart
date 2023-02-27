@@ -373,7 +373,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                       SearchPageAddTrackSheetWidget(
                                                     trackName: getJsonField(
                                                       songListItem,
-                                                      r'''$.title''',
+                                                      r'''$.Title''',
                                                     ).toString(),
                                                   ),
                                                 ),

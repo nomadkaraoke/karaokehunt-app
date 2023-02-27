@@ -136,7 +136,7 @@ class _EmptySearchComponentWidgetState
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                   child: Text(
-                    'You can also try updating the database of karaoke songs - if this is your first app launch, or if you haven\'t used it in a while, update the database with the most recent list of community created songs!',
+                    'If you haven\'t used the app in a while, or you know one of your requests has recently been filled, update the database with the most recent list of community created songs!',
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).bodyText2,
                   ),
@@ -149,7 +149,10 @@ class _EmptySearchComponentWidgetState
           padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
           child: FFButtonWidget(
             onPressed: () async {
-              await actions.fetchKaraokeSongDB();
+              await actions.fetchKaraokeSongDBGzip();
+
+              context.pushNamed('Search');
+
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(
@@ -163,9 +166,9 @@ class _EmptySearchComponentWidgetState
                 ),
               );
             },
-            text: 'Update Song DB',
+            text: 'Update Song Database',
             options: FFButtonOptions(
-              width: 170,
+              width: 220,
               height: 50,
               color: Color(0xFF207C70),
               textStyle: FlutterFlowTheme.of(context).subtitle2.override(

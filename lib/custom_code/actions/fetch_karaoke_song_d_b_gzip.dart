@@ -13,8 +13,8 @@ import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:path_provider/path_provider.dart';
 import 'dart:io';
+import 'package:archive/archive_io.dart';
 
 Future fetchKaraokeSongDBGzip() async {
   final httpSongJSONUrl = Uri.https('static.karaokehunt.com',
@@ -26,9 +26,13 @@ Future fetchKaraokeSongDBGzip() async {
     return;
   }
 
-  final decodedSongsData = GZipCodec().decode(httpSongResponse.bodyBytes);
+  print('httpSongResponse.bodyBytes = ' +
+      httpSongResponse.bodyBytes.length.toString());
 
-  final songsJSON = utf8.decode(decodedSongsData, allowMalformed: true);
+  final songsJSON =
+      utf8.decode(GZipDecoder().decodeBytes(httpSongResponse.bodyBytes));
+
+  print('songsJSON size = ' + songsJSON.length.toString());
 
   final songsObject = json.decode(songsJSON) as Map<String, dynamic>;
 

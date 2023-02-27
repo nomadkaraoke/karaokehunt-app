@@ -26,6 +26,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   algolia: 1.1.1
+  archive:
   auto_size_text: 3.0.0
   built_collection: 5.1.1
   built_value: 8.4.0
