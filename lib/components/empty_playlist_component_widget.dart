@@ -1,6 +1,6 @@
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -50,21 +50,21 @@ class _EmptyPlaylistComponentWidgetState
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
           child: FaIcon(
             FontAwesomeIcons.sadCry,
             color: Color(0xFFFFDF6B),
-            size: 90,
+            size: 90.0,
           ),
         ),
         Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                 child: Text(
                   'Looks like your playlist is empty',
                   textAlign: TextAlign.center,
@@ -80,14 +80,14 @@ class _EmptyPlaylistComponentWidgetState
           ),
         ),
         Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(12, 4, 12, 0),
+          padding: EdgeInsetsDirectional.fromSTEB(12.0, 4.0, 12.0, 0.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                   child: Text(
                     'Use the Song Search to find songs you wish to sing, then click plus to add them to your playlist!',
                     textAlign: TextAlign.center,
@@ -99,7 +99,7 @@ class _EmptyPlaylistComponentWidgetState
           ),
         ),
         Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
           child: FFButtonWidget(
             onPressed: () async {
               context.pushNamed(
@@ -114,21 +114,23 @@ class _EmptyPlaylistComponentWidgetState
             },
             text: 'Song Search',
             options: FFButtonOptions(
-              width: 170,
-              height: 50,
+              width: 170.0,
+              height: 50.0,
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
               color: FlutterFlowTheme.of(context).primaryColor,
               textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                     fontFamily: 'Lexend Deca',
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: 16.0,
                     fontWeight: FontWeight.normal,
                     useGoogleFonts: GoogleFonts.asMap().containsKey(
                         FlutterFlowTheme.of(context).subtitle2Family),
                   ),
-              elevation: 2,
+              elevation: 2.0,
               borderSide: BorderSide(
                 color: Colors.transparent,
-                width: 1,
+                width: 1.0,
               ),
             ),
           ),

@@ -153,49 +153,49 @@ class MobileTypography extends Typography {
         'Righteous',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 32,
+        fontSize: 32.0,
       );
   String get title2Family => 'Righteous';
   TextStyle get title2 => GoogleFonts.getFont(
         'Righteous',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
-        fontSize: 24,
+        fontSize: 24.0,
       );
   String get title3Family => 'Righteous';
   TextStyle get title3 => GoogleFonts.getFont(
         'Righteous',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
-        fontSize: 20,
+        fontSize: 20.0,
       );
   String get subtitle1Family => 'Righteous';
   TextStyle get subtitle1 => GoogleFonts.getFont(
         'Righteous',
         color: theme.primaryText,
         fontWeight: FontWeight.bold,
-        fontSize: 16,
+        fontSize: 16.0,
       );
   String get subtitle2Family => 'Righteous';
   TextStyle get subtitle2 => GoogleFonts.getFont(
         'Righteous',
         color: theme.secondaryText,
         fontWeight: FontWeight.bold,
-        fontSize: 16,
+        fontSize: 16.0,
       );
   String get bodyText1Family => 'Righteous';
   TextStyle get bodyText1 => GoogleFonts.getFont(
         'Righteous',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
-        fontSize: 14,
+        fontSize: 14.0,
       );
   String get bodyText2Family => 'Righteous';
   TextStyle get bodyText2 => GoogleFonts.getFont(
         'Righteous',
         color: theme.secondaryText,
         fontWeight: FontWeight.w500,
-        fontSize: 14,
+        fontSize: 14.0,
       );
 }
 
@@ -209,49 +209,49 @@ class TabletTypography extends Typography {
         'Righteous',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 32,
+        fontSize: 32.0,
       );
   String get title2Family => 'Righteous';
   TextStyle get title2 => GoogleFonts.getFont(
         'Righteous',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
-        fontSize: 24,
+        fontSize: 24.0,
       );
   String get title3Family => 'Righteous';
   TextStyle get title3 => GoogleFonts.getFont(
         'Righteous',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
-        fontSize: 20,
+        fontSize: 20.0,
       );
   String get subtitle1Family => 'Righteous';
   TextStyle get subtitle1 => GoogleFonts.getFont(
         'Righteous',
         color: theme.primaryText,
         fontWeight: FontWeight.bold,
-        fontSize: 16,
+        fontSize: 16.0,
       );
   String get subtitle2Family => 'Righteous';
   TextStyle get subtitle2 => GoogleFonts.getFont(
         'Righteous',
         color: theme.secondaryText,
         fontWeight: FontWeight.bold,
-        fontSize: 16,
+        fontSize: 16.0,
       );
   String get bodyText1Family => 'Righteous';
   TextStyle get bodyText1 => GoogleFonts.getFont(
         'Righteous',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
-        fontSize: 14,
+        fontSize: 14.0,
       );
   String get bodyText2Family => 'Righteous';
   TextStyle get bodyText2 => GoogleFonts.getFont(
         'Righteous',
         color: theme.secondaryText,
         fontWeight: FontWeight.w500,
-        fontSize: 14,
+        fontSize: 14.0,
       );
 }
 
@@ -265,49 +265,49 @@ class DesktopTypography extends Typography {
         'Righteous',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 32,
+        fontSize: 32.0,
       );
   String get title2Family => 'Righteous';
   TextStyle get title2 => GoogleFonts.getFont(
         'Righteous',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
-        fontSize: 24,
+        fontSize: 24.0,
       );
   String get title3Family => 'Righteous';
   TextStyle get title3 => GoogleFonts.getFont(
         'Righteous',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
-        fontSize: 20,
+        fontSize: 20.0,
       );
   String get subtitle1Family => 'Righteous';
   TextStyle get subtitle1 => GoogleFonts.getFont(
         'Righteous',
         color: theme.primaryText,
         fontWeight: FontWeight.bold,
-        fontSize: 16,
+        fontSize: 16.0,
       );
   String get subtitle2Family => 'Righteous';
   TextStyle get subtitle2 => GoogleFonts.getFont(
         'Righteous',
         color: theme.secondaryText,
         fontWeight: FontWeight.bold,
-        fontSize: 16,
+        fontSize: 16.0,
       );
   String get bodyText1Family => 'Righteous';
   TextStyle get bodyText1 => GoogleFonts.getFont(
         'Righteous',
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
-        fontSize: 14,
+        fontSize: 14.0,
       );
   String get bodyText2Family => 'Righteous';
   TextStyle get bodyText2 => GoogleFonts.getFont(
         'Righteous',
         color: theme.secondaryText,
         fontWeight: FontWeight.w500,
-        fontSize: 14,
+        fontSize: 14.0,
       );
 }
 

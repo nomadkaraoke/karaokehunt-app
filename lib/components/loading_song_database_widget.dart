@@ -1,5 +1,5 @@
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -53,37 +53,37 @@ class _LoadingSongDatabaseWidgetState extends State<LoadingSongDatabaseWidget> {
         color: FlutterFlowTheme.of(context).secondaryBackground,
         boxShadow: [
           BoxShadow(
-            blurRadius: 5,
+            blurRadius: 5.0,
             color: Color(0x3B1D2429),
-            offset: Offset(0, -3),
+            offset: Offset(0.0, -3.0),
           )
         ],
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(0),
-          bottomRight: Radius.circular(0),
-          topLeft: Radius.circular(16),
-          topRight: Radius.circular(16),
+          bottomLeft: Radius.circular(0.0),
+          bottomRight: Radius.circular(0.0),
+          topLeft: Radius.circular(16.0),
+          topRight: Radius.circular(16.0),
         ),
       ),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
+        padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(3, 0, 3, 0),
+              padding: EdgeInsetsDirectional.fromSTEB(3.0, 0.0, 3.0, 0.0),
               child: Container(
                 width: double.infinity,
-                height: 70,
+                height: 70.0,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
                   child: Wrap(
-                    spacing: 0,
-                    runSpacing: 0,
+                    spacing: 0.0,
+                    runSpacing: 0.0,
                     alignment: WrapAlignment.center,
                     crossAxisAlignment: WrapCrossAlignment.start,
                     direction: Axis.horizontal,
@@ -103,8 +103,8 @@ class _LoadingSongDatabaseWidgetState extends State<LoadingSongDatabaseWidget> {
             ),
             Image.asset(
               'assets/images/progress-indicator-transparent.gif',
-              width: 100,
-              height: 100,
+              width: 100.0,
+              height: 100.0,
               fit: BoxFit.cover,
             ),
           ],

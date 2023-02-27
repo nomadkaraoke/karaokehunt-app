@@ -1,11 +1,12 @@
-import '../components/empty_playlist_component_widget.dart';
-import '../components/playlist_clear_sheet_widget.dart';
-import '../components/playlist_remove_track_sheet_widget.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
+import '/components/empty_playlist_component_widget.dart';
+import '/components/playlist_clear_sheet_widget.dart';
+import '/components/playlist_remove_track_sheet_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'playlist_model.dart';
@@ -54,17 +55,17 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
         ),
         actions: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
             child: Image.asset(
               'assets/images/karaoke-hunt-logo-rect-hq.png',
-              width: 150,
-              height: 100,
+              width: 150.0,
+              height: 100.0,
               fit: BoxFit.contain,
             ),
           ),
         ],
         centerTitle: false,
-        elevation: 0,
+        elevation: 0.0,
       ),
       body: Container(
         width: double.infinity,
@@ -73,7 +74,7 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
           color: FlutterFlowTheme.of(context).secondaryBackground,
         ),
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -84,7 +85,8 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            0.0, 10.0, 0.0, 10.0),
                         child: Builder(
                           builder: (context) {
                             final playlist = FFAppState()
@@ -104,38 +106,40 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                                 final playlistItem = playlist[playlistIndex];
                                 return Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      20, 0, 20, 3),
+                                      20.0, 0.0, 20.0, 3.0),
                                   child: Container(
-                                    width: 100,
+                                    width: 100.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                       boxShadow: [
                                         BoxShadow(
-                                          blurRadius: 3,
+                                          blurRadius: 3.0,
                                           color: Color(0x33000000),
-                                          offset: Offset(0, 1),
+                                          offset: Offset(0.0, 1.0),
                                         )
                                       ],
-                                      borderRadius: BorderRadius.circular(5),
+                                      borderRadius: BorderRadius.circular(5.0),
                                     ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          15, 7, 0, 7),
+                                          15.0, 7.0, 0.0, 7.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
                                         children: [
                                           Container(
-                                            width: 40,
-                                            height: 40,
+                                            width: 30.0,
+                                            height: 30.0,
                                             decoration: BoxDecoration(
-                                              color: Color(0xFF39D2C0),
-                                              borderRadius:
-                                                  BorderRadius.circular(5),
-                                              shape: BoxShape.rectangle,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryColor,
+                                              shape: BoxShape.circle,
                                             ),
                                             alignment:
-                                                AlignmentDirectional(0, 0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               ((playlistIndex + 1)).toString(),
                                               textAlign: TextAlign.center,
@@ -145,9 +149,9 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                                                       .override(
                                                         fontFamily: 'Inter',
                                                         color: Colors.white,
-                                                        fontSize: 14,
+                                                        fontSize: 14.0,
                                                         fontWeight:
-                                                            FontWeight.normal,
+                                                            FontWeight.bold,
                                                         useGoogleFonts: GoogleFonts
                                                                 .asMap()
                                                             .containsKey(
@@ -160,7 +164,8 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                                           Expanded(
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(12, 0, 0, 0),
+                                                  .fromSTEB(
+                                                      12.0, 0.0, 0.0, 0.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
@@ -171,6 +176,9 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                                                     child: Column(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
                                                       crossAxisAlignment:
                                                           CrossAxisAlignment
                                                               .start,
@@ -191,7 +199,7 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText,
-                                                                fontSize: 18,
+                                                                fontSize: 18.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -218,7 +226,7 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryText,
-                                                                fontSize: 16,
+                                                                fontSize: 16.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -232,57 +240,39 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                                                       ],
                                                     ),
                                                   ),
-                                                  Container(
-                                                    width: 100,
-                                                    height: 40,
-                                                    decoration: BoxDecoration(),
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            1, 0),
-                                                    child: Text(
-                                                      getJsonField(
-                                                        playlistItem,
-                                                        r'''$.Brand''',
-                                                      )
-                                                          .toString()
-                                                          .maybeHandleOverflow(
-                                                            maxChars: 30,
-                                                            replacement: '…',
-                                                          ),
-                                                      textAlign: TextAlign.end,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText2
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                color: Color(
-                                                                    0xFF57636C),
-                                                                fontSize: 14,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyText2Family),
-                                                              ),
-                                                    ),
-                                                  ),
                                                 ],
                                               ),
                                             ),
                                           ),
+                                          if (getJsonField(
+                                                playlistItem,
+                                                r'''$.Watch''',
+                                              ) !=
+                                              null)
+                                            FlutterFlowIconButton(
+                                              borderColor: Colors.transparent,
+                                              borderRadius: 30.0,
+                                              buttonSize: 50.0,
+                                              icon: FaIcon(
+                                                FontAwesomeIcons.youtube,
+                                                color: Color(0xFFFF0000),
+                                                size: 30.0,
+                                              ),
+                                              onPressed: () async {
+                                                await launchURL(getJsonField(
+                                                  playlistItem,
+                                                  r'''$.Watch''',
+                                                ).toString());
+                                              },
+                                            ),
                                           FlutterFlowIconButton(
                                             borderColor: Colors.transparent,
-                                            borderRadius: 30,
-                                            buttonSize: 50,
+                                            borderRadius: 30.0,
+                                            buttonSize: 50.0,
                                             icon: Icon(
                                               Icons.remove_circle,
-                                              color: Color(0xFFFF3434),
-                                              size: 30,
+                                              color: Color(0xFFFFDF6B),
+                                              size: 30.0,
                                             ),
                                             onPressed: () async {
                                               setState(() {
@@ -300,7 +290,7 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                                                         MediaQuery.of(context)
                                                             .viewInsets,
                                                     child: Container(
-                                                      height: 200,
+                                                      height: 200.0,
                                                       child:
                                                           PlaylistRemoveTrackSheetWidget(
                                                         trackName: getJsonField(
@@ -331,7 +321,8 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
               ),
               if (FFAppState().playlist.length > 0)
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       await showModalBottomSheet(
@@ -342,7 +333,7 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                           return Padding(
                             padding: MediaQuery.of(context).viewInsets,
                             child: Container(
-                              height: 200,
+                              height: 200.0,
                               child: PlaylistClearSheetWidget(),
                             ),
                           );
@@ -351,23 +342,27 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                     },
                     text: '🗑️ Clear Playlist',
                     options: FFButtonOptions(
-                      width: 130,
-                      height: 40,
+                      width: 150.0,
+                      height: 40.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primaryBackground,
                       textStyle: FlutterFlowTheme.of(context)
                           .subtitle2
                           .override(
                             fontFamily:
                                 FlutterFlowTheme.of(context).subtitle2Family,
-                            color: Color(0xFFFF3434),
+                            color: Color(0xFFFFDF6B),
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).subtitle2Family),
                           ),
                       borderSide: BorderSide(
                         color: Colors.transparent,
-                        width: 1,
+                        width: 1.0,
                       ),
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
                 ),

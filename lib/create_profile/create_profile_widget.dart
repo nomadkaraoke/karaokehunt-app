@@ -1,11 +1,11 @@
-import '../auth/auth_util.dart';
-import '../backend/backend.dart';
-import '../backend/firebase_storage/storage.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
-import '../flutter_flow/upload_media.dart';
+import '/auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/backend/firebase_storage/storage.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/upload_media.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -56,13 +56,13 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
-          borderRadius: 30,
-          borderWidth: 1,
-          buttonSize: 60,
+          borderRadius: 30.0,
+          borderWidth: 1.0,
+          buttonSize: 60.0,
           icon: Icon(
             Icons.arrow_back_rounded,
             color: Colors.white,
-            size: 30,
+            size: 30.0,
           ),
           onPressed: () async {
             context.pop();
@@ -72,24 +72,24 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
           'Create Profile',
           style: FlutterFlowTheme.of(context).title1.override(
                 fontFamily: FlutterFlowTheme.of(context).title1Family,
-                fontSize: 22,
+                fontSize: 22.0,
                 useGoogleFonts: GoogleFonts.asMap()
                     .containsKey(FlutterFlowTheme.of(context).title1Family),
               ),
         ),
         actions: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 7, 0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 7.0, 0.0),
             child: Image.asset(
               'assets/images/karaoke-hunt-logo-rect-hq.png',
-              width: 150,
-              height: 150,
+              width: 150.0,
+              height: 150.0,
               fit: BoxFit.contain,
             ),
           ),
         ],
         centerTitle: false,
-        elevation: 2,
+        elevation: 2.0,
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -98,12 +98,13 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 0, 24, 16),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 24.0, 16.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -117,7 +118,8 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 16),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
                       child: InkWell(
                         onTap: () async {
                           final selectedMedia =
@@ -182,8 +184,8 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                           }
                         },
                         child: Container(
-                          width: 120,
-                          height: 120,
+                          width: 120.0,
+                          height: 120.0,
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.cover,
@@ -194,12 +196,12 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                             shape: BoxShape.circle,
                             border: Border.all(
                               color: Color(0xFFFF79CB),
-                              width: 5,
+                              width: 5.0,
                             ),
                           ),
                           child: Container(
-                            width: 120,
-                            height: 120,
+                            width: 120.0,
+                            height: 120.0,
                             clipBehavior: Clip.antiAlias,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
@@ -215,7 +217,8 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(24, 16, 24, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 24.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -230,7 +233,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                                 enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
-                                    width: 1,
+                                    width: 1.0,
                                   ),
                                   borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
@@ -240,7 +243,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
-                                    width: 1,
+                                    width: 1.0,
                                   ),
                                   borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
@@ -250,7 +253,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                                 errorBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
-                                    width: 1,
+                                    width: 1.0,
                                   ),
                                   borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
@@ -260,7 +263,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                                 focusedErrorBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
-                                    width: 1,
+                                    width: 1.0,
                                   ),
                                   borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
@@ -277,7 +280,8 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(24, 16, 24, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 24.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -292,7 +296,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                                 enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
-                                    width: 1,
+                                    width: 1.0,
                                   ),
                                   borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
@@ -302,7 +306,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
-                                    width: 1,
+                                    width: 1.0,
                                   ),
                                   borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
@@ -312,7 +316,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                                 errorBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
-                                    width: 1,
+                                    width: 1.0,
                                   ),
                                   borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
@@ -322,7 +326,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                                 focusedErrorBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: Color(0x00000000),
-                                    width: 1,
+                                    width: 1.0,
                                   ),
                                   borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(4.0),
@@ -340,14 +344,15 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(24, 4, 24, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Expanded(
                             child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 12.0, 0.0, 0.0),
                               child: TextFormField(
                                 controller: _model.userNameController,
                                 obscureText: false,
@@ -358,7 +363,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0x00000000),
-                                      width: 1,
+                                      width: 1.0,
                                     ),
                                     borderRadius: const BorderRadius.only(
                                       topLeft: Radius.circular(4.0),
@@ -368,7 +373,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                                   focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0x00000000),
-                                      width: 1,
+                                      width: 1.0,
                                     ),
                                     borderRadius: const BorderRadius.only(
                                       topLeft: Radius.circular(4.0),
@@ -378,7 +383,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                                   errorBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0x00000000),
-                                      width: 1,
+                                      width: 1.0,
                                     ),
                                     borderRadius: const BorderRadius.only(
                                       topLeft: Radius.circular(4.0),
@@ -388,7 +393,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                                   focusedErrorBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0x00000000),
-                                      width: 1,
+                                      width: 1.0,
                                     ),
                                     borderRadius: const BorderRadius.only(
                                       topLeft: Radius.circular(4.0),
@@ -406,14 +411,15 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(24, 4, 24, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 24.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Expanded(
                             child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 12.0, 0.0, 0.0),
                               child: TextFormField(
                                 controller: _model.bioController,
                                 obscureText: false,
@@ -427,7 +433,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                                     borderSide: BorderSide(
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
-                                      width: 1,
+                                      width: 1.0,
                                     ),
                                     borderRadius: const BorderRadius.only(
                                       topLeft: Radius.circular(4.0),
@@ -437,7 +443,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                                   focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0x00000000),
-                                      width: 1,
+                                      width: 1.0,
                                     ),
                                     borderRadius: const BorderRadius.only(
                                       topLeft: Radius.circular(4.0),
@@ -447,7 +453,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                                   errorBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0x00000000),
-                                      width: 1,
+                                      width: 1.0,
                                     ),
                                     borderRadius: const BorderRadius.only(
                                       topLeft: Radius.circular(4.0),
@@ -457,7 +463,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                                   focusedErrorBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0x00000000),
-                                      width: 1,
+                                      width: 1.0,
                                     ),
                                     borderRadius: const BorderRadius.only(
                                       topLeft: Radius.circular(4.0),
@@ -466,7 +472,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                                   ),
                                   contentPadding:
                                       EdgeInsetsDirectional.fromSTEB(
-                                          0, 8, 0, 0),
+                                          0.0, 8.0, 0.0, 0.0),
                                 ),
                                 style: FlutterFlowTheme.of(context).bodyText1,
                                 textAlign: TextAlign.start,
@@ -483,13 +489,14 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 80.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 40),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           final usersUpdateData = createUsersRecordData(
@@ -505,8 +512,12 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                         },
                         text: 'Complete Setup',
                         options: FFButtonOptions(
-                          width: 230,
-                          height: 50,
+                          width: 230.0,
+                          height: 50.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primaryColor,
                           textStyle: FlutterFlowTheme.of(context)
                               .subtitle2
@@ -518,12 +529,12 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                                     FlutterFlowTheme.of(context)
                                         .subtitle2Family),
                               ),
-                          elevation: 2,
+                          elevation: 2.0,
                           borderSide: BorderSide(
                             color: Colors.transparent,
-                            width: 1,
+                            width: 1.0,
                           ),
-                          borderRadius: BorderRadius.circular(40),
+                          borderRadius: BorderRadius.circular(40.0),
                         ),
                       ),
                     ),

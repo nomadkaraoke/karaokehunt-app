@@ -1,11 +1,11 @@
-import '../components/empty_search_component_widget.dart';
-import '../components/loading_song_database_widget.dart';
-import '../components/search_page_add_track_sheet_widget.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../custom_code/actions/index.dart' as actions;
-import '../flutter_flow/custom_functions.dart' as functions;
+import '/components/empty_search_component_widget.dart';
+import '/components/loading_song_database_widget.dart';
+import '/components/search_page_add_track_sheet_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -44,7 +44,7 @@ class _SearchWidgetState extends State<SearchWidget> {
             return Padding(
               padding: MediaQuery.of(context).viewInsets,
               child: Container(
-                height: 300,
+                height: 300.0,
                 child: LoadingSongDatabaseWidget(),
               ),
             );
@@ -84,17 +84,17 @@ class _SearchWidgetState extends State<SearchWidget> {
         ),
         actions: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
             child: Image.asset(
               'assets/images/karaoke-hunt-logo-rect-hq.png',
-              width: 150,
-              height: 100,
+              width: 150.0,
+              height: 100.0,
               fit: BoxFit.contain,
             ),
           ),
         ],
         centerTitle: false,
-        elevation: 0,
+        elevation: 0.0,
       ),
       body: Container(
         width: double.infinity,
@@ -103,14 +103,14 @@ class _SearchWidgetState extends State<SearchWidget> {
           color: FlutterFlowTheme.of(context).secondaryBackground,
         ),
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(18, 0, 18, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(18.0, 0.0, 18.0, 0.0),
                   child: TextFormField(
                     controller: _model.songSearchInputController,
                     onChanged: (_) => EasyDebounce.debounce(
@@ -124,30 +124,30 @@ class _SearchWidgetState extends State<SearchWidget> {
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0x00000000),
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(30.0),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0x00000000),
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(30.0),
                       ),
                       errorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0x00000000),
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(30.0),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0x00000000),
-                          width: 1,
+                          width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(30.0),
                       ),
                       filled: true,
                       fillColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -165,7 +165,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                   child: Icon(
                                     Icons.clear,
                                     color: Color(0xFF757575),
-                                    size: 22,
+                                    size: 22.0,
                                   ),
                                 )
                               : null,
@@ -178,12 +178,13 @@ class _SearchWidgetState extends State<SearchWidget> {
                 ),
                 Container(
                   width: double.infinity,
-                  height: 660,
+                  height: 660.0,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 10.0),
                     child: Builder(
                       builder: (context) {
                         final songList = (functions
@@ -204,41 +205,42 @@ class _SearchWidgetState extends State<SearchWidget> {
                           itemBuilder: (context, songListIndex) {
                             final songListItem = songList[songListIndex];
                             return Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(20, 0, 20, 3),
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 0.0, 20.0, 3.0),
                               child: Container(
-                                width: 100,
+                                width: 100.0,
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
                                       .primaryBackground,
                                   boxShadow: [
                                     BoxShadow(
-                                      blurRadius: 3,
+                                      blurRadius: 3.0,
                                       color: Color(0x33000000),
-                                      offset: Offset(0, 1),
+                                      offset: Offset(0.0, 1.0),
                                     )
                                   ],
-                                  borderRadius: BorderRadius.circular(5),
+                                  borderRadius: BorderRadius.circular(5.0),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      15, 7, 0, 7),
+                                      15.0, 7.0, 0.0, 7.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Container(
-                                        width: 40,
-                                        height: 40,
+                                        width: 40.0,
+                                        height: 40.0,
                                         decoration: BoxDecoration(
                                           color: Color(0xFF39D2C0),
                                           borderRadius:
-                                              BorderRadius.circular(5),
+                                              BorderRadius.circular(5.0),
                                           shape: BoxShape.rectangle,
                                         ),
-                                        alignment: AlignmentDirectional(0, 0),
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Align(
                                           alignment:
-                                              AlignmentDirectional(0.15, 0),
+                                              AlignmentDirectional(0.15, 0.0),
                                           child: Text(
                                             '🎵',
                                             textAlign: TextAlign.center,
@@ -247,7 +249,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                 .override(
                                                   fontFamily: 'Inter',
                                                   color: Colors.white,
-                                                  fontSize: 14,
+                                                  fontSize: 14.0,
                                                   fontWeight: FontWeight.normal,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
@@ -263,7 +265,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  12, 0, 0, 0),
+                                                  12.0, 0.0, 0.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
@@ -293,7 +295,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText,
-                                                                fontSize: 18,
+                                                                fontSize: 18.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -321,7 +323,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryText,
-                                                                fontSize: 16,
+                                                                fontSize: 16.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -336,11 +338,11 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                 ),
                                               ),
                                               Container(
-                                                width: 100,
-                                                height: 40,
+                                                width: 100.0,
+                                                height: 40.0,
                                                 decoration: BoxDecoration(),
-                                                alignment:
-                                                    AlignmentDirectional(1, 0),
+                                                alignment: AlignmentDirectional(
+                                                    1.0, 0.0),
                                                 child: Text(
                                                   getJsonField(
                                                     songListItem,
@@ -359,7 +361,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                         fontFamily: 'Inter',
                                                         color:
                                                             Color(0xFF57636C),
-                                                        fontSize: 14,
+                                                        fontSize: 14.0,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                         useGoogleFonts: GoogleFonts
@@ -377,11 +379,11 @@ class _SearchWidgetState extends State<SearchWidget> {
                                       ),
                                       FlutterFlowIconButton(
                                         borderColor: Colors.transparent,
-                                        buttonSize: 50,
+                                        buttonSize: 50.0,
                                         icon: Icon(
                                           Icons.add_circle,
                                           color: Color(0xFFFF79CB),
-                                          size: 30,
+                                          size: 30.0,
                                         ),
                                         onPressed: () async {
                                           setState(() {
@@ -397,7 +399,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                 padding: MediaQuery.of(context)
                                                     .viewInsets,
                                                 child: Container(
-                                                  height: 200,
+                                                  height: 200.0,
                                                   child:
                                                       SearchPageAddTrackSheetWidget(
                                                     trackName: getJsonField(
