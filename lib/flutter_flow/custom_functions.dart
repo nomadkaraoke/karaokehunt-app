@@ -40,5 +40,7 @@ List<dynamic> fetchKaraokeSongsFromState(
     }
   }
 
+  filteredList.sort((a, b) => a['Artist'].compareTo(b['Artist']));
+
   return filteredList;
 }

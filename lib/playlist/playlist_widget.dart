@@ -178,7 +178,7 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                                                         Text(
                                                           getJsonField(
                                                             playlistItem,
-                                                            r'''$.title''',
+                                                            r'''$.Title''',
                                                           ).toString(),
                                                           textAlign:
                                                               TextAlign.start,
@@ -205,7 +205,7 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                                                         Text(
                                                           getJsonField(
                                                             playlistItem,
-                                                            r'''$.artist''',
+                                                            r'''$.Artist''',
                                                           ).toString(),
                                                           textAlign:
                                                               TextAlign.start,
@@ -242,7 +242,7 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                                                     child: Text(
                                                       getJsonField(
                                                         playlistItem,
-                                                        r'''$.brand''',
+                                                        r'''$.Brand''',
                                                       )
                                                           .toString()
                                                           .maybeHandleOverflow(
