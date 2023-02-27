@@ -1,6 +1,7 @@
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -113,6 +114,64 @@ class _EmptySearchComponentWidgetState
                     fontFamily: 'Lexend Deca',
                     color: Colors.white,
                     fontSize: 16,
+                    fontWeight: FontWeight.normal,
+                    useGoogleFonts: GoogleFonts.asMap().containsKey(
+                        FlutterFlowTheme.of(context).subtitle2Family),
+                  ),
+              elevation: 2,
+              borderSide: BorderSide(
+                color: Colors.transparent,
+                width: 1,
+              ),
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(12, 4, 12, 0),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                  child: Text(
+                    'You can also try updating the database of karaoke songs - if this is your first app launch, or if you haven\'t used it in a while, update the database with the most recent list of community created songs!',
+                    textAlign: TextAlign.center,
+                    style: FlutterFlowTheme.of(context).bodyText2,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
+          child: FFButtonWidget(
+            onPressed: () async {
+              await actions.fetchKaraokeSongDB();
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    'Updated database, now contains ${FFAppState().songsdb.length.toString()} karaoke songs!',
+                    style: TextStyle(
+                      color: FlutterFlowTheme.of(context).primaryText,
+                    ),
+                  ),
+                  duration: Duration(milliseconds: 4000),
+                  backgroundColor: Color(0x00000000),
+                ),
+              );
+            },
+            text: 'Update Song DB',
+            options: FFButtonOptions(
+              width: 170,
+              height: 50,
+              color: Color(0xFF207C70),
+              textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                    fontFamily: 'Lexend Deca',
+                    color: Colors.white,
+                    fontSize: 15,
                     fontWeight: FontWeight.normal,
                     useGoogleFonts: GoogleFonts.asMap().containsKey(
                         FlutterFlowTheme.of(context).subtitle2Family),

@@ -250,7 +250,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                     Text(
                                                       getJsonField(
                                                         songListItem,
-                                                        r'''$.title''',
+                                                        r'''$.Title''',
                                                       ).toString(),
                                                       textAlign:
                                                           TextAlign.start,
@@ -278,7 +278,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                     Text(
                                                       getJsonField(
                                                         songListItem,
-                                                        r'''$.artist''',
+                                                        r'''$.Artist''',
                                                       ).toString(),
                                                       textAlign:
                                                           TextAlign.start,
@@ -315,7 +315,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                                 child: Text(
                                                   getJsonField(
                                                     songListItem,
-                                                    r'''$.brand''',
+                                                    r'''$.Brand''',
                                                   )
                                                       .toString()
                                                       .maybeHandleOverflow(

@@ -423,37 +423,11 @@ class _SettingsWidgetState extends State<SettingsWidget>
                         ),
                         child: InkWell(
                           onTap: () async {
+                            await actions.fetchKaraokeSongDBGzip();
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
-                                  FFAppState().songsdb.length.toString(),
-                                  style: TextStyle(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                  ),
-                                ),
-                                duration: Duration(milliseconds: 4000),
-                                backgroundColor: Color(0x00000000),
-                              ),
-                            );
-                            await actions.fetchKaraokeSongDB();
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  FFAppState().songsdb.first.toString(),
-                                  style: TextStyle(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                  ),
-                                ),
-                                duration: Duration(milliseconds: 4000),
-                                backgroundColor: Color(0x00000000),
-                              ),
-                            );
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  FFAppState().songsdb.length.toString(),
+                                  'Updated database, now contains ${FFAppState().songsdb.length.toString()} karaoke songs!',
                                   style: TextStyle(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
