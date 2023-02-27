@@ -1,3 +1,6 @@
+import '../components/empty_playlist_component_widget.dart';
+import '../components/playlist_clear_sheet_widget.dart';
+import '../components/playlist_remove_track_sheet_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -89,6 +92,9 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                                 .toList()
                                 .take(500)
                                 .toList();
+                            if (playlist.isEmpty) {
+                              return EmptyPlaylistComponentWidget();
+                            }
                             return ListView.builder(
                               padding: EdgeInsets.zero,
                               shrinkWrap: true,
@@ -275,7 +281,7 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                                             buttonSize: 50,
                                             icon: Icon(
                                               Icons.remove_circle,
-                                              color: Color(0xFFFF7E80),
+                                              color: Color(0xFFFF3434),
                                               size: 30,
                                             ),
                                             onPressed: () async {
@@ -283,47 +289,30 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                                                 FFAppState().removeFromPlaylist(
                                                     playlistItem);
                                               });
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(
-                                                SnackBar(
-                                                  content: Text(
-                                                    'Removed \"${getJsonField(
-                                                      playlistItem,
-                                                      r'''$.title''',
-                                                    ).toString()}\" from playlist.',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .subtitle1,
-                                                  ),
-                                                  duration: Duration(
-                                                      milliseconds: 4000),
-                                                  backgroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryBackground,
-                                                  action: SnackBarAction(
-                                                    label:
-                                                        'Add something else instead?',
-                                                    textColor:
-                                                        Color(0xFFFF79CB),
-                                                    onPressed: () async {
-                                                      context.pushNamed(
-                                                        'Search',
-                                                        extra: <String,
-                                                            dynamic>{
-                                                          kTransitionInfoKey:
-                                                              TransitionInfo(
-                                                            hasTransition: true,
-                                                            transitionType:
-                                                                PageTransitionType
-                                                                    .leftToRight,
-                                                          ),
-                                                        },
-                                                      );
-                                                    },
-                                                  ),
-                                                ),
-                                              );
+                                              await showModalBottomSheet(
+                                                isScrollControlled: true,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                context: context,
+                                                builder: (context) {
+                                                  return Padding(
+                                                    padding:
+                                                        MediaQuery.of(context)
+                                                            .viewInsets,
+                                                    child: Container(
+                                                      height: 200,
+                                                      child:
+                                                          PlaylistRemoveTrackSheetWidget(
+                                                        trackName: getJsonField(
+                                                          playlistItem,
+                                                          r'''$.title''',
+                                                        ).toString(),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ).then(
+                                                  (value) => setState(() {}));
                                             },
                                           ),
                                         ],
@@ -344,45 +333,30 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          'Are you sure you wish to clear this playlist? There\'s no undo!',
-                          style: FlutterFlowTheme.of(context)
-                              .subtitle1
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .subtitle1Family,
-                                fontSize: 15,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .subtitle1Family),
-                              ),
-                        ),
-                        duration: Duration(milliseconds: 5000),
-                        backgroundColor:
-                            FlutterFlowTheme.of(context).primaryBackground,
-                        action: SnackBarAction(
-                          label: '🗑️ Yes, clear this playlist!',
-                          textColor: Color(0xFFFF5355),
-                          onPressed: () async {
-                            setState(() {
-                              FFAppState().playlist = [];
-                            });
-                          },
-                        ),
-                      ),
-                    );
+                    await showModalBottomSheet(
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      builder: (context) {
+                        return Padding(
+                          padding: MediaQuery.of(context).viewInsets,
+                          child: Container(
+                            height: 200,
+                            child: PlaylistClearSheetWidget(),
+                          ),
+                        );
+                      },
+                    ).then((value) => setState(() {}));
                   },
                   text: '🗑️ Clear Playlist',
                   options: FFButtonOptions(
                     width: 130,
                     height: 40,
-                    color: Color(0xFFFF7E80),
+                    color: FlutterFlowTheme.of(context).primaryBackground,
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily:
                               FlutterFlowTheme.of(context).subtitle2Family,
-                          color: FlutterFlowTheme.of(context).alternate,
+                          color: Color(0xFFFF3434),
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
                               FlutterFlowTheme.of(context).subtitle2Family),
                         ),

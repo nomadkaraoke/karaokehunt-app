@@ -60,6 +60,10 @@ abstract class FlutterFlowTheme {
   late Color tertiary400;
   late Color textColor;
   late Color backgroundComponents;
+  late Color btnText;
+  late Color customColor3;
+  late Color customColor4;
+  late Color white;
 
   String get title1Family => typography.title1Family;
   TextStyle get title1 => typography.title1;
@@ -116,6 +120,10 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color tertiary400 = Color(0xFF39D2C0);
   late Color textColor = Color(0xFF1E2429);
   late Color backgroundComponents = Color(0xFF1D2428);
+  late Color btnText = Color(0xFFFFFFFF);
+  late Color customColor3 = Color(0xFFDF3F3F);
+  late Color customColor4 = Color(0xFF090F13);
+  late Color white = Color(0xFFFFFFFF);
 }
 
 abstract class Typography {
@@ -325,6 +333,10 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color tertiary400 = Color(0xFF39D2C0);
   late Color textColor = Color(0xFF1E2429);
   late Color backgroundComponents = Color(0xFF1D2428);
+  late Color btnText = Color(0xFFFFFFFF);
+  late Color customColor3 = Color(0xFFDF3F3F);
+  late Color customColor4 = Color(0xFF090F13);
+  late Color white = Color(0xFFFFFFFF);
 }
 
 extension TextStyleHelper on TextStyle {

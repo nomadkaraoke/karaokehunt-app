@@ -3,6 +3,7 @@ import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -111,80 +112,224 @@ class _SettingsWidgetState extends State<SettingsWidget>
         ),
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                ),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 20),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              AuthUserStreamWidget(
-                                builder: (context) => Text(
-                                  currentUserDisplayName,
-                                  textAlign: TextAlign.start,
-                                  style: FlutterFlowTheme.of(context).title3,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                  ),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 20),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                AuthUserStreamWidget(
+                                  builder: (context) => Text(
+                                    currentUserDisplayName,
+                                    textAlign: TextAlign.start,
+                                    style: FlutterFlowTheme.of(context).title3,
+                                  ),
                                 ),
-                              ),
-                              AuthUserStreamWidget(
-                                builder: (context) => Text(
-                                  valueOrDefault(
-                                      currentUserDocument?.userName, ''),
-                                  textAlign: TextAlign.start,
-                                  style: FlutterFlowTheme.of(context).title3,
+                                AuthUserStreamWidget(
+                                  builder: (context) => Text(
+                                    valueOrDefault(
+                                        currentUserDocument?.userName, ''),
+                                    textAlign: TextAlign.start,
+                                    style: FlutterFlowTheme.of(context).title3,
+                                  ),
                                 ),
-                              ),
-                              Align(
-                                alignment: AlignmentDirectional(-1, 0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 8, 0, 0),
-                                  child: AuthUserStreamWidget(
-                                    builder: (context) => Text(
-                                      valueOrDefault(
-                                          currentUserDocument?.bio, ''),
-                                      textAlign: TextAlign.start,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1,
+                                Align(
+                                  alignment: AlignmentDirectional(-1, 0),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 8, 0, 0),
+                                    child: AuthUserStreamWidget(
+                                      builder: (context) => Text(
+                                        valueOrDefault(
+                                            currentUserDocument?.bio, ''),
+                                        textAlign: TextAlign.start,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1,
+                                      ),
                                     ),
                                   ),
                                 ),
+                                Align(
+                                  alignment: AlignmentDirectional(-1, 0),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 4, 0, 0),
+                                    child: Text(
+                                      currentUserEmail,
+                                      textAlign: TextAlign.start,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily: 'Lexend Deca',
+                                            color: Color(0xFFEE8B60),
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.normal,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1Family),
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional(0.85, 0.68),
+                          child: Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
+                            child: Container(
+                              width: 100,
+                              height: 100,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(90),
+                                border: Border.all(
+                                  color: Color(0xFFFF79CB),
+                                  width: 5,
+                                ),
                               ),
-                              Align(
-                                alignment: AlignmentDirectional(-1, 0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 4, 0, 0),
-                                  child: Text(
-                                    currentUserEmail,
-                                    textAlign: TextAlign.start,
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyText1
-                                        .override(
-                                          fontFamily: 'Lexend Deca',
-                                          color: Color(0xFFEE8B60),
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.normal,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText1Family),
-                                        ),
+                              child: AuthUserStreamWidget(
+                                builder: (context) => Container(
+                                  width: 100,
+                                  height: 100,
+                                  clipBehavior: Clip.antiAlias,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Image.network(
+                                    valueOrDefault<String>(
+                                      valueOrDefault(
+                                          currentUserDocument?.profilePhotoUrl,
+                                          ''),
+                                      'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/7dvyeuxvy2dg/addUser@2x.png',
+                                    ),
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () async {
+                    context.pushNamed('SupportCommunity');
+                  },
+                  child: ListView(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 45,
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                        ),
+                        child: Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(24, 12, 0, 12),
+                          child: Text(
+                            'App Support & Karaoke Community',
+                            style: FlutterFlowTheme.of(context).bodyText1,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Image.asset(
+                                  'assets/images/karaoke-hunt-logo-rect-3000px-transparent.png',
+                                  width: 100,
+                                  height: 80,
+                                  fit: BoxFit.contain,
+                                ),
+                              ],
+                            ),
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Image.asset(
+                                  'assets/images/divebar-logo-transparent.png',
+                                  width: 100,
+                                  height: 80,
+                                  fit: BoxFit.contain,
+                                ),
+                              ],
+                            ),
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Image.asset(
+                                  'assets/images/karaoke-nerds.png',
+                                  width: 80,
+                                  height: 80,
+                                  fit: BoxFit.contain,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            shape: BoxShape.rectangle,
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
+                                child: Text(
+                                  'Get Support / Learn More',
+                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                ),
+                              ),
+                              Expanded(
+                                child: Align(
+                                  alignment: AlignmentDirectional(0.9, 0),
+                                  child: Icon(
+                                    Icons.arrow_forward_ios,
+                                    color: Color(0xFF95A1AC),
+                                    size: 18,
                                   ),
                                 ),
                               ),
@@ -192,51 +337,10 @@ class _SettingsWidgetState extends State<SettingsWidget>
                           ),
                         ),
                       ),
-                      Align(
-                        alignment: AlignmentDirectional(0.85, 0.68),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
-                          child: Container(
-                            width: 100,
-                            height: 100,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(90),
-                              border: Border.all(
-                                color: Color(0xFFFF79CB),
-                                width: 5,
-                              ),
-                            ),
-                            child: AuthUserStreamWidget(
-                              builder: (context) => Container(
-                                width: 100,
-                                height: 100,
-                                clipBehavior: Clip.antiAlias,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Image.network(
-                                  valueOrDefault<String>(
-                                    valueOrDefault(
-                                        currentUserDocument?.profilePhotoUrl,
-                                        ''),
-                                    'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/7dvyeuxvy2dg/addUser@2x.png',
-                                  ),
-                                  fit: BoxFit.contain,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
                     ],
                   ),
                 ),
-              ),
-              InkWell(
-                onTap: () async {
-                  context.pushNamed('SupportCommunity');
-                },
-                child: ListView(
+                ListView(
                   padding: EdgeInsets.zero,
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
@@ -250,50 +354,391 @@ class _SettingsWidgetState extends State<SettingsWidget>
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(24, 12, 0, 12),
                         child: Text(
-                          'App Support & Karaoke Community',
+                          'Setup Actions',
                           style: FlutterFlowTheme.of(context).bodyText1,
                         ),
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
-                      child: Row(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          shape: BoxShape.rectangle,
+                        ),
+                        child: InkWell(
+                          onTap: () async {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Not ready yet, sorry!',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor: Color(0x00000000),
+                              ),
+                            );
+                          },
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
+                                child: Text(
+                                  'Connect Music Data',
+                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                ),
+                              ),
+                              Expanded(
+                                child: Align(
+                                  alignment: AlignmentDirectional(0.9, 0),
+                                  child: Icon(
+                                    Icons.arrow_forward_ios,
+                                    color: Color(0xFF95A1AC),
+                                    size: 18,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          shape: BoxShape.rectangle,
+                        ),
+                        child: InkWell(
+                          onTap: () async {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  FFAppState().songsdb.length.toString(),
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor: Color(0x00000000),
+                              ),
+                            );
+                            await actions.fetchKaraokeSongDB();
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  FFAppState().songsdb.first.toString(),
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor: Color(0x00000000),
+                              ),
+                            );
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  FFAppState().songsdb.length.toString(),
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor: Color(0x00000000),
+                              ),
+                            );
+                          },
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
+                                child: Text(
+                                  'Update Karaoke Song Database',
+                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                ),
+                              ),
+                              Expanded(
+                                child: Align(
+                                  alignment: AlignmentDirectional(0.9, 0),
+                                  child: Icon(
+                                    Icons.arrow_forward_ios,
+                                    color: Color(0xFF95A1AC),
+                                    size: 18,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                ListView(
+                  padding: EdgeInsets.zero,
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 45,
+                          decoration: BoxDecoration(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                          ),
+                          child: Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(24, 12, 0, 12),
+                            child: Text(
+                              'Account Settings',
+                              style: FlutterFlowTheme.of(context).bodyText1,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
+                      child: Column(
                         mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Image.asset(
-                                'assets/images/karaoke-hunt-logo-rect-3000px-transparent.png',
-                                width: 100,
-                                height: 80,
-                                fit: BoxFit.contain,
+                          if (Theme.of(context).brightness == Brightness.light)
+                            InkWell(
+                              onTap: () async {
+                                setDarkModeSetting(context, ThemeMode.dark);
+                                if (animationsMap[
+                                        'containerOnActionTriggerAnimation2'] !=
+                                    null) {
+                                  animationsMap[
+                                          'containerOnActionTriggerAnimation2']!
+                                      .controller
+                                      .forward(from: 0.0);
+                                }
+                              },
+                              child: Container(
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      24, 12, 24, 12),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'Switch to Dark Mode',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1,
+                                      ),
+                                      Container(
+                                        width: 80,
+                                        height: 40,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                        ),
+                                        child: InkWell(
+                                          onTap: () async {
+                                            setDarkModeSetting(
+                                                context, ThemeMode.dark);
+                                          },
+                                          child: Stack(
+                                            alignment:
+                                                AlignmentDirectional(0, 0),
+                                            children: [
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    0.95, 0),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(0, 0, 8, 0),
+                                                  child: Icon(
+                                                    Icons.nights_stay,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 20,
+                                                  ),
+                                                ),
+                                              ),
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    -0.85, 0),
+                                                child: InkWell(
+                                                  onTap: () async {
+                                                    setDarkModeSetting(context,
+                                                        ThemeMode.dark);
+                                                  },
+                                                  child: Container(
+                                                    width: 36,
+                                                    height: 36,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      boxShadow: [
+                                                        BoxShadow(
+                                                          blurRadius: 4,
+                                                          color:
+                                                              Color(0x430B0D0F),
+                                                          offset: Offset(0, 2),
+                                                        )
+                                                      ],
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              30),
+                                                      shape: BoxShape.rectangle,
+                                                    ),
+                                                  ),
+                                                ).animateOnActionTrigger(
+                                                  animationsMap[
+                                                      'containerOnActionTriggerAnimation1']!,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ),
-                            ],
-                          ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Image.asset(
-                                'assets/images/divebar-logo-transparent.png',
-                                width: 100,
-                                height: 80,
-                                fit: BoxFit.contain,
+                            ),
+                          if (Theme.of(context).brightness == Brightness.dark)
+                            InkWell(
+                              onTap: () async {
+                                setDarkModeSetting(context, ThemeMode.light);
+                                if (animationsMap[
+                                        'containerOnActionTriggerAnimation1'] !=
+                                    null) {
+                                  animationsMap[
+                                          'containerOnActionTriggerAnimation1']!
+                                      .controller
+                                      .forward(from: 0.0);
+                                }
+                              },
+                              child: Container(
+                                width: MediaQuery.of(context).size.width,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      24, 12, 24, 12),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'Switch to Light Mode',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1,
+                                      ),
+                                      Container(
+                                        width: 80,
+                                        height: 40,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                        ),
+                                        child: InkWell(
+                                          onTap: () async {
+                                            setDarkModeSetting(
+                                                context, ThemeMode.light);
+                                          },
+                                          child: Stack(
+                                            alignment:
+                                                AlignmentDirectional(0, 0),
+                                            children: [
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    -0.9, 0),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(8, 2, 0, 0),
+                                                  child: Icon(
+                                                    Icons.wb_sunny_rounded,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 24,
+                                                  ),
+                                                ),
+                                              ),
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    0.9, 0),
+                                                child: InkWell(
+                                                  onTap: () async {
+                                                    setDarkModeSetting(context,
+                                                        ThemeMode.light);
+                                                  },
+                                                  child: Container(
+                                                    width: 36,
+                                                    height: 36,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      boxShadow: [
+                                                        BoxShadow(
+                                                          blurRadius: 4,
+                                                          color:
+                                                              Color(0x430B0D0F),
+                                                          offset: Offset(0, 2),
+                                                        )
+                                                      ],
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              30),
+                                                      shape: BoxShape.rectangle,
+                                                    ),
+                                                  ),
+                                                ).animateOnActionTrigger(
+                                                  animationsMap[
+                                                      'containerOnActionTriggerAnimation2']!,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ),
-                            ],
-                          ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Image.asset(
-                                'assets/images/karaoke-nerds.png',
-                                width: 80,
-                                height: 80,
-                                fit: BoxFit.contain,
-                              ),
-                            ],
-                          ),
+                            ),
                         ],
                       ),
                     ),
@@ -307,56 +752,37 @@ class _SettingsWidgetState extends State<SettingsWidget>
                               FlutterFlowTheme.of(context).secondaryBackground,
                           shape: BoxShape.rectangle,
                         ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
-                              child: Text(
-                                'Get Support / Learn More',
-                                style: FlutterFlowTheme.of(context).bodyText1,
-                              ),
-                            ),
-                            Expanded(
-                              child: Align(
-                                alignment: AlignmentDirectional(0.9, 0),
-                                child: Icon(
-                                  Icons.arrow_forward_ios,
-                                  color: Color(0xFF95A1AC),
-                                  size: 18,
+                        child: InkWell(
+                          onTap: () async {
+                            context.pushNamed('EditProfile');
+                          },
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
+                                child: Text(
+                                  'Edit Profile',
+                                  style: FlutterFlowTheme.of(context).bodyText1,
                                 ),
                               ),
-                            ),
-                          ],
+                              Expanded(
+                                child: Align(
+                                  alignment: AlignmentDirectional(0.9, 0),
+                                  child: Icon(
+                                    Icons.arrow_forward_ios,
+                                    color: Color(0xFF95A1AC),
+                                    size: 18,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ],
-                ),
-              ),
-              ListView(
-                padding: EdgeInsets.zero,
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 45,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).primaryBackground,
-                    ),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(24, 12, 0, 12),
-                      child: Text(
-                        'Setup Actions',
-                        style: FlutterFlowTheme.of(context).bodyText1,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
-                    child: Container(
+                    Container(
                       width: MediaQuery.of(context).size.width,
                       height: 50,
                       decoration: BoxDecoration(
@@ -365,19 +791,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                       ),
                       child: InkWell(
                         onTap: () async {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                'Not ready yet, sorry!',
-                                style: TextStyle(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                ),
-                              ),
-                              duration: Duration(milliseconds: 4000),
-                              backgroundColor: Color(0x00000000),
-                            ),
-                          );
+                          context.pushNamed('ChangePassword');
                         },
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -386,7 +800,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
                               child: Text(
-                                'Connect Music Data',
+                                'Change Password',
                                 style: FlutterFlowTheme.of(context).bodyText1,
                               ),
                             ),
@@ -404,372 +818,51 @@ class _SettingsWidgetState extends State<SettingsWidget>
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              ListView(
-                padding: EdgeInsets.zero,
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: 45,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                        ),
-                        child: Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(24, 12, 0, 12),
-                          child: Text(
-                            'Account Settings',
-                            style: FlutterFlowTheme.of(context).bodyText1,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 1, 0, 0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        if (Theme.of(context).brightness == Brightness.light)
-                          InkWell(
-                            onTap: () async {
-                              setDarkModeSetting(context, ThemeMode.dark);
-                              if (animationsMap[
-                                      'containerOnActionTriggerAnimation2'] !=
-                                  null) {
-                                animationsMap[
-                                        'containerOnActionTriggerAnimation2']!
-                                    .controller
-                                    .forward(from: 0.0);
-                              }
-                            },
-                            child: Container(
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                              ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    24, 12, 24, 12),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'Switch to Dark Mode',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1,
-                                    ),
-                                    Container(
-                                      width: 80,
-                                      height: 40,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      child: InkWell(
-                                        onTap: () async {
-                                          setDarkModeSetting(
-                                              context, ThemeMode.dark);
-                                        },
-                                        child: Stack(
-                                          alignment: AlignmentDirectional(0, 0),
-                                          children: [
-                                            Align(
-                                              alignment:
-                                                  AlignmentDirectional(0.95, 0),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(0, 0, 8, 0),
-                                                child: Icon(
-                                                  Icons.nights_stay,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  size: 20,
-                                                ),
-                                              ),
-                                            ),
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  -0.85, 0),
-                                              child: InkWell(
-                                                onTap: () async {
-                                                  setDarkModeSetting(
-                                                      context, ThemeMode.dark);
-                                                },
-                                                child: Container(
-                                                  width: 36,
-                                                  height: 36,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                    boxShadow: [
-                                                      BoxShadow(
-                                                        blurRadius: 4,
-                                                        color:
-                                                            Color(0x430B0D0F),
-                                                        offset: Offset(0, 2),
-                                                      )
-                                                    ],
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            30),
-                                                    shape: BoxShape.rectangle,
-                                                  ),
-                                                ),
-                                              ).animateOnActionTrigger(
-                                                animationsMap[
-                                                    'containerOnActionTriggerAnimation1']!,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        if (Theme.of(context).brightness == Brightness.dark)
-                          InkWell(
-                            onTap: () async {
-                              setDarkModeSetting(context, ThemeMode.light);
-                              if (animationsMap[
-                                      'containerOnActionTriggerAnimation1'] !=
-                                  null) {
-                                animationsMap[
-                                        'containerOnActionTriggerAnimation1']!
-                                    .controller
-                                    .forward(from: 0.0);
-                              }
-                            },
-                            child: Container(
-                              width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                              ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    24, 12, 24, 12),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'Switch to Light Mode',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1,
-                                    ),
-                                    Container(
-                                      width: 80,
-                                      height: 40,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      child: InkWell(
-                                        onTap: () async {
-                                          setDarkModeSetting(
-                                              context, ThemeMode.light);
-                                        },
-                                        child: Stack(
-                                          alignment: AlignmentDirectional(0, 0),
-                                          children: [
-                                            Align(
-                                              alignment:
-                                                  AlignmentDirectional(-0.9, 0),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(8, 2, 0, 0),
-                                                child: Icon(
-                                                  Icons.wb_sunny_rounded,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  size: 24,
-                                                ),
-                                              ),
-                                            ),
-                                            Align(
-                                              alignment:
-                                                  AlignmentDirectional(0.9, 0),
-                                              child: InkWell(
-                                                onTap: () async {
-                                                  setDarkModeSetting(
-                                                      context, ThemeMode.light);
-                                                },
-                                                child: Container(
-                                                  width: 36,
-                                                  height: 36,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                    boxShadow: [
-                                                      BoxShadow(
-                                                        blurRadius: 4,
-                                                        color:
-                                                            Color(0x430B0D0F),
-                                                        offset: Offset(0, 2),
-                                                      )
-                                                    ],
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            30),
-                                                    shape: BoxShape.rectangle,
-                                                  ),
-                                                ),
-                                              ).animateOnActionTrigger(
-                                                animationsMap[
-                                                    'containerOnActionTriggerAnimation2']!,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        shape: BoxShape.rectangle,
-                      ),
-                      child: InkWell(
-                        onTap: () async {
-                          context.pushNamed('EditProfile');
-                        },
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
-                              child: Text(
-                                'Edit Profile',
-                                style: FlutterFlowTheme.of(context).bodyText1,
-                              ),
-                            ),
-                            Expanded(
-                              child: Align(
-                                alignment: AlignmentDirectional(0.9, 0),
-                                child: Icon(
-                                  Icons.arrow_forward_ios,
-                                  color: Color(0xFF95A1AC),
-                                  size: 18,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      shape: BoxShape.rectangle,
-                    ),
-                    child: InkWell(
-                      onTap: () async {
-                        context.pushNamed('ChangePassword');
-                      },
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
-                            child: Text(
-                              'Change Password',
-                              style: FlutterFlowTheme.of(context).bodyText1,
-                            ),
-                          ),
-                          Expanded(
-                            child: Align(
-                              alignment: AlignmentDirectional(0.9, 0),
-                              child: Icon(
-                                Icons.arrow_forward_ios,
-                                color: Color(0xFF95A1AC),
-                                size: 18,
+                          FFButtonWidget(
+                            onPressed: () async {
+                              GoRouter.of(context).prepareAuthEvent();
+                              await signOut();
+
+                              context.goNamedAuth('Welcome', mounted);
+                            },
+                            text: 'Log Out',
+                            options: FFButtonOptions(
+                              width: 150,
+                              height: 40,
+                              color: Colors.white,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .bodyText2
+                                  .override(
+                                    fontFamily: 'Lexend Deca',
+                                    color: Color(0xFF4B39EF),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyText2Family),
+                                  ),
+                              elevation: 3,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1,
                               ),
+                              borderRadius: BorderRadius.circular(8),
                             ),
                           ),
                         ],
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        FFButtonWidget(
-                          onPressed: () async {
-                            GoRouter.of(context).prepareAuthEvent();
-                            await signOut();
-
-                            context.goNamedAuth('Welcome', mounted);
-                          },
-                          text: 'Log Out',
-                          options: FFButtonOptions(
-                            width: 150,
-                            height: 40,
-                            color: Colors.white,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .bodyText2
-                                .override(
-                                  fontFamily: 'Lexend Deca',
-                                  color: Color(0xFF4B39EF),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.normal,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyText2Family),
-                                ),
-                            elevation: 3,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1,
-                            ),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

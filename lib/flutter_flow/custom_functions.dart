@@ -363,3 +363,35 @@ List<dynamic> fetchKaraokeSongs(String? searchQuery) {
 
   return filteredList;
 }
+
+List<dynamic> fetchKaraokeSongsFromState(
+  List<dynamic> unfilteredSongList,
+  String? searchQuery,
+) {
+  List<dynamic> filteredList = [];
+
+  searchQuery = searchQuery?.trim();
+
+  if (searchQuery == null || searchQuery.trim().isEmpty) {
+    filteredList = unfilteredSongList;
+  } else {
+    for (var item in unfilteredSongList) {
+      if (item['title']
+              .toString()
+              .toLowerCase()
+              .contains(searchQuery.toLowerCase()) ||
+          item['artist']
+              .toString()
+              .toLowerCase()
+              .contains(searchQuery.toLowerCase()) ||
+          item['brand']
+              .toString()
+              .toLowerCase()
+              .contains(searchQuery.toLowerCase())) {
+        filteredList.add(item);
+      }
+    }
+  }
+
+  return filteredList;
+}
