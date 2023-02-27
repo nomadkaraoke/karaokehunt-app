@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:from_css_color/from_css_color.dart';
+
 import 'index.dart';
 import 'serializers.dart';
 import 'package:built_value/built_value.dart';
@@ -43,6 +45,33 @@ abstract class KaraokeSongsRecord
   static Future<KaraokeSongsRecord> getDocumentOnce(DocumentReference ref) =>
       ref.get().then(
           (s) => serializers.deserializeWith(serializer, serializedData(s))!);
+
+  static KaraokeSongsRecord fromAlgolia(AlgoliaObjectSnapshot snapshot) =>
+      KaraokeSongsRecord(
+        (c) => c
+          ..artist = snapshot.data['artist']
+          ..title = snapshot.data['title']
+          ..youtubeLink = snapshot.data['youtube_link']
+          ..createdAt = safeGet(() =>
+              DateTime.fromMillisecondsSinceEpoch(snapshot.data['created_at']))
+          ..brand = snapshot.data['brand']
+          ..ffRef = KaraokeSongsRecord.collection.doc(snapshot.objectID),
+      );
+
+  static Future<List<KaraokeSongsRecord>> search(
+          {String? term,
+          FutureOr<LatLng>? location,
+          int? maxResults,
+          double? searchRadiusMeters}) =>
+      FFAlgoliaManager.instance
+          .algoliaQuery(
+            index: 'karaoke_songs',
+            term: term,
+            maxResults: maxResults,
+            location: location,
+            searchRadiusMeters: searchRadiusMeters,
+          )
+          .then((r) => r.map(fromAlgolia).toList());
 
   KaraokeSongsRecord._();
   factory KaraokeSongsRecord(
