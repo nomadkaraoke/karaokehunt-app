@@ -23,15 +23,15 @@ List<dynamic> fetchKaraokeSongsFromState(
     filteredList = unfilteredSongList;
   } else {
     for (var item in unfilteredSongList) {
-      if (item['title']
+      if (item['Title']
               .toString()
               .toLowerCase()
               .contains(searchQuery.toLowerCase()) ||
-          item['artist']
+          item['Artist']
               .toString()
               .toLowerCase()
               .contains(searchQuery.toLowerCase()) ||
-          item['brand']
+          item['Brand']
               .toString()
               .toLowerCase()
               .contains(searchQuery.toLowerCase())) {
