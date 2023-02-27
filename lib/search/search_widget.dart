@@ -1,5 +1,8 @@
+import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../flutter_flow/custom_functions.dart' as functions;
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +26,7 @@ class _SearchWidgetState extends State<SearchWidget> {
     super.initState();
     _model = createModel(context, () => SearchModel());
 
-    _model.textController ??= TextEditingController();
+    _model.songSearchInputController ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -36,6 +39,8 @@ class _SearchWidgetState extends State<SearchWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -73,13 +78,17 @@ class _SearchWidgetState extends State<SearchWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 6, 16, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(18, 0, 18, 0),
                 child: TextFormField(
-                  controller: _model.textController,
+                  controller: _model.songSearchInputController,
+                  onChanged: (_) => EasyDebounce.debounce(
+                    '_model.songSearchInputController',
+                    Duration(milliseconds: 1000),
+                    () => setState(() {}),
+                  ),
                   obscureText: false,
                   decoration: InputDecoration(
-                    labelText: 'Search for song, artist or karaoke brand...',
-                    labelStyle: FlutterFlowTheme.of(context).bodyText2,
+                    hintText: 'Song, artist or karaoke brand...',
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Color(0x00000000),
@@ -114,11 +123,292 @@ class _SearchWidgetState extends State<SearchWidget> {
                       Icons.search_outlined,
                       color: FlutterFlowTheme.of(context).secondaryText,
                     ),
+                    suffixIcon:
+                        _model.songSearchInputController!.text.isNotEmpty
+                            ? InkWell(
+                                onTap: () async {
+                                  _model.songSearchInputController?.clear();
+                                  setState(() {});
+                                },
+                                child: Icon(
+                                  Icons.clear,
+                                  color: Color(0xFF757575),
+                                  size: 22,
+                                ),
+                              )
+                            : null,
                   ),
                   style: FlutterFlowTheme.of(context).bodyText1,
                   maxLines: null,
-                  validator:
-                      _model.textControllerValidator.asValidator(context),
+                  validator: _model.songSearchInputControllerValidator
+                      .asValidator(context),
+                ),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
+                        child: Builder(
+                          builder: (context) {
+                            final songList = (functions
+                                        .fetchKaraokeSongs(_model
+                                            .songSearchInputController.text)
+                                        ?.toList() ??
+                                    [])
+                                .take(500)
+                                .toList();
+                            return ListView.builder(
+                              padding: EdgeInsets.zero,
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              itemCount: songList.length,
+                              itemBuilder: (context, songListIndex) {
+                                final songListItem = songList[songListIndex];
+                                return Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20, 0, 20, 3),
+                                  child: Container(
+                                    width: 100,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 3,
+                                          color: Color(0x33000000),
+                                          offset: Offset(0, 1),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15, 7, 0, 7),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Container(
+                                            width: 40,
+                                            height: 40,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFF39D2C0),
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              shape: BoxShape.rectangle,
+                                            ),
+                                            alignment:
+                                                AlignmentDirectional(0, 0),
+                                            child: Align(
+                                              alignment:
+                                                  AlignmentDirectional(0.15, 0),
+                                              child: Text(
+                                                '🎵',
+                                                textAlign: TextAlign.center,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          color: Colors.white,
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyText1Family),
+                                                        ),
+                                              ),
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(12, 0, 0, 0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Expanded(
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Text(
+                                                          getJsonField(
+                                                            songListItem,
+                                                            r'''$.title''',
+                                                          ).toString(),
+                                                          textAlign:
+                                                              TextAlign.start,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .subtitle1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Roboto',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                                fontSize: 18,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .subtitle1Family),
+                                                              ),
+                                                        ),
+                                                        Text(
+                                                          getJsonField(
+                                                            songListItem,
+                                                            r'''$.artist''',
+                                                          ).toString(),
+                                                          textAlign:
+                                                              TextAlign.start,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .subtitle1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Roboto',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                fontSize: 16,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .subtitle1Family),
+                                                              ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    width: 100,
+                                                    height: 40,
+                                                    decoration: BoxDecoration(),
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            1, 0),
+                                                    child: Text(
+                                                      getJsonField(
+                                                        songListItem,
+                                                        r'''$.brand''',
+                                                      )
+                                                          .toString()
+                                                          .maybeHandleOverflow(
+                                                            maxChars: 30,
+                                                            replacement: '…',
+                                                          ),
+                                                      textAlign: TextAlign.end,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText2
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Inter',
+                                                                color: Color(
+                                                                    0xFF57636C),
+                                                                fontSize: 14,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyText2Family),
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                          FlutterFlowIconButton(
+                                            borderColor: Colors.transparent,
+                                            buttonSize: 50,
+                                            icon: Icon(
+                                              Icons.add_circle,
+                                              color: Color(0xFFFF79CB),
+                                              size: 30,
+                                            ),
+                                            onPressed: () async {
+                                              setState(() {
+                                                FFAppState().addToPlaylist(
+                                                    songListItem);
+                                              });
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'Successfully added \"${getJsonField(
+                                                      songListItem,
+                                                      r'''$.title''',
+                                                    ).toString()}\" to your playlist!',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .subtitle1,
+                                                  ),
+                                                  duration: Duration(
+                                                      milliseconds: 3000),
+                                                  backgroundColor:
+                                                      Color(0xFF1A665B),
+                                                  action: SnackBarAction(
+                                                    label: 'View Playlist',
+                                                    textColor:
+                                                        Color(0xFFFF79CB),
+                                                    onPressed: () async {
+                                                      context.pushNamed(
+                                                        'Playlist',
+                                                        extra: <String,
+                                                            dynamic>{
+                                                          kTransitionInfoKey:
+                                                              TransitionInfo(
+                                                            hasTransition: true,
+                                                            transitionType:
+                                                                PageTransitionType
+                                                                    .rightToLeft,
+                                                          ),
+                                                        },
+                                                      );
+                                                    },
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
