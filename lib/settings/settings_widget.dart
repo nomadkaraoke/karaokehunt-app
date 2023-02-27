@@ -1,4 +1,5 @@
 import '../auth/auth_util.dart';
+import '../components/loading_song_database_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -423,6 +424,23 @@ class _SettingsWidgetState extends State<SettingsWidget>
                         ),
                         child: InkWell(
                           onTap: () async {
+                            showModalBottomSheet(
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              isDismissible: false,
+                              enableDrag: false,
+                              context: context,
+                              builder: (context) {
+                                return Padding(
+                                  padding: MediaQuery.of(context).viewInsets,
+                                  child: Container(
+                                    height: 300,
+                                    child: LoadingSongDatabaseWidget(),
+                                  ),
+                                );
+                              },
+                            ).then((value) => setState(() {}));
+
                             await actions.fetchKaraokeSongDBGzip();
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
@@ -434,7 +452,65 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                   ),
                                 ),
                                 duration: Duration(milliseconds: 4000),
-                                backgroundColor: Color(0x00000000),
+                                backgroundColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                              ),
+                            );
+                            Navigator.pop(context);
+                          },
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
+                                child: Text(
+                                  'Update Karaoke Song Database',
+                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                ),
+                              ),
+                              Expanded(
+                                child: Align(
+                                  alignment: AlignmentDirectional(0.9, 0),
+                                  child: Icon(
+                                    Icons.arrow_forward_ios,
+                                    color: Color(0xFF95A1AC),
+                                    size: 18,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 1),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          shape: BoxShape.rectangle,
+                        ),
+                        child: InkWell(
+                          onTap: () async {
+                            setState(() {
+                              FFAppState().songsdb = [];
+                            });
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Cleared database, now contains ${FFAppState().songsdb.length.toString()} karaoke songs!',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
                               ),
                             );
                           },
@@ -445,7 +521,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(24, 0, 0, 0),
                                 child: Text(
-                                  'Update Karaoke Song Database',
+                                  'Clear Karaoke Song Database',
                                   style: FlutterFlowTheme.of(context).bodyText1,
                                 ),
                               ),

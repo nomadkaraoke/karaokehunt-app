@@ -1,4 +1,5 @@
 import '../components/empty_search_component_widget.dart';
+import '../components/loading_song_database_widget.dart';
 import '../components/search_page_add_track_sheet_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -33,6 +34,23 @@ class _SearchWidgetState extends State<SearchWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       if (FFAppState().songsdb.length == 0) {
+        showModalBottomSheet(
+          isScrollControlled: true,
+          backgroundColor: Colors.transparent,
+          isDismissible: false,
+          enableDrag: false,
+          context: context,
+          builder: (context) {
+            return Padding(
+              padding: MediaQuery.of(context).viewInsets,
+              child: Container(
+                height: 300,
+                child: LoadingSongDatabaseWidget(),
+              ),
+            );
+          },
+        ).then((value) => setState(() {}));
+
         await actions.fetchKaraokeSongDBGzip();
 
         context.pushNamed('Search');
