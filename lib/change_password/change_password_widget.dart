@@ -1,8 +1,8 @@
-import '../auth/auth_util.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
+import '/auth/auth_util.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -49,13 +49,13 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
-          borderRadius: 30,
-          borderWidth: 1,
-          buttonSize: 60,
+          borderRadius: 30.0,
+          borderWidth: 1.0,
+          buttonSize: 60.0,
           icon: Icon(
             Icons.arrow_back_rounded,
             color: Colors.white,
-            size: 30,
+            size: 30.0,
           ),
           onPressed: () async {
             context.pop();
@@ -65,31 +65,31 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
           'Change\nPassword',
           style: FlutterFlowTheme.of(context).title1.override(
                 fontFamily: FlutterFlowTheme.of(context).title1Family,
-                fontSize: 22,
+                fontSize: 22.0,
                 useGoogleFonts: GoogleFonts.asMap()
                     .containsKey(FlutterFlowTheme.of(context).title1Family),
-                lineHeight: 1,
+                lineHeight: 1.0,
               ),
         ),
         actions: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 7, 0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 7.0, 0.0),
             child: Image.asset(
               'assets/images/karaoke-hunt-logo-rect-hq.png',
-              width: 150,
-              height: 150,
+              width: 150.0,
+              height: 150.0,
               fit: BoxFit.contain,
             ),
           ),
         ],
         centerTitle: false,
-        elevation: 2,
+        elevation: 2.0,
       ),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
+            padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
             child: TextFormField(
               controller: _model.emailAddressController,
               obscureText: false,
@@ -100,34 +100,35 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: FlutterFlowTheme.of(context).primaryBackground,
-                    width: 2,
+                    width: 2.0,
                   ),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Color(0x00000000),
-                    width: 2,
+                    width: 2.0,
                   ),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
                 errorBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Color(0x00000000),
-                    width: 2,
+                    width: 2.0,
                   ),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
                 focusedErrorBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Color(0x00000000),
-                    width: 2,
+                    width: 2.0,
                   ),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
                 filled: true,
                 fillColor: FlutterFlowTheme.of(context).primaryBackground,
-                contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
+                contentPadding:
+                    EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 24.0),
               ),
               style: FlutterFlowTheme.of(context).bodyText1,
               validator:
@@ -135,7 +136,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20, 12, 20, 0),
+            padding: EdgeInsetsDirectional.fromSTEB(20.0, 12.0, 20.0, 0.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -149,7 +150,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
             child: FFButtonWidget(
               onPressed: () async {
                 if (_model.emailAddressController.text.isEmpty) {
@@ -169,23 +170,25 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
               },
               text: 'Send Reset Link',
               options: FFButtonOptions(
-                width: 200,
-                height: 50,
+                width: 200.0,
+                height: 50.0,
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                 color: FlutterFlowTheme.of(context).primaryColor,
                 textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                       fontFamily: 'Lexend Deca',
                       color: FlutterFlowTheme.of(context).tertiaryColor,
-                      fontSize: 16,
+                      fontSize: 16.0,
                       fontWeight: FontWeight.w500,
                       useGoogleFonts: GoogleFonts.asMap().containsKey(
                           FlutterFlowTheme.of(context).subtitle2Family),
                     ),
-                elevation: 3,
+                elevation: 3.0,
                 borderSide: BorderSide(
                   color: Colors.transparent,
-                  width: 1,
+                  width: 1.0,
                 ),
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(30.0),
               ),
             ),
           ),

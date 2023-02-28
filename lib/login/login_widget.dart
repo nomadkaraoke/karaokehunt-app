@@ -1,8 +1,8 @@
-import '../auth/auth_util.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
+import '/auth/auth_util.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -51,13 +51,13 @@ class _LoginWidgetState extends State<LoginWidget> {
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
-          borderRadius: 30,
-          borderWidth: 1,
-          buttonSize: 60,
+          borderRadius: 30.0,
+          borderWidth: 1.0,
+          buttonSize: 60.0,
           icon: Icon(
             Icons.arrow_back_rounded,
             color: Colors.white,
-            size: 30,
+            size: 30.0,
           ),
           onPressed: () async {
             context.pop();
@@ -67,24 +67,24 @@ class _LoginWidgetState extends State<LoginWidget> {
           'Login',
           style: FlutterFlowTheme.of(context).title1.override(
                 fontFamily: FlutterFlowTheme.of(context).title1Family,
-                fontSize: 25,
+                fontSize: 25.0,
                 useGoogleFonts: GoogleFonts.asMap()
                     .containsKey(FlutterFlowTheme.of(context).title1Family),
               ),
         ),
         actions: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 7, 0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 7.0, 0.0),
             child: Image.asset(
               'assets/images/karaoke-hunt-logo-rect-hq.png',
-              width: 150,
-              height: 150,
+              width: 150.0,
+              height: 150.0,
               fit: BoxFit.contain,
             ),
           ),
         ],
         centerTitle: false,
-        elevation: 2,
+        elevation: 2.0,
       ),
       body: Container(
         width: double.infinity,
@@ -104,26 +104,27 @@ class _LoginWidgetState extends State<LoginWidget> {
           children: [
             Container(
               width: double.infinity,
-              height: 500,
+              height: 500.0,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
                     Color(0x001A1F24),
                     FlutterFlowTheme.of(context).secondaryBackground
                   ],
-                  stops: [0, 0.3],
-                  begin: AlignmentDirectional(0, -1),
-                  end: AlignmentDirectional(0, 1),
+                  stops: [0.0, 0.3],
+                  begin: AlignmentDirectional(0.0, -1.0),
+                  end: AlignmentDirectional(0, 1.0),
                 ),
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 44),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 44.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(24, 44, 24, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(24.0, 44.0, 24.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -140,8 +141,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(24, 0, 24, 12),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 12.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -164,8 +165,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 },
                                 text: 'Create Account',
                                 options: FFButtonOptions(
-                                  width: 125,
-                                  height: 28,
+                                  width: 125.0,
+                                  height: 28.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
                                   color: Color(0x00FFFFFF),
                                   textStyle: FlutterFlowTheme.of(context)
                                       .subtitle2
@@ -174,18 +179,18 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             .subtitle2Family,
                                         color: FlutterFlowTheme.of(context)
                                             .primaryColor,
-                                        fontSize: 14,
+                                        fontSize: 14.0,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
                                                 FlutterFlowTheme.of(context)
                                                     .subtitle2Family),
                                       ),
-                                  elevation: 0,
+                                  elevation: 0.0,
                                   borderSide: BorderSide(
                                     color: Colors.transparent,
-                                    width: 1,
+                                    width: 1.0,
                                   ),
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
                               ),
                             ],
@@ -194,22 +199,24 @@ class _LoginWidgetState extends State<LoginWidget> {
                       ],
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryBackground,
                           boxShadow: [
                             BoxShadow(
-                              blurRadius: 3,
+                              blurRadius: 3.0,
                               color: Color(0x33000000),
-                              offset: Offset(0, 1),
+                              offset: Offset(0.0, 1.0),
                             )
                           ],
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 0.0, 8.0, 0.0),
                           child: TextFormField(
                             controller: _model.emailController,
                             autofillHints: [AutofillHints.email],
@@ -221,33 +228,33 @@ class _LoginWidgetState extends State<LoginWidget> {
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0x00000000),
-                                  width: 2,
+                                  width: 2.0,
                                 ),
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0x00000000),
-                                  width: 2,
+                                  width: 2.0,
                                 ),
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
                               errorBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0x00000000),
-                                  width: 2,
+                                  width: 2.0,
                                 ),
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0x00000000),
-                                  width: 2,
+                                  width: 2.0,
                                 ),
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
                               contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                  16, 20, 24, 20),
+                                  16.0, 20.0, 24.0, 20.0),
                             ),
                             style: FlutterFlowTheme.of(context).bodyText1,
                             keyboardType: TextInputType.emailAddress,
@@ -258,22 +265,24 @@ class _LoginWidgetState extends State<LoginWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(24, 16, 24, 0),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 24.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryBackground,
                           boxShadow: [
                             BoxShadow(
-                              blurRadius: 3,
+                              blurRadius: 3.0,
                               color: Color(0x33000000),
-                              offset: Offset(0, 1),
+                              offset: Offset(0.0, 1.0),
                             )
                           ],
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 0.0, 8.0, 0.0),
                           child: TextFormField(
                             controller: _model.passwordController,
                             autofillHints: [AutofillHints.password],
@@ -285,33 +294,33 @@ class _LoginWidgetState extends State<LoginWidget> {
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0x00000000),
-                                  width: 2,
+                                  width: 2.0,
                                 ),
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0x00000000),
-                                  width: 2,
+                                  width: 2.0,
                                 ),
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
                               errorBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0x00000000),
-                                  width: 2,
+                                  width: 2.0,
                                 ),
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0x00000000),
-                                  width: 2,
+                                  width: 2.0,
                                 ),
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
                               contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                  16, 20, 24, 20),
+                                  16.0, 20.0, 24.0, 20.0),
                               suffixIcon: InkWell(
                                 onTap: () => setState(
                                   () => _model.passwordVisibility =
@@ -323,7 +332,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       ? Icons.visibility_outlined
                                       : Icons.visibility_off_outlined,
                                   color: FlutterFlowTheme.of(context).grayIcon,
-                                  size: 22,
+                                  size: 22.0,
                                 ),
                               ),
                             ),
@@ -335,22 +344,27 @@ class _LoginWidgetState extends State<LoginWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 12),
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 12.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 12.0, 0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 context.pushNamed('ForgotPassword');
                               },
                               text: 'Forgot Password?',
                               options: FFButtonOptions(
-                                width: 170,
-                                height: 50,
+                                width: 170.0,
+                                height: 50.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -360,24 +374,24 @@ class _LoginWidgetState extends State<LoginWidget> {
                                           .subtitle2Family,
                                       color: FlutterFlowTheme.of(context)
                                           .primaryColor,
-                                      fontSize: 14,
+                                      fontSize: 14.0,
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey(
                                               FlutterFlowTheme.of(context)
                                                   .subtitle2Family),
                                     ),
-                                elevation: 0,
+                                elevation: 0.0,
                                 borderSide: BorderSide(
                                   color: Colors.transparent,
-                                  width: 1,
+                                  width: 1.0,
                                 ),
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(12.0),
                               ),
                             ),
                           ),
                           Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 12.0, 0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 GoRouter.of(context).prepareAuthEvent();
@@ -395,8 +409,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                               },
                               text: 'Login',
                               options: FFButtonOptions(
-                                width: 130,
-                                height: 50,
+                                width: 130.0,
+                                height: 50.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
                                 color:
                                     FlutterFlowTheme.of(context).primaryColor,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -410,12 +428,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .subtitle2Family),
                                     ),
-                                elevation: 2,
+                                elevation: 2.0,
                                 borderSide: BorderSide(
                                   color: Colors.transparent,
-                                  width: 1,
+                                  width: 1.0,
                                 ),
-                                borderRadius: BorderRadius.circular(30),
+                                borderRadius: BorderRadius.circular(30.0),
                               ),
                             ),
                           ),

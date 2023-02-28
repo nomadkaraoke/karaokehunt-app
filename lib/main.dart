@@ -151,7 +151,7 @@ class _NavBarPageState extends State<NavBarPage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.search,
-              size: 16,
+              size: 16.0,
             ),
             label: 'Search',
             tooltip: '',
@@ -159,7 +159,7 @@ class _NavBarPageState extends State<NavBarPage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.list,
-              size: 16,
+              size: 16.0,
             ),
             label: 'Playlist',
             tooltip: '',
@@ -167,7 +167,7 @@ class _NavBarPageState extends State<NavBarPage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.settings,
-              size: 20,
+              size: 20.0,
             ),
             label: 'Settings',
             tooltip: '',
