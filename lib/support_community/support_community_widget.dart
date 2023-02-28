@@ -26,6 +26,8 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
     super.initState();
     _model = createModel(context, () => SupportCommunityModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'SupportCommunity'});
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -57,6 +59,8 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
             size: 30.0,
           ),
           onPressed: () async {
+            logFirebaseEvent('SUPPORT_COMMUNITY_arrow_back_rounded_ICN');
+            logFirebaseEvent('IconButton_navigate_back');
             context.pop();
           },
         ),
@@ -151,6 +155,8 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
                   child: InkWell(
                     onTap: () async {
+                      logFirebaseEvent('SUPPORT_COMMUNITY_Row_sths05he_ON_TAP');
+                      logFirebaseEvent('Row_send_email');
                       await launchUrl(Uri(
                           scheme: 'mailto',
                           path: 'andrew@karaokehunt.com',
@@ -187,6 +193,8 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
                   child: InkWell(
                     onTap: () async {
+                      logFirebaseEvent('SUPPORT_COMMUNITY_Row_nh6y66hu_ON_TAP');
+                      logFirebaseEvent('Row_launch_u_r_l');
                       await launchURL('tel:+18036363267');
                     },
                     child: Row(
@@ -214,6 +222,8 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
                   child: InkWell(
                     onTap: () async {
+                      logFirebaseEvent('SUPPORT_COMMUNITY_Row_06elrpmu_ON_TAP');
+                      logFirebaseEvent('Row_launch_u_r_l');
                       await launchURL('https://www.instagram.com/beveradb/');
                     },
                     child: Row(
@@ -265,6 +275,8 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
               ),
               child: InkWell(
                 onTap: () async {
+                  logFirebaseEvent('SUPPORT_COMMUNITY_Row_9fvvso1v_ON_TAP');
+                  logFirebaseEvent('Row_launch_u_r_l');
                   await launchURL('https://discord.gg/divebar');
                 },
                 child: Row(
@@ -329,6 +341,8 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
               ),
               child: InkWell(
                 onTap: () async {
+                  logFirebaseEvent('SUPPORT_COMMUNITY_Row_5baobie0_ON_TAP');
+                  logFirebaseEvent('Row_launch_u_r_l');
                   await launchURL('https://karaokenerds.com');
                 },
                 child: Row(
@@ -393,6 +407,8 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
               ),
               child: InkWell(
                 onTap: () async {
+                  logFirebaseEvent('SUPPORT_COMMUNITY_Row_w7jnbbhx_ON_TAP');
+                  logFirebaseEvent('Row_launch_u_r_l');
                   await launchURL('https://karaokehunt.com');
                 },
                 child: Row(

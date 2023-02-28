@@ -1,7 +1,9 @@
+import '/components/loading_song_database_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -103,6 +105,8 @@ class _EmptySearchComponentWidgetState
           padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
           child: FFButtonWidget(
             onPressed: () async {
+              logFirebaseEvent('EMPTY_SEARCH_COMPONENT_REQUEST_SONG_BTN_');
+              logFirebaseEvent('Button_launch_u_r_l');
               await launchURL('https://karaokenerds.com/Request/New');
             },
             text: 'Request Song',
@@ -151,22 +155,40 @@ class _EmptySearchComponentWidgetState
           padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
           child: FFButtonWidget(
             onPressed: () async {
+              logFirebaseEvent('EMPTY_SEARCH_COMPONENT_UPDATE_SONG_DATAB');
+              logFirebaseEvent('Button_bottom_sheet');
+              showModalBottomSheet(
+                isScrollControlled: true,
+                backgroundColor: Colors.transparent,
+                isDismissible: false,
+                enableDrag: false,
+                context: context,
+                builder: (context) {
+                  return Padding(
+                    padding: MediaQuery.of(context).viewInsets,
+                    child: Container(
+                      height: 300.0,
+                      child: LoadingSongDatabaseWidget(),
+                    ),
+                  );
+                },
+              ).then((value) => setState(() {}));
+
+              logFirebaseEvent('Button_update_app_state');
+              setState(() {
+                FFAppState().addToSongsdb(functions.placeholderSongDB()!.first);
+              });
+              logFirebaseEvent('Button_wait__delay');
+              await Future.delayed(const Duration(milliseconds: 1000));
+              logFirebaseEvent('Button_custom_action');
               await actions.fetchKaraokeSongDBGzip();
+              logFirebaseEvent('Button_wait__delay');
+              await Future.delayed(const Duration(milliseconds: 1000));
+              logFirebaseEvent('Button_bottom_sheet');
+              Navigator.pop(context);
+              logFirebaseEvent('Button_navigate_to');
 
               context.pushNamed('Search');
-
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(
-                    'Updated database, now contains ${FFAppState().songsdb.length.toString()} karaoke songs!',
-                    style: TextStyle(
-                      color: FlutterFlowTheme.of(context).primaryText,
-                    ),
-                  ),
-                  duration: Duration(milliseconds: 4000),
-                  backgroundColor: Color(0x00000000),
-                ),
-              );
             },
             text: 'Update Song Database',
             options: FFButtonOptions(

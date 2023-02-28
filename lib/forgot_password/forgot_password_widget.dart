@@ -26,6 +26,8 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
     super.initState();
     _model = createModel(context, () => ForgotPasswordModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'ForgotPassword'});
     _model.phoneNumberController ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -58,6 +60,8 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
             size: 30.0,
           ),
           onPressed: () async {
+            logFirebaseEvent('FORGOT_PASSWORD_arrow_back_rounded_ICN_O');
+            logFirebaseEvent('IconButton_navigate_back');
             context.pop();
           },
         ),
@@ -153,6 +157,8 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
             child: FFButtonWidget(
               onPressed: () async {
+                logFirebaseEvent('FORGOT_PASSWORD_PAGE_Button-Login_ON_TAP');
+                logFirebaseEvent('Button-Login_auth');
                 if (_model.phoneNumberController.text.isEmpty) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(

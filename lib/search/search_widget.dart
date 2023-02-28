@@ -31,9 +31,17 @@ class _SearchWidgetState extends State<SearchWidget> {
     super.initState();
     _model = createModel(context, () => SearchModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Search'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (FFAppState().songsdb.length == 0) {
+      logFirebaseEvent('SEARCH_PAGE_Search_ON_PAGE_LOAD');
+      if ((getJsonField(
+                FFAppState().songsdb.first,
+                r'''$.Title''',
+              ) ==
+              'Song Name') ||
+          (FFAppState().songsdb.length <= 10)) {
+        logFirebaseEvent('Search_bottom_sheet');
         showModalBottomSheet(
           isScrollControlled: true,
           backgroundColor: Colors.transparent,
@@ -51,9 +59,18 @@ class _SearchWidgetState extends State<SearchWidget> {
           },
         ).then((value) => setState(() {}));
 
+        logFirebaseEvent('Search_update_app_state');
+        setState(() {
+          FFAppState().songsdb = functions.placeholderSongDB()!.toList();
+        });
+        logFirebaseEvent('Search_wait__delay');
+        await Future.delayed(const Duration(milliseconds: 1000));
+        logFirebaseEvent('Search_custom_action');
         await actions.fetchKaraokeSongDBGzip();
-
-        context.pushNamed('Search');
+        logFirebaseEvent('Search_wait__delay');
+        await Future.delayed(const Duration(milliseconds: 1000));
+        logFirebaseEvent('Search_bottom_sheet');
+        Navigator.pop(context);
       }
     });
 
@@ -115,9 +132,15 @@ class _SearchWidgetState extends State<SearchWidget> {
                     controller: _model.songSearchInputController,
                     onChanged: (_) => EasyDebounce.debounce(
                       '_model.songSearchInputController',
-                      Duration(milliseconds: 1000),
+                      Duration(milliseconds: 500),
                       () => setState(() {}),
                     ),
+                    onFieldSubmitted: (_) async {
+                      logFirebaseEvent(
+                          'SEARCH_SongSearchInput_ON_TEXTFIELD_SUBM');
+                      logFirebaseEvent('SongSearchInput_wait__delay');
+                      await Future.delayed(const Duration(milliseconds: 500));
+                    },
                     obscureText: false,
                     decoration: InputDecoration(
                       hintText: 'Song, artist or karaoke brand...',
@@ -170,7 +193,13 @@ class _SearchWidgetState extends State<SearchWidget> {
                                 )
                               : null,
                     ),
-                    style: FlutterFlowTheme.of(context).bodyText1,
+                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                          fontFamily:
+                              FlutterFlowTheme.of(context).bodyText1Family,
+                          color: FlutterFlowTheme.of(context).grayIcon,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).bodyText1Family),
+                        ),
                     maxLines: null,
                     validator: _model.songSearchInputControllerValidator
                         .asValidator(context),
@@ -178,7 +207,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                 ),
                 Container(
                   width: double.infinity,
-                  height: 660.0,
+                  height: MediaQuery.of(context).size.height * 0.78,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),
@@ -386,10 +415,16 @@ class _SearchWidgetState extends State<SearchWidget> {
                                           size: 30.0,
                                         ),
                                         onPressed: () async {
+                                          logFirebaseEvent(
+                                              'SEARCH_PAGE_add_circle_ICN_ON_TAP');
+                                          logFirebaseEvent(
+                                              'IconButton_update_app_state');
                                           setState(() {
                                             FFAppState()
                                                 .addToPlaylist(songListItem);
                                           });
+                                          logFirebaseEvent(
+                                              'IconButton_bottom_sheet');
                                           await showModalBottomSheet(
                                             isScrollControlled: true,
                                             backgroundColor: Colors.transparent,
@@ -411,6 +446,14 @@ class _SearchWidgetState extends State<SearchWidget> {
                                               );
                                             },
                                           ).then((value) => setState(() {}));
+
+                                          logFirebaseEvent(
+                                              'IconButton_wait__delay');
+                                          await Future.delayed(const Duration(
+                                              milliseconds: 2000));
+                                          logFirebaseEvent(
+                                              'IconButton_bottom_sheet');
+                                          Navigator.pop(context);
                                         },
                                       ),
                                     ],
