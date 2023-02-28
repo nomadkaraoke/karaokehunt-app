@@ -102,6 +102,9 @@ class _EmptyPlaylistComponentWidgetState
           padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
           child: FFButtonWidget(
             onPressed: () async {
+              logFirebaseEvent('EMPTY_PLAYLIST_COMPONENT_SONG_SEARCH_BTN');
+              logFirebaseEvent('Button_navigate_to');
+
               context.pushNamed(
                 'Search',
                 extra: <String, dynamic>{

@@ -26,6 +26,8 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
     super.initState();
     _model = createModel(context, () => ChangePasswordModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'ChangePassword'});
     _model.emailAddressController ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -58,6 +60,8 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
             size: 30.0,
           ),
           onPressed: () async {
+            logFirebaseEvent('CHANGE_PASSWORD_arrow_back_rounded_ICN_O');
+            logFirebaseEvent('IconButton_navigate_back');
             context.pop();
           },
         ),
@@ -153,6 +157,8 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
             child: FFButtonWidget(
               onPressed: () async {
+                logFirebaseEvent('CHANGE_PASSWORD_PAGE_Button-Login_ON_TAP');
+                logFirebaseEvent('Button-Login_auth');
                 if (_model.emailAddressController.text.isEmpty) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(

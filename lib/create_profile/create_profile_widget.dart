@@ -1,11 +1,13 @@
 import '/auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/components/loading_song_database_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_media.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,9 +32,12 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
     super.initState();
     _model = createModel(context, () => CreateProfileModel());
 
-    _model.yourNameController ??= TextEditingController();
-    _model.phoneNumberController ??= TextEditingController();
-    _model.userNameController ??= TextEditingController();
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'CreateProfile'});
+    _model.emailController ??= TextEditingController(text: currentUserEmail);
+    _model.displayNameController ??= TextEditingController();
+    _model.phoneController ??= TextEditingController();
+    _model.usernameController ??= TextEditingController();
     _model.bioController ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -65,6 +70,8 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
             size: 30.0,
           ),
           onPressed: () async {
+            logFirebaseEvent('CREATE_PROFILE_arrow_back_rounded_ICN_ON');
+            logFirebaseEvent('IconButton_navigate_back');
             context.pop();
           },
         ),
@@ -110,7 +117,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                         children: [
                           Expanded(
                             child: Text(
-                              'Fill out your profile now to complete setup of your profile.',
+                              'Fill out your profile now to complete setup. \n\nAll fields are optional, they are here just for personalisation and social / group features only!',
                               style: FlutterFlowTheme.of(context).bodyText2,
                             ),
                           ),
@@ -122,6 +129,10 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
                       child: InkWell(
                         onTap: () async {
+                          logFirebaseEvent(
+                              'CREATE_PROFILE_Container_ezqkrhcj_ON_TAP');
+                          logFirebaseEvent(
+                              'Container_upload_media_to_firebase');
                           final selectedMedia =
                               await selectMediaWithSourceBottomSheet(
                             context: context,
@@ -182,6 +193,34 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                               return;
                             }
                           }
+
+                          logFirebaseEvent('Container_show_snack_bar');
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                _model.uploadedFileUrl,
+                                style: TextStyle(
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
+                              ),
+                              duration: Duration(milliseconds: 4000),
+                              backgroundColor: Color(0x00000000),
+                              action: SnackBarAction(
+                                label: 'Open URL',
+                                textColor: Color(0x00000000),
+                                onPressed: () async {
+                                  await launchURL(_model.uploadedFileUrl);
+                                },
+                              ),
+                            ),
+                          );
+                          logFirebaseEvent('Container_backend_call');
+
+                          final usersUpdateData = createUsersRecordData(
+                            photoUrl: _model.uploadedFileUrl,
+                          );
+                          await currentUserReference!.update(usersUpdateData);
                         },
                         child: Container(
                           width: 120.0,
@@ -209,7 +248,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                             child: Image.network(
                               valueOrDefault<String>(
                                 _model.uploadedFileUrl,
-                                ' https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/7dvyeuxvy2dg/addUser@2x.png',
+                                'https://eu.ui-avatars.com/api/?size=250&name=Guest',
                               ),
                             ),
                           ),
@@ -224,7 +263,80 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                         children: [
                           Expanded(
                             child: TextFormField(
-                              controller: _model.yourNameController,
+                              controller: _model.emailController,
+                              readOnly: true,
+                              obscureText: false,
+                              decoration: InputDecoration(
+                                labelText: 'Your Email',
+                                labelStyle:
+                                    FlutterFlowTheme.of(context).subtitle2,
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(4.0),
+                                    topRight: Radius.circular(4.0),
+                                  ),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(4.0),
+                                    topRight: Radius.circular(4.0),
+                                  ),
+                                ),
+                                errorBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(4.0),
+                                    topRight: Radius.circular(4.0),
+                                  ),
+                                ),
+                                focusedErrorBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0x00000000),
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(4.0),
+                                    topRight: Radius.circular(4.0),
+                                  ),
+                                ),
+                              ),
+                              style:
+                                  FlutterFlowTheme.of(context).title2.override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .title2Family,
+                                        color: Color(0xFFFFB54C),
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .title2Family),
+                                      ),
+                              validator: _model.emailControllerValidator
+                                  .asValidator(context),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 24.0, 0.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Expanded(
+                            child: TextFormField(
+                              controller: _model.displayNameController,
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelText: 'Your Name',
@@ -272,7 +384,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                                 ),
                               ),
                               style: FlutterFlowTheme.of(context).title2,
-                              validator: _model.yourNameControllerValidator
+                              validator: _model.displayNameControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -287,7 +399,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                         children: [
                           Expanded(
                             child: TextFormField(
-                              controller: _model.phoneNumberController,
+                              controller: _model.phoneController,
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelText: 'Your Phone Number',
@@ -336,7 +448,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                               ),
                               style: FlutterFlowTheme.of(context).title2,
                               keyboardType: TextInputType.phone,
-                              validator: _model.phoneNumberControllerValidator
+                              validator: _model.phoneControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -354,10 +466,10 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 12.0, 0.0, 0.0),
                               child: TextFormField(
-                                controller: _model.userNameController,
+                                controller: _model.usernameController,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelText: 'UserName',
+                                  labelText: 'Username',
                                   labelStyle:
                                       FlutterFlowTheme.of(context).bodyText2,
                                   enabledBorder: UnderlineInputBorder(
@@ -402,7 +514,7 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                                   ),
                                 ),
                                 style: FlutterFlowTheme.of(context).title3,
-                                validator: _model.userNameControllerValidator
+                                validator: _model.usernameControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -499,14 +611,49 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
                       child: FFButtonWidget(
                         onPressed: () async {
+                          logFirebaseEvent(
+                              'CREATE_PROFILE_COMPLETE_SETUP_BTN_ON_TAP');
+                          logFirebaseEvent('Button_backend_call');
+
                           final usersUpdateData = createUsersRecordData(
-                            displayName: _model.yourNameController.text,
-                            userName: _model.userNameController.text,
+                            displayName: _model.displayNameController.text,
                             bio: _model.bioController.text,
-                            profilePhotoUrl: _model.uploadedFileUrl,
-                            phoneNumber: currentPhoneNumber,
+                            phoneNumber: _model.phoneController.text,
+                            username: _model.usernameController.text,
                           );
                           await currentUserReference!.update(usersUpdateData);
+                          logFirebaseEvent('Button_bottom_sheet');
+                          showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            isDismissible: false,
+                            enableDrag: false,
+                            context: context,
+                            builder: (context) {
+                              return Padding(
+                                padding: MediaQuery.of(context).viewInsets,
+                                child: Container(
+                                  height: 300.0,
+                                  child: LoadingSongDatabaseWidget(),
+                                ),
+                              );
+                            },
+                          ).then((value) => setState(() {}));
+
+                          logFirebaseEvent('Button_wait__delay');
+                          await Future.delayed(
+                              const Duration(milliseconds: 1000));
+                          logFirebaseEvent('Button_custom_action');
+                          await actions.fetchKaraokeSongDBGzip();
+                          logFirebaseEvent('Button_wait__delay');
+                          await Future.delayed(
+                              const Duration(milliseconds: 1000));
+                          logFirebaseEvent('Button_bottom_sheet');
+                          Navigator.pop(context);
+                          logFirebaseEvent('Button_wait__delay');
+                          await Future.delayed(
+                              const Duration(milliseconds: 500));
+                          logFirebaseEvent('Button_navigate_to');
 
                           context.pushNamed('Search');
                         },

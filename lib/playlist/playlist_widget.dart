@@ -29,6 +29,7 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
     super.initState();
     _model = createModel(context, () => PlaylistModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Playlist'});
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -259,6 +260,10 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                                                 size: 30.0,
                                               ),
                                               onPressed: () async {
+                                                logFirebaseEvent(
+                                                    'PLAYLIST_PAGE_youtube_ICN_ON_TAP');
+                                                logFirebaseEvent(
+                                                    'IconButton_launch_u_r_l');
                                                 await launchURL(getJsonField(
                                                   playlistItem,
                                                   r'''$.Watch''',
@@ -275,10 +280,16 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                                               size: 30.0,
                                             ),
                                             onPressed: () async {
+                                              logFirebaseEvent(
+                                                  'PLAYLIST_PAGE_remove_circle_ICN_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'IconButton_update_app_state');
                                               setState(() {
                                                 FFAppState().removeFromPlaylist(
                                                     playlistItem);
                                               });
+                                              logFirebaseEvent(
+                                                  'IconButton_bottom_sheet');
                                               await showModalBottomSheet(
                                                 isScrollControlled: true,
                                                 backgroundColor:
@@ -303,6 +314,15 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                                                 },
                                               ).then(
                                                   (value) => setState(() {}));
+
+                                              logFirebaseEvent(
+                                                  'IconButton_wait__delay');
+                                              await Future.delayed(
+                                                  const Duration(
+                                                      milliseconds: 2000));
+                                              logFirebaseEvent(
+                                                  'IconButton_bottom_sheet');
+                                              Navigator.pop(context);
                                             },
                                           ),
                                         ],
@@ -325,6 +345,9 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                       EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
                   child: FFButtonWidget(
                     onPressed: () async {
+                      logFirebaseEvent(
+                          'PLAYLIST_🗑️_CLEAR_PLAYLIST_BTN_ON_TAP');
+                      logFirebaseEvent('Button_bottom_sheet');
                       await showModalBottomSheet(
                         isScrollControlled: true,
                         backgroundColor: Colors.transparent,

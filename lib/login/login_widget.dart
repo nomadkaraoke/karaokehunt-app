@@ -27,6 +27,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     super.initState();
     _model = createModel(context, () => LoginModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Login'});
     _model.emailController ??= TextEditingController();
     _model.passwordController ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -60,6 +61,8 @@ class _LoginWidgetState extends State<LoginWidget> {
             size: 30.0,
           ),
           onPressed: () async {
+            logFirebaseEvent('LOGIN_PAGE_arrow_back_rounded_ICN_ON_TAP');
+            logFirebaseEvent('IconButton_navigate_back');
             context.pop();
           },
         ),
@@ -152,6 +155,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                               ),
                               FFButtonWidget(
                                 onPressed: () async {
+                                  logFirebaseEvent(
+                                      'LOGIN_PAGE_CREATE_ACCOUNT_BTN_ON_TAP');
+                                  logFirebaseEvent('Button_navigate_to');
+
                                   context.pushNamed(
                                     'Register',
                                     extra: <String, dynamic>{
@@ -285,6 +292,23 @@ class _LoginWidgetState extends State<LoginWidget> {
                               8.0, 0.0, 8.0, 0.0),
                           child: TextFormField(
                             controller: _model.passwordController,
+                            onFieldSubmitted: (_) async {
+                              logFirebaseEvent(
+                                  'LOGIN_PAGE_password_ON_TEXTFIELD_SUBMIT');
+                              logFirebaseEvent('password_auth');
+                              GoRouter.of(context).prepareAuthEvent();
+
+                              final user = await signInWithEmail(
+                                context,
+                                _model.emailController.text,
+                                _model.passwordController.text,
+                              );
+                              if (user == null) {
+                                return;
+                              }
+
+                              context.goNamedAuth('Search', mounted);
+                            },
                             autofillHints: [AutofillHints.password],
                             obscureText: !_model.passwordVisibility,
                             decoration: InputDecoration(
@@ -355,6 +379,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 0.0, 12.0, 0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
+                                logFirebaseEvent(
+                                    'LOGIN_PAGE_FORGOT_PASSWORD?_BTN_ON_TAP');
+                                logFirebaseEvent('Button_navigate_to');
+
                                 context.pushNamed('ForgotPassword');
                               },
                               text: 'Forgot Password?',
@@ -394,6 +422,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 0.0, 12.0, 0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
+                                logFirebaseEvent('LOGIN_PAGE_LOGIN_BTN_ON_TAP');
+                                logFirebaseEvent('Button_auth');
                                 GoRouter.of(context).prepareAuthEvent();
 
                                 final user = await signInWithEmail(

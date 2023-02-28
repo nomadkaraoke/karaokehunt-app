@@ -128,6 +128,9 @@ class _SearchPageAddTrackSheetWidgetState
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
+                          logFirebaseEvent(
+                              'SEARCH_ADD_TRACK_SHEET_DISMISS_BTN_ON_TA');
+                          logFirebaseEvent('Button_bottom_sheet');
                           Navigator.pop(context);
                         },
                         text: 'Dismiss',
@@ -154,6 +157,10 @@ class _SearchPageAddTrackSheetWidgetState
                           EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
+                          logFirebaseEvent(
+                              'SEARCH_ADD_TRACK_SHEET_VIEW_PLAYLIST_BTN');
+                          logFirebaseEvent('Button_navigate_to');
+
                           context.pushNamed(
                             'Playlist',
                             extra: <String, dynamic>{

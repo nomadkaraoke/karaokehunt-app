@@ -128,6 +128,9 @@ class _PlaylistRemoveTrackSheetWidgetState
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
+                          logFirebaseEvent(
+                              'PLAYLIST_REMOVE_TRACK_SHEET_DISMISS_BTN_');
+                          logFirebaseEvent('Button_bottom_sheet');
                           Navigator.pop(context);
                         },
                         text: 'Dismiss',
@@ -154,6 +157,10 @@ class _PlaylistRemoveTrackSheetWidgetState
                           EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
+                          logFirebaseEvent(
+                              'PLAYLIST_REMOVE_TRACK_SHEET_SONG_SEARCH_');
+                          logFirebaseEvent('Button_navigate_to');
+
                           context.pushNamed(
                             'Search',
                             extra: <String, dynamic>{

@@ -27,6 +27,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
     super.initState();
     _model = createModel(context, () => RegisterModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Register'});
     _model.emailController ??= TextEditingController();
     _model.passwordController ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -60,6 +61,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
             size: 30.0,
           ),
           onPressed: () async {
+            logFirebaseEvent('REGISTER_arrow_back_rounded_ICN_ON_TAP');
+            logFirebaseEvent('IconButton_navigate_back');
             context.pop();
           },
         ),
@@ -153,6 +156,10 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               ),
                               FFButtonWidget(
                                 onPressed: () async {
+                                  logFirebaseEvent(
+                                      'REGISTER_PAGE_LOGIN_BTN_ON_TAP');
+                                  logFirebaseEvent('Button_navigate_to');
+
                                   context.pushNamed(
                                     'Login',
                                     extra: <String, dynamic>{
@@ -220,6 +227,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               8.0, 0.0, 8.0, 0.0),
                           child: TextFormField(
                             controller: _model.emailController,
+                            autofillHints: [AutofillHints.email],
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: 'Your email...',
@@ -284,6 +292,26 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                               8.0, 0.0, 8.0, 0.0),
                           child: TextFormField(
                             controller: _model.passwordController,
+                            onFieldSubmitted: (_) async {
+                              logFirebaseEvent(
+                                  'REGISTER_password_ON_TEXTFIELD_SUBMIT');
+                              logFirebaseEvent('password_auth');
+                              GoRouter.of(context).prepareAuthEvent();
+
+                              final user = await createAccountWithEmail(
+                                context,
+                                _model.emailController.text,
+                                _model.passwordController.text,
+                              );
+                              if (user == null) {
+                                return;
+                              }
+
+                              logFirebaseEvent('password_navigate_to');
+
+                              context.pushNamedAuth('CreateProfile', mounted);
+                            },
+                            autofillHints: [AutofillHints.password],
                             obscureText: !_model.passwordVisibility,
                             decoration: InputDecoration(
                               labelText: 'Password',
@@ -354,6 +382,9 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                 0.0, 12.0, 0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
+                                logFirebaseEvent(
+                                    'REGISTER_PAGE_CREATE_ACCOUNT_BTN_ON_TAP');
+                                logFirebaseEvent('Button_auth');
                                 GoRouter.of(context).prepareAuthEvent();
 
                                 final user = await createAccountWithEmail(
@@ -364,6 +395,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                 if (user == null) {
                                   return;
                                 }
+
+                                logFirebaseEvent('Button_navigate_to');
 
                                 context.pushNamedAuth('CreateProfile', mounted);
                               },
