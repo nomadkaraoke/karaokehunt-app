@@ -25,6 +25,15 @@ class FFAppState extends ChangeNotifier {
           }
         }).toList() ??
         _playlist;
+    _songsdb = prefs.getStringList('ff_songsdb')?.map((x) {
+          try {
+            return jsonDecode(x);
+          } catch (e) {
+            print("Can't decode persisted json. Error: $e.");
+            return {};
+          }
+        }).toList() ??
+        _songsdb;
   }
 
   void update(VoidCallback callback) {
@@ -58,6 +67,32 @@ class FFAppState extends ChangeNotifier {
     _playlist.removeAt(_index);
     prefs.setStringList(
         'ff_playlist', _playlist.map((x) => jsonEncode(x)).toList());
+  }
+
+  List<dynamic> _songsdb = [];
+  List<dynamic> get songsdb => _songsdb;
+  set songsdb(List<dynamic> _value) {
+    _songsdb = _value;
+    prefs.setStringList(
+        'ff_songsdb', _value.map((x) => jsonEncode(x)).toList());
+  }
+
+  void addToSongsdb(dynamic _value) {
+    _songsdb.add(_value);
+    prefs.setStringList(
+        'ff_songsdb', _songsdb.map((x) => jsonEncode(x)).toList());
+  }
+
+  void removeFromSongsdb(dynamic _value) {
+    _songsdb.remove(_value);
+    prefs.setStringList(
+        'ff_songsdb', _songsdb.map((x) => jsonEncode(x)).toList());
+  }
+
+  void removeAtIndexFromSongsdb(int _index) {
+    _songsdb.removeAt(_index);
+    prefs.setStringList(
+        'ff_songsdb', _songsdb.map((x) => jsonEncode(x)).toList());
   }
 }
 

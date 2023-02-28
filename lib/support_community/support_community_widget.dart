@@ -1,6 +1,6 @@
-import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -48,13 +48,13 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
-          borderRadius: 30,
-          borderWidth: 1,
-          buttonSize: 60,
+          borderRadius: 30.0,
+          borderWidth: 1.0,
+          buttonSize: 60.0,
           icon: Icon(
             Icons.arrow_back_rounded,
             color: Colors.white,
-            size: 30,
+            size: 30.0,
           ),
           onPressed: () async {
             context.pop();
@@ -64,27 +64,27 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
           'Community',
           style: FlutterFlowTheme.of(context).title1.override(
                 fontFamily: FlutterFlowTheme.of(context).title1Family,
-                fontSize: 22,
+                fontSize: 22.0,
                 useGoogleFonts: GoogleFonts.asMap()
                     .containsKey(FlutterFlowTheme.of(context).title1Family),
               ),
         ),
         actions: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 7, 0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 7.0, 0.0),
             child: Image.asset(
               'assets/images/karaoke-hunt-logo-rect-hq.png',
-              width: 150,
-              height: 150,
+              width: 150.0,
+              height: 150.0,
               fit: BoxFit.contain,
             ),
           ),
         ],
         centerTitle: false,
-        elevation: 2,
+        elevation: 2.0,
       ),
       body: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(20, 20, 10, 0),
+        padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 10.0, 0.0),
         child: ListView(
           padding: EdgeInsets.zero,
           scrollDirection: Axis.vertical,
@@ -95,9 +95,9 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
               scrollDirection: Axis.vertical,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                   child: Container(
-                    width: 100,
+                    width: 100.0,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                     ),
@@ -108,9 +108,9 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                   child: Container(
-                    width: 100,
+                    width: 100.0,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                     ),
@@ -128,9 +128,9 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                   child: Container(
-                    width: 100,
+                    width: 100.0,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                     ),
@@ -148,7 +148,7 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 3, 0, 3),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
                   child: InkWell(
                     onTap: () async {
                       await launchUrl(Uri(
@@ -167,11 +167,12 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              10.0, 0.0, 10.0, 0.0),
                           child: Icon(
                             Icons.email,
                             color: Color(0xFFFF79CB),
-                            size: 24,
+                            size: 24.0,
                           ),
                         ),
                         Text(
@@ -183,7 +184,7 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 3, 0, 3),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
                   child: InkWell(
                     onTap: () async {
                       await launchURL('tel:+18036363267');
@@ -193,11 +194,12 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              10.0, 0.0, 10.0, 0.0),
                           child: Icon(
                             Icons.phone,
                             color: Color(0xFFFF79CB),
-                            size: 24,
+                            size: 24.0,
                           ),
                         ),
                         Text(
@@ -209,7 +211,7 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 3, 0, 3),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 3.0),
                   child: InkWell(
                     onTap: () async {
                       await launchURL('https://www.instagram.com/beveradb/');
@@ -219,11 +221,12 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(13, 0, 10, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              13.0, 0.0, 10.0, 0.0),
                           child: FaIcon(
                             FontAwesomeIcons.instagram,
                             color: Color(0xFFFF79CB),
-                            size: 24,
+                            size: 24.0,
                           ),
                         ),
                         Text(
@@ -237,9 +240,9 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
               ],
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
               child: Container(
-                width: 100,
+                width: 100.0,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
@@ -256,7 +259,7 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
               ),
             ),
             Container(
-              width: 100,
+              width: 100.0,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
@@ -271,13 +274,14 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
                   children: [
                     Image.asset(
                       'assets/images/divebar-logo-transparent.png',
-                      width: 120,
-                      height: 60,
+                      width: 120.0,
+                      height: 60.0,
                       fit: BoxFit.contain,
                     ),
                     Expanded(
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            10.0, 10.0, 10.0, 10.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -294,7 +298,7 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
                                   .bodyText2
                                   .override(
                                     fontFamily: 'Open Sans',
-                                    fontSize: 12,
+                                    fontSize: 12.0,
                                     fontWeight: FontWeight.normal,
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
@@ -319,7 +323,7 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
               ),
             ),
             Container(
-              width: 100,
+              width: 100.0,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
@@ -334,13 +338,14 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
                   children: [
                     Image.asset(
                       'assets/images/karaoke-nerds.png',
-                      width: 120,
-                      height: 100,
+                      width: 120.0,
+                      height: 100.0,
                       fit: BoxFit.contain,
                     ),
                     Expanded(
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            10.0, 10.0, 10.0, 10.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -357,7 +362,7 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
                                   .bodyText2
                                   .override(
                                     fontFamily: 'Open Sans',
-                                    fontSize: 12,
+                                    fontSize: 12.0,
                                     fontWeight: FontWeight.normal,
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
@@ -382,7 +387,7 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
               ),
             ),
             Container(
-              width: 100,
+              width: 100.0,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
@@ -397,13 +402,14 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
                   children: [
                     Image.asset(
                       'assets/images/karaoke-hunt-logo-rect-3000px-transparent.png',
-                      width: 120,
-                      height: 100,
+                      width: 120.0,
+                      height: 100.0,
                       fit: BoxFit.contain,
                     ),
                     Expanded(
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            10.0, 10.0, 10.0, 10.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -420,7 +426,7 @@ class _SupportCommunityWidgetState extends State<SupportCommunityWidget> {
                                   .bodyText2
                                   .override(
                                     fontFamily: 'Open Sans',
-                                    fontSize: 12,
+                                    fontSize: 12.0,
                                     fontWeight: FontWeight.normal,
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(

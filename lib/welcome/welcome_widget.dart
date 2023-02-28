@@ -1,6 +1,6 @@
-import '../flutter_flow/flutter_flow_theme.dart';
-import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
@@ -52,14 +52,14 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
           'Welcome!',
           style: FlutterFlowTheme.of(context).title1.override(
                 fontFamily: FlutterFlowTheme.of(context).title1Family,
-                fontSize: 25,
+                fontSize: 25.0,
                 useGoogleFonts: GoogleFonts.asMap()
                     .containsKey(FlutterFlowTheme.of(context).title1Family),
               ),
         ),
         actions: [],
         centerTitle: false,
-        elevation: 2,
+        elevation: 2.0,
       ),
       body: SafeArea(
         child: GestureDetector(
@@ -70,11 +70,12 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
               Expanded(
                 child: Container(
                   width: double.infinity,
-                  height: 500,
+                  height: 500.0,
                   child: Stack(
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 50),
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 50.0),
                         child: PageView(
                           controller: _model.pageViewController ??=
                               PageController(initialPage: 0),
@@ -82,20 +83,20 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                           children: [
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  12, 12, 12, 12),
+                                  12.0, 12.0, 12.0, 12.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Image.asset(
                                     'assets/images/karaoke-hunt-logo-rect-3000px-transparent.png',
-                                    width: 300,
-                                    height: 300,
+                                    width: 300.0,
+                                    height: 300.0,
                                     fit: BoxFit.contain,
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        16, 8, 16, 0),
+                                        16.0, 8.0, 16.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -109,7 +110,7 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        16, 8, 16, 0),
+                                        16.0, 8.0, 16.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -128,17 +129,17 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                             ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  12, 12, 12, 12),
+                                  12.0, 12.0, 12.0, 12.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 0, 45),
+                                        0.0, 0.0, 0.0, 45.0),
                                     child: Container(
                                       width: double.infinity,
-                                      height: 250,
+                                      height: 250.0,
                                       decoration: BoxDecoration(),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -154,27 +155,29 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                                             children: [
                                               Image.asset(
                                                 'assets/images/spotify-logo.png',
-                                                width: 100,
-                                                height: 100,
+                                                width: 100.0,
+                                                height: 100.0,
                                                 fit: BoxFit.contain,
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(7, 0, 0, 0),
+                                                    .fromSTEB(
+                                                        7.0, 0.0, 0.0, 0.0),
                                                 child: Image.asset(
                                                   'assets/images/apple-music-white.png',
-                                                  width: 100,
-                                                  height: 100,
+                                                  width: 100.0,
+                                                  height: 100.0,
                                                   fit: BoxFit.contain,
                                                 ),
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
-                                                    .fromSTEB(10, 0, 10, 0),
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 10.0, 0.0),
                                                 child: Image.asset(
                                                   'assets/images/youtube-button.png',
-                                                  width: 70,
-                                                  height: 100,
+                                                  width: 70.0,
+                                                  height: 100.0,
                                                   fit: BoxFit.contain,
                                                 ),
                                               ),
@@ -187,14 +190,14 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                                             children: [
                                               Image.asset(
                                                 'assets/images/am4a-logo-white-1400px.png',
-                                                width: 100,
-                                                height: 60,
+                                                width: 100.0,
+                                                height: 60.0,
                                                 fit: BoxFit.contain,
                                               ),
                                               Image.asset(
                                                 'assets/images/last-fm-logo.png',
-                                                width: 100,
-                                                height: 60,
+                                                width: 100.0,
+                                                height: 60.0,
                                                 fit: BoxFit.contain,
                                               ),
                                             ],
@@ -205,7 +208,7 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        16, 8, 16, 0),
+                                        16.0, 8.0, 16.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -219,7 +222,7 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        16, 8, 16, 0),
+                                        16.0, 8.0, 16.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -238,24 +241,24 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                             ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  12, 12, 12, 12),
+                                  12.0, 12.0, 12.0, 12.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 0, 10),
+                                        0.0, 0.0, 0.0, 10.0),
                                     child: Image.asset(
                                       'assets/images/songbook-orchestra-book-with-tone-and-piano-design-vector-pinkblue.png',
-                                      width: 300,
-                                      height: 300,
+                                      width: 300.0,
+                                      height: 300.0,
                                       fit: BoxFit.contain,
                                     ),
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        16, 8, 16, 0),
+                                        16.0, 8.0, 16.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -269,7 +272,7 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        16, 8, 16, 0),
+                                        16.0, 8.0, 16.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -288,24 +291,24 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                             ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  12, 12, 12, 12),
+                                  12.0, 12.0, 12.0, 12.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 0, 10),
+                                        0.0, 0.0, 0.0, 10.0),
                                     child: Image.asset(
                                       'assets/images/emoji-feedback-scale-with-stars-line-icon-customers-mood-from-happy-good-face-to-angry-and-sad-concept-emoticon-feedback-level-survey-of-customer-satisfaction-isolated-illustration-vector.png',
-                                      width: 300,
-                                      height: 300,
+                                      width: 300.0,
+                                      height: 300.0,
                                       fit: BoxFit.contain,
                                     ),
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        16, 8, 16, 0),
+                                        16.0, 8.0, 16.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -319,7 +322,7 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        16, 8, 16, 0),
+                                        16.0, 8.0, 16.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -338,32 +341,32 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                             ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  12, 12, 12, 12),
+                                  12.0, 12.0, 12.0, 12.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 0, 0, 45),
+                                        0.0, 0.0, 0.0, 45.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 0, 10),
+                                                  0.0, 0.0, 0.0, 10.0),
                                           child: Image.asset(
                                             'assets/images/divebar-logo-transparent.png',
-                                            width: 300,
-                                            height: 100,
+                                            width: 300.0,
+                                            height: 100.0,
                                             fit: BoxFit.contain,
                                           ),
                                         ),
                                         Image.asset(
                                           'assets/images/karaoke-nerds.png',
-                                          width: 150,
-                                          height: 150,
+                                          width: 150.0,
+                                          height: 150.0,
                                           fit: BoxFit.cover,
                                         ),
                                       ],
@@ -371,7 +374,7 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        16, 8, 16, 0),
+                                        16.0, 8.0, 16.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -385,7 +388,7 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        16, 8, 16, 0),
+                                        16.0, 8.0, 16.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -406,9 +409,10 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0, 1),
+                        alignment: AlignmentDirectional(0.0, 1.0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 10.0),
                           child: smooth_page_indicator.SmoothPageIndicator(
                             controller: _model.pageViewController ??=
                                 PageController(initialPage: 0),
@@ -422,11 +426,11 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                               );
                             },
                             effect: smooth_page_indicator.ExpandingDotsEffect(
-                              expansionFactor: 2,
-                              spacing: 8,
-                              radius: 16,
-                              dotWidth: 16,
-                              dotHeight: 4,
+                              expansionFactor: 2.0,
+                              spacing: 8.0,
+                              radius: 16.0,
+                              dotWidth: 16.0,
+                              dotHeight: 4.0,
                               dotColor: FlutterFlowTheme.of(context).lineColor,
                               activeDotColor:
                                   FlutterFlowTheme.of(context).primaryText,
@@ -440,15 +444,18 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 16),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 16.0),
                 child: FFButtonWidget(
                   onPressed: () async {
                     context.pushNamed('Login');
                   },
                   text: 'Login',
                   options: FFButtonOptions(
-                    width: 300,
-                    height: 50,
+                    width: 300.0,
+                    height: 50.0,
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily:
@@ -457,24 +464,27 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
                               FlutterFlowTheme.of(context).subtitle2Family),
                         ),
-                    elevation: 2,
+                    elevation: 2.0,
                     borderSide: BorderSide(
                       color: Colors.transparent,
-                      width: 1,
+                      width: 1.0,
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
                 child: FFButtonWidget(
                   onPressed: () async {
                     context.pushNamed('Register');
                   },
                   text: 'Register',
                   options: FFButtonOptions(
-                    width: 300,
-                    height: 50,
+                    width: 300.0,
+                    height: 50.0,
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primaryText,
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily:
@@ -484,10 +494,10 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
                               FlutterFlowTheme.of(context).subtitle2Family),
                         ),
-                    elevation: 2,
+                    elevation: 2.0,
                     borderSide: BorderSide(
                       color: Colors.transparent,
-                      width: 1,
+                      width: 1.0,
                     ),
                   ),
                 ),
