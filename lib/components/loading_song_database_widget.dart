@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -72,40 +73,50 @@ class _LoadingSongDatabaseWidgetState extends State<LoadingSongDatabaseWidget> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(3.0, 0.0, 3.0, 0.0),
-              child: Container(
-                width: double.infinity,
-                height: 70.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                ),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
-                  child: Wrap(
-                    spacing: 0.0,
-                    runSpacing: 0.0,
-                    alignment: WrapAlignment.center,
-                    crossAxisAlignment: WrapCrossAlignment.start,
-                    direction: Axis.horizontal,
-                    runAlignment: WrapAlignment.center,
-                    verticalDirection: VerticalDirection.down,
-                    clipBehavior: Clip.none,
-                    children: [
-                      Text(
-                        'Song database downloading, please wait...',
-                        textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).bodyText1,
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+              child: Text(
+                'Song database downloading, please wait...',
+                textAlign: TextAlign.center,
+                style: FlutterFlowTheme.of(context).bodyText1,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+              child: Image.asset(
+                'assets/images/progress-indicator-transparent.gif',
+                width: 80.0,
+                height: 80.0,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
+              child: FFButtonWidget(
+                onPressed: () async {
+                  logFirebaseEvent('LOADING_SONG_DATABASE_DISMISS_BTN_ON_TAP');
+                  logFirebaseEvent('Button_bottom_sheet');
+                  Navigator.pop(context);
+                },
+                text: 'Dismiss',
+                options: FFButtonOptions(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(30.0, 20.0, 30.0, 20.0),
+                  iconPadding:
+                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                  color: FlutterFlowTheme.of(context).primaryBackground,
+                  textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                        fontFamily:
+                            FlutterFlowTheme.of(context).subtitle2Family,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).subtitle2Family),
                       ),
-                    ],
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                    width: 1.0,
                   ),
                 ),
               ),
-            ),
-            Image.asset(
-              'assets/images/progress-indicator-transparent.gif',
-              width: 100.0,
-              height: 100.0,
-              fit: BoxFit.cover,
             ),
           ],
         ),

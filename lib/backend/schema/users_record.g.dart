@@ -54,13 +54,6 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.userName;
-    if (value != null) {
-      result
-        ..add('userName')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
     value = object.bio;
     if (value != null) {
       result
@@ -68,17 +61,17 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.profilePhotoUrl;
-    if (value != null) {
-      result
-        ..add('profile_photo_url')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
     value = object.photoUrl;
     if (value != null) {
       result
         ..add('photo_url')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.username;
+    if (value != null) {
+      result
+        ..add('username')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -124,20 +117,16 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
           result.phoneNumber = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'userName':
-          result.userName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
         case 'bio':
           result.bio = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'profile_photo_url':
-          result.profilePhotoUrl = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
         case 'photo_url':
           result.photoUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'username':
+          result.username = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
         case 'Document__Reference__Field':
@@ -165,13 +154,11 @@ class _$UsersRecord extends UsersRecord {
   @override
   final String? phoneNumber;
   @override
-  final String? userName;
-  @override
   final String? bio;
   @override
-  final String? profilePhotoUrl;
-  @override
   final String? photoUrl;
+  @override
+  final String? username;
   @override
   final DocumentReference<Object?>? ffRef;
 
@@ -184,10 +171,9 @@ class _$UsersRecord extends UsersRecord {
       this.uid,
       this.createdTime,
       this.phoneNumber,
-      this.userName,
       this.bio,
-      this.profilePhotoUrl,
       this.photoUrl,
+      this.username,
       this.ffRef})
       : super._();
 
@@ -207,10 +193,9 @@ class _$UsersRecord extends UsersRecord {
         uid == other.uid &&
         createdTime == other.createdTime &&
         phoneNumber == other.phoneNumber &&
-        userName == other.userName &&
         bio == other.bio &&
-        profilePhotoUrl == other.profilePhotoUrl &&
         photoUrl == other.photoUrl &&
+        username == other.username &&
         ffRef == other.ffRef;
   }
 
@@ -223,16 +208,14 @@ class _$UsersRecord extends UsersRecord {
                     $jc(
                         $jc(
                             $jc(
-                                $jc(
-                                    $jc($jc(0, displayName.hashCode),
-                                        email.hashCode),
-                                    uid.hashCode),
-                                createdTime.hashCode),
-                            phoneNumber.hashCode),
-                        userName.hashCode),
+                                $jc($jc(0, displayName.hashCode),
+                                    email.hashCode),
+                                uid.hashCode),
+                            createdTime.hashCode),
+                        phoneNumber.hashCode),
                     bio.hashCode),
-                profilePhotoUrl.hashCode),
-            photoUrl.hashCode),
+                photoUrl.hashCode),
+            username.hashCode),
         ffRef.hashCode));
   }
 
@@ -244,10 +227,9 @@ class _$UsersRecord extends UsersRecord {
           ..add('uid', uid)
           ..add('createdTime', createdTime)
           ..add('phoneNumber', phoneNumber)
-          ..add('userName', userName)
           ..add('bio', bio)
-          ..add('profilePhotoUrl', profilePhotoUrl)
           ..add('photoUrl', photoUrl)
+          ..add('username', username)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -276,22 +258,17 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
   String? get phoneNumber => _$this._phoneNumber;
   set phoneNumber(String? phoneNumber) => _$this._phoneNumber = phoneNumber;
 
-  String? _userName;
-  String? get userName => _$this._userName;
-  set userName(String? userName) => _$this._userName = userName;
-
   String? _bio;
   String? get bio => _$this._bio;
   set bio(String? bio) => _$this._bio = bio;
 
-  String? _profilePhotoUrl;
-  String? get profilePhotoUrl => _$this._profilePhotoUrl;
-  set profilePhotoUrl(String? profilePhotoUrl) =>
-      _$this._profilePhotoUrl = profilePhotoUrl;
-
   String? _photoUrl;
   String? get photoUrl => _$this._photoUrl;
   set photoUrl(String? photoUrl) => _$this._photoUrl = photoUrl;
+
+  String? _username;
+  String? get username => _$this._username;
+  set username(String? username) => _$this._username = username;
 
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
@@ -309,10 +286,9 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
       _uid = $v.uid;
       _createdTime = $v.createdTime;
       _phoneNumber = $v.phoneNumber;
-      _userName = $v.userName;
       _bio = $v.bio;
-      _profilePhotoUrl = $v.profilePhotoUrl;
       _photoUrl = $v.photoUrl;
+      _username = $v.username;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -341,10 +317,9 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
             uid: uid,
             createdTime: createdTime,
             phoneNumber: phoneNumber,
-            userName: userName,
             bio: bio,
-            profilePhotoUrl: profilePhotoUrl,
             photoUrl: photoUrl,
+            username: username,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

@@ -113,6 +113,9 @@ class _PlaylistClearSheetWidgetState extends State<PlaylistClearSheetWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 5.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
+                          logFirebaseEvent(
+                              'PLAYLIST_CLEAR_SHEET_DISMISS_BTN_ON_TAP');
+                          logFirebaseEvent('Button_bottom_sheet');
                           Navigator.pop(context);
                         },
                         text: 'Dismiss',
@@ -139,9 +142,13 @@ class _PlaylistClearSheetWidgetState extends State<PlaylistClearSheetWidget> {
                           EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
+                          logFirebaseEvent(
+                              'PLAYLIST_CLEAR_SHEET_CLEAR_PLAYLIST_BTN_');
+                          logFirebaseEvent('Button_update_app_state');
                           setState(() {
                             FFAppState().playlist = [];
                           });
+                          logFirebaseEvent('Button_bottom_sheet');
                           Navigator.pop(context);
                         },
                         text: 'Clear Playlist',
