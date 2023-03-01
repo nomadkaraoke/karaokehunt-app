@@ -148,9 +148,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         builder: (context) => InkWell(
                           onTap: () async {
                             logFirebaseEvent(
-                                'EDIT_PROFILE_Container_li9zfvsu_ON_TAP');
+                                'EDIT_PROFILE_UserProfileImage_ON_TAP');
                             logFirebaseEvent(
-                                'Container_upload_media_to_firebase');
+                                'UserProfileImage_upload_media_to_firebas');
                             final selectedMedia =
                                 await selectMediaWithSourceBottomSheet(
                               context: context,
@@ -213,28 +213,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                               }
                             }
 
-                            logFirebaseEvent('Container_show_snack_bar');
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'Uploaded file URL: ${_model.uploadedFileUrl}',
-                                  style: TextStyle(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                  ),
-                                ),
-                                duration: Duration(milliseconds: 4000),
-                                backgroundColor: Color(0x00000000),
-                                action: SnackBarAction(
-                                  label: 'Open URL',
-                                  textColor: Color(0x00000000),
-                                  onPressed: () async {
-                                    await launchURL(_model.uploadedFileUrl);
-                                  },
-                                ),
-                              ),
-                            );
-                            logFirebaseEvent('Container_backend_call');
+                            logFirebaseEvent('UserProfileImage_backend_call');
 
                             final usersUpdateData = createUsersRecordData(
                               photoUrl: _model.uploadedFileUrl,
@@ -258,10 +237,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                                           currentUserPhoto != '') {
                                         return currentUserPhoto;
                                       } else {
-                                        return 'https://eu.ui-avatars.com/api/?size=250&name=${_model.emailController.text}';
+                                        return 'https://eu.ui-avatars.com/api/?size=250&name=KH';
                                       }
                                     }(),
-                                    'https://eu.ui-avatars.com/api/?size=250&name=guest',
+                                    'https://eu.ui-avatars.com/api/?size=250&name=KH',
                                   ),
                                 ).image,
                               ),

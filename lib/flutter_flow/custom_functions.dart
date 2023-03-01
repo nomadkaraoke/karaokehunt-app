@@ -44,15 +44,3 @@ List<dynamic> fetchKaraokeSongsFromState(
 
   return filteredList;
 }
-
-List<dynamic> placeholderSongDB() {
-  return [
-    {
-      "Artist": "Placeholder",
-      "Title": "Song Name",
-      "Brand": "Example",
-      "Watch": "",
-      "Created": ""
-    }
-  ];
-}

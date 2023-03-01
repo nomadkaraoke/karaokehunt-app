@@ -1,14 +1,11 @@
-import '/components/empty_search_component_widget.dart';
-import '/components/loading_song_database_widget.dart';
-import '/components/search_page_add_track_sheet_widget.dart';
+import '/components/empty_search_component/empty_search_component_widget.dart';
+import '/components/search_page_add_track_sheet/search_page_add_track_sheet_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'search_model.dart';
@@ -32,48 +29,6 @@ class _SearchWidgetState extends State<SearchWidget> {
     _model = createModel(context, () => SearchModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Search'});
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      logFirebaseEvent('SEARCH_PAGE_Search_ON_PAGE_LOAD');
-      if ((getJsonField(
-                FFAppState().songsdb.first,
-                r'''$.Title''',
-              ) ==
-              'Song Name') ||
-          (FFAppState().songsdb.length <= 10)) {
-        logFirebaseEvent('Search_bottom_sheet');
-        showModalBottomSheet(
-          isScrollControlled: true,
-          backgroundColor: Colors.transparent,
-          isDismissible: false,
-          enableDrag: false,
-          context: context,
-          builder: (context) {
-            return Padding(
-              padding: MediaQuery.of(context).viewInsets,
-              child: Container(
-                height: 300.0,
-                child: LoadingSongDatabaseWidget(),
-              ),
-            );
-          },
-        ).then((value) => setState(() {}));
-
-        logFirebaseEvent('Search_update_app_state');
-        setState(() {
-          FFAppState().songsdb = functions.placeholderSongDB()!.toList();
-        });
-        logFirebaseEvent('Search_wait__delay');
-        await Future.delayed(const Duration(milliseconds: 1000));
-        logFirebaseEvent('Search_custom_action');
-        await actions.fetchKaraokeSongDBGzip();
-        logFirebaseEvent('Search_wait__delay');
-        await Future.delayed(const Duration(milliseconds: 1000));
-        logFirebaseEvent('Search_bottom_sheet');
-        Navigator.pop(context);
-      }
-    });
-
     _model.songSearchInputController ??= TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -225,7 +180,9 @@ class _SearchWidgetState extends State<SearchWidget> {
                             .take(500)
                             .toList();
                         if (songList.isEmpty) {
-                          return EmptySearchComponentWidget();
+                          return EmptySearchComponentWidget(
+                            searchQuery: _model.songSearchInputController.text,
+                          );
                         }
                         return ListView.builder(
                           padding: EdgeInsets.zero,
