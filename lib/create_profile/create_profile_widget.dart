@@ -1,13 +1,11 @@
 import '/auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
-import '/components/loading_song_database_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_media.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -111,6 +109,119 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                   children: [
                     Padding(
                       padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+                      child: AuthUserStreamWidget(
+                        builder: (context) => InkWell(
+                          onTap: () async {
+                            logFirebaseEvent(
+                                'CREATE_PROFILE_UserProfileImage_ON_TAP');
+                            logFirebaseEvent(
+                                'UserProfileImage_upload_media_to_firebas');
+                            final selectedMedia =
+                                await selectMediaWithSourceBottomSheet(
+                              context: context,
+                              allowPhoto: true,
+                              backgroundColor:
+                                  FlutterFlowTheme.of(context).tertiaryColor,
+                              textColor:
+                                  FlutterFlowTheme.of(context).primaryDark,
+                              pickerFontFamily: 'Lexend Deca',
+                            );
+                            if (selectedMedia != null &&
+                                selectedMedia.every((m) => validateFileFormat(
+                                    m.storagePath, context))) {
+                              setState(() => _model.isMediaUploading = true);
+                              var selectedUploadedFiles = <FFUploadedFile>[];
+                              var downloadUrls = <String>[];
+                              try {
+                                showUploadMessage(
+                                  context,
+                                  'Uploading file...',
+                                  showLoading: true,
+                                );
+                                selectedUploadedFiles = selectedMedia
+                                    .map((m) => FFUploadedFile(
+                                          name: m.storagePath.split('/').last,
+                                          bytes: m.bytes,
+                                          height: m.dimensions?.height,
+                                          width: m.dimensions?.width,
+                                        ))
+                                    .toList();
+
+                                downloadUrls = (await Future.wait(
+                                  selectedMedia.map(
+                                    (m) async => await uploadData(
+                                        m.storagePath, m.bytes),
+                                  ),
+                                ))
+                                    .where((u) => u != null)
+                                    .map((u) => u!)
+                                    .toList();
+                              } finally {
+                                ScaffoldMessenger.of(context)
+                                    .hideCurrentSnackBar();
+                                _model.isMediaUploading = false;
+                              }
+                              if (selectedUploadedFiles.length ==
+                                      selectedMedia.length &&
+                                  downloadUrls.length == selectedMedia.length) {
+                                setState(() {
+                                  _model.uploadedLocalFile =
+                                      selectedUploadedFiles.first;
+                                  _model.uploadedFileUrl = downloadUrls.first;
+                                });
+                                showUploadMessage(context, 'Success!');
+                              } else {
+                                setState(() {});
+                                showUploadMessage(
+                                    context, 'Failed to upload media');
+                                return;
+                              }
+                            }
+
+                            logFirebaseEvent('UserProfileImage_backend_call');
+
+                            final usersUpdateData = createUsersRecordData(
+                              photoUrl: _model.uploadedFileUrl,
+                            );
+                            await currentUserReference!.update(usersUpdateData);
+                          },
+                          child: Container(
+                            width: 120.0,
+                            height: 120.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).gray200,
+                              image: DecorationImage(
+                                fit: BoxFit.fitWidth,
+                                image: Image.network(
+                                  valueOrDefault<String>(
+                                    () {
+                                      if (_model.uploadedFileUrl != null &&
+                                          _model.uploadedFileUrl != '') {
+                                        return _model.uploadedFileUrl;
+                                      } else if (currentUserPhoto != null &&
+                                          currentUserPhoto != '') {
+                                        return currentUserPhoto;
+                                      } else {
+                                        return 'https://eu.ui-avatars.com/api/?size=250&name=KH';
+                                      }
+                                    }(),
+                                    'https://eu.ui-avatars.com/api/?size=250&name=KH',
+                                  ),
+                                ).image,
+                              ),
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Color(0xFFFF79CB),
+                                width: 5.0,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
                           EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 24.0, 16.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
@@ -122,137 +233,6 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                             ),
                           ),
                         ],
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
-                      child: InkWell(
-                        onTap: () async {
-                          logFirebaseEvent(
-                              'CREATE_PROFILE_Container_ezqkrhcj_ON_TAP');
-                          logFirebaseEvent(
-                              'Container_upload_media_to_firebase');
-                          final selectedMedia =
-                              await selectMediaWithSourceBottomSheet(
-                            context: context,
-                            allowPhoto: true,
-                            backgroundColor:
-                                FlutterFlowTheme.of(context).tertiaryColor,
-                            textColor: FlutterFlowTheme.of(context).primaryDark,
-                            pickerFontFamily: 'Lexend Deca',
-                          );
-                          if (selectedMedia != null &&
-                              selectedMedia.every((m) =>
-                                  validateFileFormat(m.storagePath, context))) {
-                            setState(() => _model.isMediaUploading = true);
-                            var selectedUploadedFiles = <FFUploadedFile>[];
-                            var downloadUrls = <String>[];
-                            try {
-                              showUploadMessage(
-                                context,
-                                'Uploading file...',
-                                showLoading: true,
-                              );
-                              selectedUploadedFiles = selectedMedia
-                                  .map((m) => FFUploadedFile(
-                                        name: m.storagePath.split('/').last,
-                                        bytes: m.bytes,
-                                        height: m.dimensions?.height,
-                                        width: m.dimensions?.width,
-                                      ))
-                                  .toList();
-
-                              downloadUrls = (await Future.wait(
-                                selectedMedia.map(
-                                  (m) async =>
-                                      await uploadData(m.storagePath, m.bytes),
-                                ),
-                              ))
-                                  .where((u) => u != null)
-                                  .map((u) => u!)
-                                  .toList();
-                            } finally {
-                              ScaffoldMessenger.of(context)
-                                  .hideCurrentSnackBar();
-                              _model.isMediaUploading = false;
-                            }
-                            if (selectedUploadedFiles.length ==
-                                    selectedMedia.length &&
-                                downloadUrls.length == selectedMedia.length) {
-                              setState(() {
-                                _model.uploadedLocalFile =
-                                    selectedUploadedFiles.first;
-                                _model.uploadedFileUrl = downloadUrls.first;
-                              });
-                              showUploadMessage(context, 'Success!');
-                            } else {
-                              setState(() {});
-                              showUploadMessage(
-                                  context, 'Failed to upload media');
-                              return;
-                            }
-                          }
-
-                          logFirebaseEvent('Container_show_snack_bar');
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                _model.uploadedFileUrl,
-                                style: TextStyle(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                ),
-                              ),
-                              duration: Duration(milliseconds: 4000),
-                              backgroundColor: Color(0x00000000),
-                              action: SnackBarAction(
-                                label: 'Open URL',
-                                textColor: Color(0x00000000),
-                                onPressed: () async {
-                                  await launchURL(_model.uploadedFileUrl);
-                                },
-                              ),
-                            ),
-                          );
-                          logFirebaseEvent('Container_backend_call');
-
-                          final usersUpdateData = createUsersRecordData(
-                            photoUrl: _model.uploadedFileUrl,
-                          );
-                          await currentUserReference!.update(usersUpdateData);
-                        },
-                        child: Container(
-                          width: 120.0,
-                          height: 120.0,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: Image.network(
-                                'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/sample-app-social-app-tx2kqp/assets/7dvyeuxvy2dg/addUser@2x.png',
-                              ).image,
-                            ),
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: Color(0xFFFF79CB),
-                              width: 5.0,
-                            ),
-                          ),
-                          child: Container(
-                            width: 120.0,
-                            height: 120.0,
-                            clipBehavior: Clip.antiAlias,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                            ),
-                            child: Image.network(
-                              valueOrDefault<String>(
-                                _model.uploadedFileUrl,
-                                'https://eu.ui-avatars.com/api/?size=250&name=Guest',
-                              ),
-                            ),
-                          ),
-                        ),
                       ),
                     ),
                     Padding(
@@ -622,37 +602,6 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                             username: _model.usernameController.text,
                           );
                           await currentUserReference!.update(usersUpdateData);
-                          logFirebaseEvent('Button_bottom_sheet');
-                          showModalBottomSheet(
-                            isScrollControlled: true,
-                            backgroundColor: Colors.transparent,
-                            isDismissible: false,
-                            enableDrag: false,
-                            context: context,
-                            builder: (context) {
-                              return Padding(
-                                padding: MediaQuery.of(context).viewInsets,
-                                child: Container(
-                                  height: 300.0,
-                                  child: LoadingSongDatabaseWidget(),
-                                ),
-                              );
-                            },
-                          ).then((value) => setState(() {}));
-
-                          logFirebaseEvent('Button_wait__delay');
-                          await Future.delayed(
-                              const Duration(milliseconds: 1000));
-                          logFirebaseEvent('Button_custom_action');
-                          await actions.fetchKaraokeSongDBGzip();
-                          logFirebaseEvent('Button_wait__delay');
-                          await Future.delayed(
-                              const Duration(milliseconds: 1000));
-                          logFirebaseEvent('Button_bottom_sheet');
-                          Navigator.pop(context);
-                          logFirebaseEvent('Button_wait__delay');
-                          await Future.delayed(
-                              const Duration(milliseconds: 500));
                           logFirebaseEvent('Button_navigate_to');
 
                           context.pushNamed('Search');

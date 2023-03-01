@@ -111,7 +111,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
           color: FlutterFlowTheme.of(context).secondaryBackground,
         ),
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -226,41 +226,40 @@ class _SettingsWidgetState extends State<SettingsWidget>
                             ),
                           ),
                         ),
-                        Align(
-                          alignment: AlignmentDirectional(0.85, 0.68),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 16.0, 0.0),
-                            child: Container(
-                              width: 100.0,
-                              height: 100.0,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(90.0),
-                                border: Border.all(
-                                  color: Color(0xFFFF79CB),
-                                  width: 5.0,
-                                ),
-                              ),
-                              child: AuthUserStreamWidget(
-                                builder: (context) => Container(
-                                  width: 100.0,
-                                  height: 100.0,
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              10.0, 16.0, 20.0, 16.0),
+                          child: AuthUserStreamWidget(
+                            builder: (context) => InkWell(
+                              onTap: () async {
+                                logFirebaseEvent(
+                                    'SETTINGS_PAGE_UserProfileImage_ON_TAP');
+                                logFirebaseEvent(
+                                    'UserProfileImage_navigate_to');
+
+                                context.pushNamed('EditProfile');
+                              },
+                              child: Container(
+                                width: 100.0,
+                                height: 100.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context).gray200,
+                                  image: DecorationImage(
+                                    fit: BoxFit.fitWidth,
+                                    image: Image.network(
+                                      valueOrDefault<String>(
+                                        currentUserPhoto != null &&
+                                                currentUserPhoto != ''
+                                            ? currentUserPhoto
+                                            : 'https://eu.ui-avatars.com/api/?size=250&name=KH',
+                                        'https://eu.ui-avatars.com/api/?size=250&name=KH',
+                                      ),
+                                    ).image,
                                   ),
-                                  child: Image.network(
-                                    valueOrDefault<String>(
-                                      currentUserPhoto != null &&
-                                              currentUserPhoto != ''
-                                          ? currentUserPhoto
-                                          : 'https://eu.ui-avatars.com/api/?size=250&name=${valueOrDefault<String>(
-                                              currentUserDisplayName,
-                                              'Guest',
-                                            )}',
-                                      'https://eu.ui-avatars.com/api/?size=250&name=guest',
-                                    ),
-                                    fit: BoxFit.contain,
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: Color(0xFFFF79CB),
+                                    width: 5.0,
                                   ),
                                 ),
                               ),
