@@ -1,6 +1,6 @@
-import '/components/empty_playlist_component_widget.dart';
-import '/components/playlist_clear_sheet_widget.dart';
-import '/components/playlist_remove_track_sheet_widget.dart';
+import '/components/empty_playlist_component/empty_playlist_component_widget.dart';
+import '/components/playlist_clear_sheet/playlist_clear_sheet_widget.dart';
+import '/components/playlist_remove_track_sheet/playlist_remove_track_sheet_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
