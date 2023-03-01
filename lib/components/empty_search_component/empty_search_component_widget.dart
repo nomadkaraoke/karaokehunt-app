@@ -281,7 +281,7 @@ class _EmptySearchComponentWidgetState
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                         child: Text(
-                          'Song database empty',
+                          'Song database empty,\nclick below to download',
                           textAlign: TextAlign.center,
                           style: FlutterFlowTheme.of(context).title3.override(
                                 fontFamily:
@@ -307,7 +307,7 @@ class _EmptySearchComponentWidgetState
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 10.0),
                           child: Text(
-                            'This app is designed to work offline, so you can use it even in a dive bar with no signal or WiFi 😎\n\nTo use the app, please click below to download the most recent database of community songs!\n\nThis will only use about 1 MB of data, and should only take a few seconds unless you\'re on dial-up!',
+                            'This app is designed to work offline, so you can use it even in a dive bar with no signal or WiFi 😎\n\nTo use the app, please click below to download the most recent database of community songs!\n\nThis will only use about 1 MB of data, and should only take a few seconds!',
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context).bodyText2,
                           ),

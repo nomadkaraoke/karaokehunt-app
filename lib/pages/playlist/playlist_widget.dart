@@ -261,9 +261,9 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                                               ),
                                               onPressed: () async {
                                                 logFirebaseEvent(
-                                                    'PLAYLIST_PAGE_youtube_ICN_ON_TAP');
+                                                    'PLAYLIST_PAGE_YouTubeButton_ON_TAP');
                                                 logFirebaseEvent(
-                                                    'IconButton_launch_u_r_l');
+                                                    'YouTubeButton_launch_u_r_l');
                                                 await launchURL(getJsonField(
                                                   playlistItem,
                                                   r'''$.Watch''',
@@ -281,15 +281,9 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                                             ),
                                             onPressed: () async {
                                               logFirebaseEvent(
-                                                  'PLAYLIST_PAGE_remove_circle_ICN_ON_TAP');
+                                                  'PLAYLIST_PAGE_RemoveSongButton_ON_TAP');
                                               logFirebaseEvent(
-                                                  'IconButton_update_app_state');
-                                              setState(() {
-                                                FFAppState().removeFromPlaylist(
-                                                    playlistItem);
-                                              });
-                                              logFirebaseEvent(
-                                                  'IconButton_bottom_sheet');
+                                                  'RemoveSongButton_bottom_sheet');
                                               await showModalBottomSheet(
                                                 isScrollControlled: true,
                                                 backgroundColor:
@@ -316,12 +310,23 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
                                                   (value) => setState(() {}));
 
                                               logFirebaseEvent(
-                                                  'IconButton_wait__delay');
+                                                  'RemoveSongButton_wait__delay');
                                               await Future.delayed(
                                                   const Duration(
-                                                      milliseconds: 2000));
+                                                      milliseconds: 200));
                                               logFirebaseEvent(
-                                                  'IconButton_bottom_sheet');
+                                                  'RemoveSongButton_update_app_state');
+                                              setState(() {
+                                                FFAppState().removeFromPlaylist(
+                                                    playlistItem);
+                                              });
+                                              logFirebaseEvent(
+                                                  'RemoveSongButton_wait__delay');
+                                              await Future.delayed(
+                                                  const Duration(
+                                                      milliseconds: 200));
+                                              logFirebaseEvent(
+                                                  'RemoveSongButton_bottom_sheet');
                                               Navigator.pop(context);
                                             },
                                           ),
