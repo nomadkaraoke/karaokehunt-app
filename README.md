@@ -4,9 +4,9 @@ Have a great experience singing karaoke, by building the ideal playlist of songs
 
 Built in collaboration with Karaoke Nerds (https://karaokenerds.com) and the diveBar Karaoke Community (https://discord.gg/diveBar). Come join us! 🎤
 
-<a href='https://play.google.com/store/apps/details?id=com.karaokehunt.karaokehunt&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width='200px'/></a>
+<a href='https://play.google.com/store/apps/details?id=com.karaokehunt.karaokehunt&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://raw.githubusercontent.com/karaokenerds/karaokehunt-app/main/screenshots/google-play-badge.png' height='50px'/></a> <a href='https://apps.apple.com/us/app/karaoke-hunt/id6445938099'><img alt='View in Apple App Store' src='https://raw.githubusercontent.com/karaokenerds/karaokehunt-app/main/screenshots/apple-app-store-badge.png' height='50px'/></a> <a href='https://app.karaokehunt.com'><img alt='Use on the Web' src='https://raw.githubusercontent.com/karaokenerds/karaokehunt-app/main/screenshots/web-app-badge.png' height='50px'/></a> 
 
-<img src='https://raw.githubusercontent.com/karaokenerds/karaokehunt-app/main/screenshots/Screenshot_20230227-202427.png' width='200px'/> <img src='https://raw.githubusercontent.com/karaokenerds/karaokehunt-app/main/screenshots/Screenshot_20230227-202059.png' width='200px'/> <img src='https://raw.githubusercontent.com/karaokenerds/karaokehunt-app/main/screenshots/Screenshot_20230227-202303.png' width='200px'/> 
+<img src='https://raw.githubusercontent.com/karaokenerds/karaokehunt-app/main/screenshots/Apple iPhone 11 Pro Max Screenshot 0.png' width='150px'/> <img src='https://raw.githubusercontent.com/karaokenerds/karaokehunt-app/main/screenshots/Apple iPhone 11 Pro Max Screenshot 6.png' width='150px'/> <img src='https://raw.githubusercontent.com/karaokenerds/karaokehunt-app/main/screenshots/Apple iPhone 11 Pro Max Screenshot 7.png' width='150px'/> <img src='https://raw.githubusercontent.com/karaokenerds/karaokehunt-app/main/screenshots/Apple iPhone 11 Pro Max Screenshot 8.png' width='150px'/> 
 
 ### Feature Summary
 
