@@ -51,13 +51,13 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
-          borderRadius: 30.0,
+          borderRadius: 20.0,
           borderWidth: 1.0,
-          buttonSize: 60.0,
+          buttonSize: 50.0,
           icon: Icon(
             Icons.arrow_back_rounded,
             color: Colors.white,
-            size: 30.0,
+            size: 20.0,
           ),
           onPressed: () async {
             logFirebaseEvent('CHANGE_PASSWORD_arrow_back_rounded_ICN_O');
@@ -66,22 +66,15 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
           },
         ),
         title: Text(
-          'Change\nPassword',
-          style: FlutterFlowTheme.of(context).title1.override(
-                fontFamily: FlutterFlowTheme.of(context).title1Family,
-                fontSize: 22.0,
-                useGoogleFonts: GoogleFonts.asMap()
-                    .containsKey(FlutterFlowTheme.of(context).title1Family),
-                lineHeight: 1.0,
-              ),
+          'Change Password',
+          style: FlutterFlowTheme.of(context).title3,
         ),
         actions: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 7.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
             child: Image.asset(
               'assets/images/karaoke-hunt-logo-rect-hq.png',
-              width: 150.0,
-              height: 150.0,
+              width: MediaQuery.of(context).size.width * 0.3,
               fit: BoxFit.contain,
             ),
           ),

@@ -91,15 +91,14 @@ class _SettingsWidgetState extends State<SettingsWidget>
         automaticallyImplyLeading: false,
         title: Text(
           'Settings',
-          style: FlutterFlowTheme.of(context).title1,
+          style: FlutterFlowTheme.of(context).title2,
         ),
         actions: [
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
             child: Image.asset(
               'assets/images/karaoke-hunt-logo-rect-hq.png',
-              width: 150.0,
-              height: 100.0,
+              width: MediaQuery.of(context).size.width * 0.3,
               fit: BoxFit.contain,
             ),
           ),
@@ -122,185 +121,198 @@ class _SettingsWidgetState extends State<SettingsWidget>
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 20.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 0.0, 0.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                AuthUserStreamWidget(
-                                  builder: (context) => Text(
-                                    valueOrDefault<String>(
-                                      currentUserDisplayName,
-                                      '[Display Name]',
-                                    ),
-                                    textAlign: TextAlign.start,
-                                    style: FlutterFlowTheme.of(context).title3,
-                                  ),
-                                ),
-                                AuthUserStreamWidget(
-                                  builder: (context) => Text(
-                                    valueOrDefault<String>(
-                                      valueOrDefault(
-                                          currentUserDocument?.username, ''),
-                                      '[Username]',
-                                    ),
-                                    textAlign: TextAlign.start,
-                                    style: FlutterFlowTheme.of(context).title3,
-                                  ),
-                                ),
-                                Align(
-                                  alignment: AlignmentDirectional(-1.0, 0.0),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 8.0, 0.0, 0.0),
-                                    child: AuthUserStreamWidget(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            0.0, 12.0, 0.0, 20.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 0.0, 0.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    AuthUserStreamWidget(
                                       builder: (context) => Text(
                                         valueOrDefault<String>(
-                                          currentPhoneNumber,
-                                          '[Phone]',
+                                          currentUserDisplayName,
+                                          '[Display Name]',
                                         ),
                                         textAlign: TextAlign.start,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1,
+                                        style:
+                                            FlutterFlowTheme.of(context).title3,
                                       ),
                                     ),
-                                  ),
-                                ),
-                                Align(
-                                  alignment: AlignmentDirectional(-1.0, 0.0),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 8.0, 0.0, 0.0),
-                                    child: AuthUserStreamWidget(
+                                    AuthUserStreamWidget(
                                       builder: (context) => Text(
                                         valueOrDefault<String>(
                                           valueOrDefault(
-                                              currentUserDocument?.bio, ''),
-                                          '[bio]',
+                                              currentUserDocument?.username,
+                                              ''),
+                                          '[Username]',
                                         ),
                                         textAlign: TextAlign.start,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1,
+                                        style:
+                                            FlutterFlowTheme.of(context).title3,
                                       ),
                                     ),
-                                  ),
-                                ),
-                                Align(
-                                  alignment: AlignmentDirectional(-1.0, 0.0),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 4.0, 0.0, 0.0),
-                                    child: Text(
-                                      valueOrDefault<String>(
-                                        currentUserEmail,
-                                        'Guest User',
-                                      ),
-                                      textAlign: TextAlign.start,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Lexend Deca',
-                                            color: Color(0xFFEE8B60),
-                                            fontSize: 14.0,
-                                            fontWeight: FontWeight.normal,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1Family),
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(-1.0, 0.0),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 8.0, 0.0, 0.0),
+                                        child: AuthUserStreamWidget(
+                                          builder: (context) => Text(
+                                            valueOrDefault<String>(
+                                              currentPhoneNumber,
+                                              '[Phone]',
+                                            ),
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1,
                                           ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              10.0, 16.0, 20.0, 16.0),
-                          child: AuthUserStreamWidget(
-                            builder: (context) => InkWell(
-                              onTap: () async {
-                                logFirebaseEvent(
-                                    'SETTINGS_PAGE_UserProfileImage_ON_TAP');
-                                logFirebaseEvent(
-                                    'UserProfileImage_navigate_to');
-
-                                context.pushNamed('EditProfile');
-                              },
-                              child: Container(
-                                width: 100.0,
-                                height: 100.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context).gray200,
-                                  image: DecorationImage(
-                                    fit: BoxFit.fitWidth,
-                                    image: Image.network(
-                                      valueOrDefault<String>(
-                                        currentUserPhoto != null &&
-                                                currentUserPhoto != ''
-                                            ? currentUserPhoto
-                                            : 'https://eu.ui-avatars.com/api/?size=250&name=KH',
-                                        'https://eu.ui-avatars.com/api/?size=250&name=KH',
+                                        ),
                                       ),
-                                    ).image,
-                                  ),
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                    color: Color(0xFFFF79CB),
-                                    width: 5.0,
+                                    ),
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(-1.0, 0.0),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 8.0, 0.0, 0.0),
+                                        child: AuthUserStreamWidget(
+                                          builder: (context) => Text(
+                                            valueOrDefault<String>(
+                                              valueOrDefault(
+                                                  currentUserDocument?.bio, ''),
+                                              '[bio]',
+                                            ),
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText1,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(-1.0, 0.0),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 4.0, 0.0, 0.0),
+                                        child: Text(
+                                          valueOrDefault<String>(
+                                            currentUserEmail,
+                                            'Guest User',
+                                          ),
+                                          textAlign: TextAlign.start,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily: 'Lexend Deca',
+                                                color: Color(0xFFEE8B60),
+                                                fontSize: 14.0,
+                                                fontWeight: FontWeight.normal,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyText1Family),
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 16.0, 20.0, 16.0),
+                              child: AuthUserStreamWidget(
+                                builder: (context) => InkWell(
+                                  onTap: () async {
+                                    logFirebaseEvent(
+                                        'SETTINGS_PAGE_UserProfileImage_ON_TAP');
+                                    logFirebaseEvent(
+                                        'UserProfileImage_navigate_to');
+
+                                    context.pushNamed('EditProfile');
+                                  },
+                                  child: Container(
+                                    width: 100.0,
+                                    height: 100.0,
+                                    decoration: BoxDecoration(
+                                      color:
+                                          FlutterFlowTheme.of(context).gray200,
+                                      image: DecorationImage(
+                                        fit: BoxFit.fitWidth,
+                                        image: Image.network(
+                                          valueOrDefault<String>(
+                                            currentUserPhoto != null &&
+                                                    currentUserPhoto != ''
+                                                ? currentUserPhoto
+                                                : 'https://eu.ui-avatars.com/api/?size=250&name=KH',
+                                            'https://eu.ui-avatars.com/api/?size=250&name=KH',
+                                          ),
+                                        ).image,
+                                      ),
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                        color: Color(0xFFFF79CB),
+                                        width: 5.0,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                InkWell(
-                  onTap: () async {
-                    logFirebaseEvent('SETTINGS_PAGE_LearnMoreList_ON_TAP');
-                    logFirebaseEvent('LearnMoreList_navigate_to');
-
-                    context.pushNamed('SupportCommunity');
-                  },
-                  child: ListView(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width * 1.0,
-                        height: 45.0,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              24.0, 12.0, 0.0, 12.0),
-                          child: Text(
-                            'App Support & Karaoke Community',
-                            style: FlutterFlowTheme.of(context).bodyText1,
-                          ),
+                          ],
                         ),
                       ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                    ],
+                  ),
+                ),
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * 1.0,
+                      height: 45.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).primaryBackground,
+                      ),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            24.0, 12.0, 0.0, 12.0),
+                        child: Text(
+                          'App Support & Karaoke Community',
+                          style: FlutterFlowTheme.of(context).bodyText1,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                      child: InkWell(
+                        onTap: () async {
+                          logFirebaseEvent(
+                              'SETTINGS_PAGE_ThirdPartyInfoRow_ON_TAP');
+                          logFirebaseEvent('ThirdPartyInfoRow_navigate_to');
+
+                          context.pushNamed('SupportCommunity');
+                        },
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -341,9 +353,18 @@ class _SettingsWidgetState extends State<SettingsWidget>
                           ],
                         ),
                       ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                      child: InkWell(
+                        onTap: () async {
+                          logFirebaseEvent(
+                              'SETTINGS_PAGE_ConnectMusicDataRow_ON_TAP');
+                          logFirebaseEvent('ConnectMusicDataRow_navigate_to');
+
+                          context.pushNamed('SupportCommunity');
+                        },
                         child: Container(
                           width: MediaQuery.of(context).size.width * 1.0,
                           height: 50.0,
@@ -382,14 +403,7 @@ class _SettingsWidgetState extends State<SettingsWidget>
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                ListView(
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  children: [
+                    ),
                     Container(
                       width: MediaQuery.of(context).size.width * 1.0,
                       height: 45.0,
@@ -561,13 +575,6 @@ class _SettingsWidgetState extends State<SettingsWidget>
                         ),
                       ),
                     ),
-                  ],
-                ),
-                ListView(
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  children: [
                     Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -939,13 +946,6 @@ class _SettingsWidgetState extends State<SettingsWidget>
                         ),
                       ),
                     ),
-                  ],
-                ),
-                ListView(
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  children: [
                     Container(
                       width: MediaQuery.of(context).size.width * 1.0,
                       height: 45.0,

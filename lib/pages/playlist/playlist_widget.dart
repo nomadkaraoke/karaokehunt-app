@@ -52,15 +52,14 @@ class _PlaylistWidgetState extends State<PlaylistWidget> {
         automaticallyImplyLeading: false,
         title: Text(
           'Playlist',
-          style: FlutterFlowTheme.of(context).title1,
+          style: FlutterFlowTheme.of(context).title2,
         ),
         actions: [
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
             child: Image.asset(
               'assets/images/karaoke-hunt-logo-rect-hq.png',
-              width: 150.0,
-              height: 100.0,
+              width: MediaQuery.of(context).size.width * 0.3,
               fit: BoxFit.contain,
             ),
           ),
