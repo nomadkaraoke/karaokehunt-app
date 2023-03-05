@@ -237,7 +237,9 @@ class _SearchWidgetState extends State<SearchWidget>
                                       ),
                                     ),
                                     duration: Duration(milliseconds: 4000),
-                                    backgroundColor: Color(0x00000000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                   ),
                                 );
                               } else {
@@ -258,7 +260,9 @@ class _SearchWidgetState extends State<SearchWidget>
                                       ),
                                     ),
                                     duration: Duration(milliseconds: 1000),
-                                    backgroundColor: Color(0x00000000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                   ),
                                 );
                               }

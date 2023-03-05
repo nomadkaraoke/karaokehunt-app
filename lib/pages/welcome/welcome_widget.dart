@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/permissions_util.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
@@ -762,6 +763,10 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                                                       logFirebaseEvent(
                                                           'WELCOME_PAGE_RegisterButton_ON_TAP');
                                                       logFirebaseEvent(
+                                                          'RegisterButton_request_permissions');
+                                                      await requestPermission(
+                                                          notificationsPermission);
+                                                      logFirebaseEvent(
                                                           'RegisterButton_navigate_to');
 
                                                       context.pushNamed(
@@ -824,6 +829,10 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                                                     onPressed: () async {
                                                       logFirebaseEvent(
                                                           'WELCOME_PAGE_LoginButton_ON_TAP');
+                                                      logFirebaseEvent(
+                                                          'LoginButton_request_permissions');
+                                                      await requestPermission(
+                                                          notificationsPermission);
                                                       logFirebaseEvent(
                                                           'LoginButton_navigate_to');
 
@@ -894,6 +903,10 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                                                 onPressed: () async {
                                                   logFirebaseEvent(
                                                       'WELCOME_CONTINUE_AS_GUEST_BTN_ON_TAP');
+                                                  logFirebaseEvent(
+                                                      'Button_request_permissions');
+                                                  await requestPermission(
+                                                      notificationsPermission);
                                                   logFirebaseEvent(
                                                       'Button_navigate_to');
 
