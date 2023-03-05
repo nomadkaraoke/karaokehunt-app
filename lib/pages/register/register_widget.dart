@@ -52,13 +52,13 @@ class _RegisterWidgetState extends State<RegisterWidget> {
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
-          borderRadius: 30.0,
+          borderRadius: 20.0,
           borderWidth: 1.0,
-          buttonSize: 60.0,
+          buttonSize: 50.0,
           icon: Icon(
             Icons.arrow_back_rounded,
             color: Colors.white,
-            size: 30.0,
+            size: 20.0,
           ),
           onPressed: () async {
             logFirebaseEvent('REGISTER_arrow_back_rounded_ICN_ON_TAP');
@@ -68,20 +68,14 @@ class _RegisterWidgetState extends State<RegisterWidget> {
         ),
         title: Text(
           'Register',
-          style: FlutterFlowTheme.of(context).title1.override(
-                fontFamily: FlutterFlowTheme.of(context).title1Family,
-                fontSize: 25.0,
-                useGoogleFonts: GoogleFonts.asMap()
-                    .containsKey(FlutterFlowTheme.of(context).title1Family),
-              ),
+          style: FlutterFlowTheme.of(context).title3,
         ),
         actions: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 7.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
             child: Image.asset(
               'assets/images/karaoke-hunt-logo-rect-hq.png',
-              width: 150.0,
-              height: 150.0,
+              width: MediaQuery.of(context).size.width * 0.3,
               fit: BoxFit.contain,
             ),
           ),
@@ -106,8 +100,6 @@ class _RegisterWidgetState extends State<RegisterWidget> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Container(
-              width: double.infinity,
-              height: 500.0,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
@@ -121,7 +113,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
               ),
               alignment: AlignmentDirectional(0.0, 0.8),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 44.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 30.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,

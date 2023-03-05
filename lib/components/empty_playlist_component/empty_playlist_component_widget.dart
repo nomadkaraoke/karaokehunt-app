@@ -52,13 +52,13 @@ class _EmptyPlaylistComponentWidgetState
         Padding(
           padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
           child: FaIcon(
-            FontAwesomeIcons.sadCry,
+            FontAwesomeIcons.microphoneAltSlash,
             color: Color(0xFFFFDF6B),
-            size: 90.0,
+            size: 70.0,
           ),
         ),
         Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,

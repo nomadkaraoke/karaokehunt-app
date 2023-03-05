@@ -52,13 +52,13 @@ class _LoginWidgetState extends State<LoginWidget> {
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
-          borderRadius: 30.0,
+          borderRadius: 20.0,
           borderWidth: 1.0,
-          buttonSize: 60.0,
+          buttonSize: 50.0,
           icon: Icon(
             Icons.arrow_back_rounded,
             color: Colors.white,
-            size: 30.0,
+            size: 20.0,
           ),
           onPressed: () async {
             logFirebaseEvent('LOGIN_PAGE_arrow_back_rounded_ICN_ON_TAP');
@@ -67,21 +67,15 @@ class _LoginWidgetState extends State<LoginWidget> {
           },
         ),
         title: Text(
-          'Login',
-          style: FlutterFlowTheme.of(context).title1.override(
-                fontFamily: FlutterFlowTheme.of(context).title1Family,
-                fontSize: 25.0,
-                useGoogleFonts: GoogleFonts.asMap()
-                    .containsKey(FlutterFlowTheme.of(context).title1Family),
-              ),
+          'Register',
+          style: FlutterFlowTheme.of(context).title3,
         ),
         actions: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 7.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
             child: Image.asset(
               'assets/images/karaoke-hunt-logo-rect-hq.png',
-              width: 150.0,
-              height: 150.0,
+              width: MediaQuery.of(context).size.width * 0.3,
               fit: BoxFit.contain,
             ),
           ),
@@ -106,8 +100,6 @@ class _LoginWidgetState extends State<LoginWidget> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Container(
-              width: double.infinity,
-              height: 500.0,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
@@ -151,7 +143,17 @@ class _LoginWidgetState extends State<LoginWidget> {
                             children: [
                               Text(
                                 'Access your account below or',
-                                style: FlutterFlowTheme.of(context).bodyText1,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyText1Family,
+                                      fontSize: 12.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyText1Family),
+                                    ),
                               ),
                               FFButtonWidget(
                                 onPressed: () async {
@@ -172,10 +174,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 },
                                 text: 'Create Account',
                                 options: FFButtonOptions(
-                                  width: 125.0,
-                                  height: 28.0,
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
+                                      7.0, 7.0, 7.0, 7.0),
                                   iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: Color(0x00FFFFFF),
@@ -186,7 +186,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             .subtitle2Family,
                                         color: FlutterFlowTheme.of(context)
                                             .primaryColor,
-                                        fontSize: 14.0,
+                                        fontSize: 12.0,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
                                                 FlutterFlowTheme.of(context)
@@ -387,10 +387,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                               },
                               text: 'Forgot Password?',
                               options: FFButtonOptions(
-                                width: 170.0,
-                                height: 50.0,
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
+                                    15.0, 20.0, 15.0, 20.0),
                                 iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context)
@@ -439,10 +437,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                               },
                               text: 'Login',
                               options: FFButtonOptions(
-                                width: 130.0,
-                                height: 50.0,
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
+                                    30.0, 20.0, 30.0, 20.0),
                                 iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color:
