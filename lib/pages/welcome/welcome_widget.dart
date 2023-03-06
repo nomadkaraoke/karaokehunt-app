@@ -903,10 +903,12 @@ class _WelcomeWidgetState extends State<WelcomeWidget> {
                                                 onPressed: () async {
                                                   logFirebaseEvent(
                                                       'WELCOME_CONTINUE_AS_GUEST_BTN_ON_TAP');
-                                                  logFirebaseEvent(
-                                                      'Button_request_permissions');
-                                                  await requestPermission(
-                                                      notificationsPermission);
+                                                  if (isWeb == false) {
+                                                    logFirebaseEvent(
+                                                        'Button_request_permissions');
+                                                    await requestPermission(
+                                                        notificationsPermission);
+                                                  }
                                                   logFirebaseEvent(
                                                       'Button_navigate_to');
 
