@@ -337,6 +337,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.5.1"
+  filesize:
+    dependency: "direct main"
+    description:
+      name: filesize
+      sha256: f53df1f27ff60e466eefcd9df239e02d4722d5e2debee92a87dfd99ac66de2af
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   firebase_analytics:
     dependency: "direct main"
     description:
@@ -781,6 +789,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.3.1"
+  logger:
+    dependency: "direct main"
+    description:
+      name: logger
+      sha256: c40f9ef51e5bffb4ce69ad2d8c8aad7bd47ec109c090521109b63a4e2bc27191
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.2"
   logging:
     dependency: transitive
     description:
@@ -862,7 +878,7 @@ packages:
     source: hosted
     version: "2.0.4"
   path:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path
       sha256: db9d4f58c908a4ba5953fcee2ae317c94889433e5024c27ce74a37f94267945b
