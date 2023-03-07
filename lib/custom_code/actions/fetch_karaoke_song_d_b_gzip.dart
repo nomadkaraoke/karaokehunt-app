@@ -17,11 +17,11 @@ import 'package:filesize/filesize.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:archive/archive.dart';
 
-var logger = Logger(
-  printer: PrettyPrinter(),
-);
-
 Future fetchKaraokeSongDBGzip() async {
+  var logger = Logger(
+    printer: PrettyPrinter(),
+  );
+
   logger.d("fetchKaraokeSongDBGzip beginning");
 
   final storage = FirebaseStorage.instance;
