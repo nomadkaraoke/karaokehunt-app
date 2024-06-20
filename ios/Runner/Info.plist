@@ -54,11 +54,11 @@
 	<true/>
 
 	<key>NSCameraUsageDescription</key>
-    <string>In order to take a picture or video, this app requires permission to access the camera.</string>
+    <string>To be able to set your profile photo, KaraokeHunt needs camera permission.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-    <string>In order to upload media, this app requires permission to access the photo library.</string>
+    <string>To be able to set your profile photo, KaraokeHunt needs photo permission.</string>
 	<key>PermissionGroupNotification</key>
-    <string>I let you know when your next song is coming up, KaraokeHunt needs notification permission.</string>
+    <string>To let you know when your next song is coming up, KaraokeHunt needs notification permission.</string>
     <key>UIBackgroundModes</key>
     <array>
         <string>fetch</string>
@@ -86,9 +86,5 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 
-	<key>CADisableMinimumFrameDurationOnPhone</key>
-	<true/>
-	<key>UIApplicationSupportsIndirectInputEvents</key>
-	<true/>
 </dict>
 </plist>

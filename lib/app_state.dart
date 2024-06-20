@@ -1,39 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'flutter_flow/lat_lng.dart';
+import 'flutter_flow/flutter_flow_util.dart';
 import 'dart:convert';
 
 class FFAppState extends ChangeNotifier {
-  static final FFAppState _instance = FFAppState._internal();
+  static FFAppState _instance = FFAppState._internal();
 
   factory FFAppState() {
     return _instance;
   }
 
-  FFAppState._internal() {
-    initializePersistedState();
+  FFAppState._internal();
+
+  static void reset() {
+    _instance = FFAppState._internal();
   }
 
   Future initializePersistedState() async {
     prefs = await SharedPreferences.getInstance();
-    _playlist = prefs.getStringList('ff_playlist')?.map((x) {
-          try {
-            return jsonDecode(x);
-          } catch (e) {
-            print("Can't decode persisted json. Error: $e.");
-            return {};
-          }
-        }).toList() ??
-        _playlist;
-    _songsdb = prefs.getStringList('ff_songsdb')?.map((x) {
-          try {
-            return jsonDecode(x);
-          } catch (e) {
-            print("Can't decode persisted json. Error: $e.");
-            return {};
-          }
-        }).toList() ??
-        _songsdb;
+    _safeInit(() {
+      _playlist = prefs.getStringList('ff_playlist')?.map((x) {
+            try {
+              return jsonDecode(x);
+            } catch (e) {
+              print("Can't decode persisted json. Error: $e.");
+              return {};
+            }
+          }).toList() ??
+          _playlist;
+    });
+    _safeInit(() {
+      _songsdb = prefs.getStringList('ff_songsdb')?.map((x) {
+            try {
+              return jsonDecode(x);
+            } catch (e) {
+              print("Can't decode persisted json. Error: $e.");
+              return {};
+            }
+          }).toList() ??
+          _songsdb;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -45,63 +51,94 @@ class FFAppState extends ChangeNotifier {
 
   List<dynamic> _playlist = [];
   List<dynamic> get playlist => _playlist;
-  set playlist(List<dynamic> _value) {
-    _playlist = _value;
+  set playlist(List<dynamic> value) {
+    _playlist = value;
     prefs.setStringList(
-        'ff_playlist', _value.map((x) => jsonEncode(x)).toList());
+        'ff_playlist', value.map((x) => jsonEncode(x)).toList());
   }
 
-  void addToPlaylist(dynamic _value) {
-    _playlist.add(_value);
-    prefs.setStringList(
-        'ff_playlist', _playlist.map((x) => jsonEncode(x)).toList());
-  }
-
-  void removeFromPlaylist(dynamic _value) {
-    _playlist.remove(_value);
+  void addToPlaylist(dynamic value) {
+    playlist.add(value);
     prefs.setStringList(
         'ff_playlist', _playlist.map((x) => jsonEncode(x)).toList());
   }
 
-  void removeAtIndexFromPlaylist(int _index) {
-    _playlist.removeAt(_index);
+  void removeFromPlaylist(dynamic value) {
+    playlist.remove(value);
+    prefs.setStringList(
+        'ff_playlist', _playlist.map((x) => jsonEncode(x)).toList());
+  }
+
+  void removeAtIndexFromPlaylist(int index) {
+    playlist.removeAt(index);
+    prefs.setStringList(
+        'ff_playlist', _playlist.map((x) => jsonEncode(x)).toList());
+  }
+
+  void updatePlaylistAtIndex(
+    int index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    playlist[index] = updateFn(_playlist[index]);
+    prefs.setStringList(
+        'ff_playlist', _playlist.map((x) => jsonEncode(x)).toList());
+  }
+
+  void insertAtIndexInPlaylist(int index, dynamic value) {
+    playlist.insert(index, value);
     prefs.setStringList(
         'ff_playlist', _playlist.map((x) => jsonEncode(x)).toList());
   }
 
   List<dynamic> _songsdb = [];
   List<dynamic> get songsdb => _songsdb;
-  set songsdb(List<dynamic> _value) {
-    _songsdb = _value;
-    prefs.setStringList(
-        'ff_songsdb', _value.map((x) => jsonEncode(x)).toList());
+  set songsdb(List<dynamic> value) {
+    _songsdb = value;
+    prefs.setStringList('ff_songsdb', value.map((x) => jsonEncode(x)).toList());
   }
 
-  void addToSongsdb(dynamic _value) {
-    _songsdb.add(_value);
-    prefs.setStringList(
-        'ff_songsdb', _songsdb.map((x) => jsonEncode(x)).toList());
-  }
-
-  void removeFromSongsdb(dynamic _value) {
-    _songsdb.remove(_value);
+  void addToSongsdb(dynamic value) {
+    songsdb.add(value);
     prefs.setStringList(
         'ff_songsdb', _songsdb.map((x) => jsonEncode(x)).toList());
   }
 
-  void removeAtIndexFromSongsdb(int _index) {
-    _songsdb.removeAt(_index);
+  void removeFromSongsdb(dynamic value) {
+    songsdb.remove(value);
+    prefs.setStringList(
+        'ff_songsdb', _songsdb.map((x) => jsonEncode(x)).toList());
+  }
+
+  void removeAtIndexFromSongsdb(int index) {
+    songsdb.removeAt(index);
+    prefs.setStringList(
+        'ff_songsdb', _songsdb.map((x) => jsonEncode(x)).toList());
+  }
+
+  void updateSongsdbAtIndex(
+    int index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    songsdb[index] = updateFn(_songsdb[index]);
+    prefs.setStringList(
+        'ff_songsdb', _songsdb.map((x) => jsonEncode(x)).toList());
+  }
+
+  void insertAtIndexInSongsdb(int index, dynamic value) {
+    songsdb.insert(index, value);
     prefs.setStringList(
         'ff_songsdb', _songsdb.map((x) => jsonEncode(x)).toList());
   }
 }
 
-LatLng? _latLngFromString(String? val) {
-  if (val == null) {
-    return null;
-  }
-  final split = val.split(',');
-  final lat = double.parse(split.first);
-  final lng = double.parse(split.last);
-  return LatLng(lat, lng);
+void _safeInit(Function() initializeField) {
+  try {
+    initializeField();
+  } catch (_) {}
+}
+
+Future _safeInitAsync(Function() initializeField) async {
+  try {
+    await initializeField();
+  } catch (_) {}
 }

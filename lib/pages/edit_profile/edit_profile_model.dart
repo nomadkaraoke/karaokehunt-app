@@ -1,52 +1,54 @@
-import '/auth/auth_util.dart';
-import '/backend/backend.dart';
-import '/backend/firebase_storage/storage.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/upload_media.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'edit_profile_widget.dart' show EditProfileWidget;
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
-class EditProfileModel extends FlutterFlowModel {
+class EditProfileModel extends FlutterFlowModel<EditProfileWidget> {
   ///  State fields for stateful widgets in this page.
 
-  bool isMediaUploading = false;
+  bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl = '';
 
   // State field(s) for email widget.
-  TextEditingController? emailController;
-  String? Function(BuildContext, String?)? emailControllerValidator;
+  FocusNode? emailFocusNode;
+  TextEditingController? emailTextController;
+  String? Function(BuildContext, String?)? emailTextControllerValidator;
   // State field(s) for yourName widget.
-  TextEditingController? yourNameController;
-  String? Function(BuildContext, String?)? yourNameControllerValidator;
+  FocusNode? yourNameFocusNode;
+  TextEditingController? yourNameTextController;
+  String? Function(BuildContext, String?)? yourNameTextControllerValidator;
   // State field(s) for userName widget.
-  TextEditingController? userNameController;
-  String? Function(BuildContext, String?)? userNameControllerValidator;
+  FocusNode? userNameFocusNode;
+  TextEditingController? userNameTextController;
+  String? Function(BuildContext, String?)? userNameTextControllerValidator;
   // State field(s) for phoneNumber widget.
-  TextEditingController? phoneNumberController;
-  String? Function(BuildContext, String?)? phoneNumberControllerValidator;
+  FocusNode? phoneNumberFocusNode;
+  TextEditingController? phoneNumberTextController;
+  String? Function(BuildContext, String?)? phoneNumberTextControllerValidator;
   // State field(s) for bio widget.
-  TextEditingController? bioController;
-  String? Function(BuildContext, String?)? bioControllerValidator;
+  FocusNode? bioFocusNode;
+  TextEditingController? bioTextController;
+  String? Function(BuildContext, String?)? bioTextControllerValidator;
 
-  /// Initialization and disposal methods.
-
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {
-    emailController?.dispose();
-    yourNameController?.dispose();
-    userNameController?.dispose();
-    phoneNumberController?.dispose();
-    bioController?.dispose();
+    emailFocusNode?.dispose();
+    emailTextController?.dispose();
+
+    yourNameFocusNode?.dispose();
+    yourNameTextController?.dispose();
+
+    userNameFocusNode?.dispose();
+    userNameTextController?.dispose();
+
+    phoneNumberFocusNode?.dispose();
+    phoneNumberTextController?.dispose();
+
+    bioFocusNode?.dispose();
+    bioTextController?.dispose();
   }
-
-  /// Additional helper methods are added here.
-
 }

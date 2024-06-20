@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
-import '../../auth/auth_util.dart';
+import '../../auth/firebase_auth/auth_util.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 const kMaxEventNameLength = 40;
@@ -13,7 +13,7 @@ void logFirebaseEvent(String eventName, {Map<String?, dynamic>? parameters}) {
 
   parameters ??= {};
   parameters.putIfAbsent(
-      'user', () => currentUserUid.isEmpty ? currentUserUid : 'unset');
+      'user', () => currentUserUid.isEmpty ? 'unset' : currentUserUid);
   parameters.removeWhere((k, v) => k == null || v == null);
   final params = parameters.map((k, v) => MapEntry(k!, v));
 

@@ -26,7 +26,7 @@ Future fetchKaraokeSongDBGzip() async {
 
   final storage = FirebaseStorage.instance;
   final gsReference = storage.refFromURL(
-      'gs://projectbread-karaokay.appspot.com/karaokenerds-data/community/community-data-latest.json.gz');
+      'gs://projectbread-karaokay.appspot.com/karaokenerds-data/full/full-data-latest.json.gz');
 
   logger.d("gsReference acquired to file in firebase storage");
 
@@ -45,7 +45,7 @@ Future fetchKaraokeSongDBGzip() async {
 
     // Download the gzipped file to a temporary file
     final directory = await getTemporaryDirectory();
-    final tempFile = File('${directory.path}/community-data-latest.json.gz');
+    final tempFile = File('${directory.path}/full-data-latest.json.gz');
 
     logger.d("tempFile created: " + tempFile.path);
     await gsReference.writeToFile(tempFile);
@@ -54,8 +54,7 @@ Future fetchKaraokeSongDBGzip() async {
 
     // Unzip the file and write the JSON data to the application storage
     final outputDirectory = await getApplicationDocumentsDirectory();
-    final outputFile =
-        File('${outputDirectory.path}/community-data-latest.json');
+    final outputFile = File('${outputDirectory.path}/full-data-latest.json');
 
     logger.d("outputFile created: " + outputFile.path);
 
@@ -64,8 +63,7 @@ Future fetchKaraokeSongDBGzip() async {
     await outputFile.writeAsBytes(uncompressedBytes);
 
     // logger.d the length of the list
-    logger.d(
-        "Successfully cached community DB to outputFile: " + outputFile.path);
+    logger.d("Successfully cached full DB to outputFile: " + outputFile.path);
     logger.d("Output filesize: " + filesize(outputFile.lengthSync()));
 
     // Delete the temporary file
@@ -79,12 +77,8 @@ Future fetchKaraokeSongDBGzip() async {
   final jsonStr = utf8.decode(uncompressedBytes);
   final jsonData = jsonDecode(jsonStr);
 
-  // Extract the 'Items' key and write it to the app state
-  items = jsonData['Items'];
+  FFAppState().songsdb = jsonData;
 
-  FFAppState().songsdb = items;
-
-  logger.d(
-      "Successfully written community data to songsdb, new songsdb size: " +
-          items.length.toString());
+  logger.d("Successfully written full data to songsdb, new songsdb size: " +
+      jsonData.length.toString());
 }

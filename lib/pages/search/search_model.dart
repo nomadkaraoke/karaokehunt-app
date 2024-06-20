@@ -1,32 +1,24 @@
-import '/components/empty_search_component/empty_search_component_widget.dart';
-import '/components/playlist_remove_track_sheet/playlist_remove_track_sheet_widget.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:easy_debounce/easy_debounce.dart';
+import 'search_widget.dart' show SearchWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
-class SearchModel extends FlutterFlowModel {
+class SearchModel extends FlutterFlowModel<SearchWidget> {
   ///  State fields for stateful widgets in this page.
 
+  final unfocusNode = FocusNode();
   // State field(s) for SongSearchInput widget.
-  TextEditingController? songSearchInputController;
-  String? Function(BuildContext, String?)? songSearchInputControllerValidator;
+  FocusNode? songSearchInputFocusNode;
+  TextEditingController? songSearchInputTextController;
+  String? Function(BuildContext, String?)?
+      songSearchInputTextControllerValidator;
 
-  /// Initialization and disposal methods.
-
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {
-    songSearchInputController?.dispose();
+    unfocusNode.dispose();
+    songSearchInputFocusNode?.dispose();
+    songSearchInputTextController?.dispose();
   }
-
-  /// Additional helper methods are added here.
-
 }

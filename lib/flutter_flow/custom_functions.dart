@@ -7,11 +7,12 @@ import 'package:intl/intl.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'lat_lng.dart';
 import 'place.dart';
-import '../backend/backend.dart';
+import 'uploaded_file.dart';
+import '/backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../../auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
 
-List<dynamic> fetchKaraokeSongsFromState(
+List<dynamic>? fetchKaraokeSongsFromState(
   List<dynamic> unfilteredSongList,
   String? searchQuery,
 ) {
@@ -31,7 +32,7 @@ List<dynamic> fetchKaraokeSongsFromState(
               .toString()
               .toLowerCase()
               .contains(searchQuery.toLowerCase()) ||
-          item['Brand']
+          item['Brands']
               .toString()
               .toLowerCase()
               .contains(searchQuery.toLowerCase())) {

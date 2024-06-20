@@ -1,17 +1,13 @@
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
+import 'search_page_add_track_sheet_widget.dart'
+    show SearchPageAddTrackSheetWidget;
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
-class SearchPageAddTrackSheetModel extends FlutterFlowModel {
-  /// Initialization and disposal methods.
-
+class SearchPageAddTrackSheetModel
+    extends FlutterFlowModel<SearchPageAddTrackSheetWidget> {
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {}
-
-  /// Additional helper methods are added here.
-
 }
